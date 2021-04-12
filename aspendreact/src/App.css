@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   
+=======
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
 }
 header {
   height: 92vh;
@@ -239,7 +246,11 @@ footer {
   display: inline;
   border: none;
   background-color: transparent;
+<<<<<<< HEAD
   font-size: 18px;
+=======
+  font-size: 15px;
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
   font-weight: 700;
   color: #272727;
   padding: 10px 10px;
@@ -433,4 +444,95 @@ footer {
 .breadcrumb-item a:hover {
   color: #000000;
   text-decoration: none;
+<<<<<<< HEAD
+=======
+}
+
+.card__project {
+  background-size: cover;
+  color: #fff;
+  margin: 50px 20px 0 0;
+  overflow: hidden;
+  min-height: 750px;
+}
+
+.card__project--one {
+  background-color: #638596;
+  background-image: url(./images/project-list-one.png);
+}
+.card__project--two {
+  background-color: #ddd;
+  background-image: url(./images/project-list-two.jpg);
+}
+.card__project--three {
+  background-color: #000020;
+  background-image: url(./images/project-list-three.png);
+}
+.card__project--four {
+  background-color: #49befe;
+  background-image: url(./images/project-list-four.png);
+}
+.card__project--five {
+  background-color: #0180FF ;
+  background-image: url(./images/project-list-five.png);
+}
+.card__project--six {
+  background-color: #414cb7;
+  background-image: url(./images/project-list-six.png);
+}
+.card__project--seven {
+  background-color: #7aa1b0;
+  background-image: url(./images/project-list-seven.png);
+}
+.card__project--eight { 
+  background-color: #78c256;
+  background-image: url(./images/project-list-eight.png);
+}
+.card__project--nine {
+  background-color: #292C34;
+  background-image: url(./images/project-list-nine.png);
+}
+.card__project--ten {
+  background-color: #391C50;
+  background-image: url(./images/project-list-ten.jpg);
+}
+
+.card__project--link {
+  display: block;
+  padding: 50px;
+}
+
+.card__project--link:focus,
+.card__project--link:hover {
+  text-decoration: none;
+}
+
+.card__project--title {
+  font-size: 25px;
+  color: #fff;
+}
+
+.card__project--text {
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .card__project {
+      min-height: 500px;
+      margin-right: 0;
+  }
+  .card__project--link {
+      padding: 40px;
+  }
+  .card__project--title {
+      font-size: 18px;
+      line-height: 1.5em;
+  }
+  .card__project--text {
+      font-size: 14px;
+      line-height: 1.65em;
+  }
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
 }
