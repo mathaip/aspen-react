@@ -1,7 +1,15 @@
+<<<<<<< HEAD
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+=======
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
 }
 header {
   height: 92vh;
@@ -238,7 +246,11 @@ footer {
   display: inline;
   border: none;
   background-color: transparent;
+<<<<<<< HEAD
+  font-size: 18px;
+=======
   font-size: 15px;
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
   font-weight: 700;
   color: #272727;
   padding: 10px 10px;
@@ -432,6 +444,8 @@ footer {
 .breadcrumb-item a:hover {
   color: #000000;
   text-decoration: none;
+<<<<<<< HEAD
+=======
 }
 
 .card__project {
@@ -520,4 +534,5 @@ footer {
       font-size: 14px;
       line-height: 1.65em;
   }
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
 }

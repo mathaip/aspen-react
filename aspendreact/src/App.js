@@ -1,5 +1,11 @@
 import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./Components/Header";
+<<<<<<< HEAD
+import Footer from "./Components/Footer";
+import Home from "./Pages/Home";
+
+import "./App.css";
+=======
 import HeaderLite from "./Components/HeaderLite";
 import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
@@ -20,6 +26,7 @@ import SignUp from "./Pages/SignUp";
 
 import "./App.css";
 import CryptoPunk from "./Pages/CryptoPunk";
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
 
 function App() {
   return (
@@ -30,6 +37,8 @@ function App() {
           <Home />
           <Footer />
         </Route>
+<<<<<<< HEAD
+=======
 
         <Route path="/login">
           <HeaderLite />
@@ -104,6 +113,7 @@ function App() {
           <CryptoPunk />
           <Footer />
         </Route>
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
       </Switch>
     </div>
   );

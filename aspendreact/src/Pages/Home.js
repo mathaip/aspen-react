@@ -1,6 +1,9 @@
 import "../App.css";
+<<<<<<< HEAD
+=======
 import {NavLink} from 'react-router-dom'
 
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
 
 function Home() {
   return (
@@ -17,9 +20,15 @@ function Home() {
                   quaerat provident aliquid accusamus dicta deserunt esse est
                   aut. Possimus, modi.
                 </p>
+<<<<<<< HEAD
+                <a href="#" className="btn btn__rounded-bordered">
+                  More About Us
+                </a>
+=======
                 <NavLink to="/about" className="btn btn__rounded-bordered">
                   More About Us
                 </NavLink>
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
               </div>
               <div className="col-lg-8 col-md-6 col-12 empty" />
             </div>
@@ -37,9 +46,15 @@ function Home() {
                   quaerat provident aliquid accusamus dicta deserunt esse est
                   aut. Possimus, modi.
                 </p>
+<<<<<<< HEAD
+                <a href="#" className="btn btn__rounded-bordered">
+                  More About Us
+                </a>
+=======
                 <NavLink to="/about" className="btn btn__rounded-bordered">
                   More About Us
                 </NavLink>
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
               </div>
             </div>
           </div>
@@ -55,9 +70,15 @@ function Home() {
                   quaerat provident aliquid accusamus dicta deserunt esse est
                   aut. Possimus, modi.
                 </p>
+<<<<<<< HEAD
+                <a href="#" className="btn btn__rounded-bordered">
+                  More About Us
+                </a>
+=======
                 <NavLink to="/about" className="btn btn__rounded-bordered">
                   More About Us
                 </NavLink>
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
               </div>
               <div className="col-lg-8 col-md-6 col-12 empty" />
             </div>
@@ -81,9 +102,15 @@ function Home() {
                   quaerat provident aliquid accusamus dicta deserunt esse est
                   aut. Possimus, modi.
                 </p>
+<<<<<<< HEAD
+                <a href="#" className="btn btn__rounded-bordered">
+                  More About Us
+                </a>
+=======
                 <NavLink to="/about" className="btn btn__rounded-bordered">
                   More About Us
                 </NavLink>
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
               </div>
             </div>
           </div>
@@ -99,9 +126,15 @@ function Home() {
                   quaerat provident aliquid accusamus dicta deserunt esse est
                   aut. Possimus, modi.
                 </p>
+<<<<<<< HEAD
+                <a href="#" className="btn btn__rounded-bordered">
+                  More About Us
+                </a>
+=======
                 <NavLink to="/about" className="btn btn__rounded-bordered">
                   More About Us
                 </NavLink>
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
               </div>
               <div className="col-lg-8 col-md-6 col-12 empty" />
             </div>
@@ -121,9 +154,15 @@ function Home() {
                   quaerat provident aliquid accusamus dicta deserunt esse est
                   aut. Possimus, modi.
                 </p>
+<<<<<<< HEAD
+                <a href="#" className="btn btn__rounded-bordered">
+                  More About Us
+                </a>
+=======
                 <NavLink to="/about" className="btn btn__rounded-bordered">
                   More About Us
                 </NavLink>
+>>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
               </div>
             </div>
           </div>
