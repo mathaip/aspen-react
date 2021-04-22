@@ -1,174 +1,54 @@
-import "../App.css";
-<<<<<<< HEAD
-=======
-import {NavLink} from 'react-router-dom'
+import "../stylesheet/new-style.css";
+import background from '../images/5InvitestoDiscord20AspenTokens.png';
+import twitter from '../images/iconfinder_Circled_Twitter_svg_5279123.png';
+import medium from '../images/iconfinder_Circled_Medium_svg5_5279113.png';
+import discord from '../images/iconfinder_discord_4691356.png';
+import SideNav from '../Components/SideNav';
+import {NavLink} from 'react-router-dom';
 
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
+
 
 function Home() {
+  const divStyle = {
+    backgroundImage: `url(${background})`
+  };
   return (
-    <div className="container-fluid">
-      <div className="row justify-content-center">
-        <section className="container-fluid section__one bg-black">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-4 col-md-6 col-12">
-                <h2>A Section Heading</h2>
-                <p className="small">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  nemo enim fuga ducimus quos ex. Cum, soluta? Inventore eum
-                  quaerat provident aliquid accusamus dicta deserunt esse est
-                  aut. Possimus, modi.
-                </p>
-<<<<<<< HEAD
-                <a href="#" className="btn btn__rounded-bordered">
-                  More About Us
-                </a>
-=======
-                <NavLink to="/about" className="btn btn__rounded-bordered">
-                  More About Us
-                </NavLink>
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
-              </div>
-              <div className="col-lg-8 col-md-6 col-12 empty" />
-            </div>
-          </div>
-        </section>
-        <section className="container-fluid section__two bg-black">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-8 col-md-6 col-12 empty" />
-              <div className="col-lg-4 col-md-6 col-12">
-                <h2>A Section Heading</h2>
-                <p className="small">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  nemo enim fuga ducimus quos ex. Cum, soluta? Inventore eum
-                  quaerat provident aliquid accusamus dicta deserunt esse est
-                  aut. Possimus, modi.
-                </p>
-<<<<<<< HEAD
-                <a href="#" className="btn btn__rounded-bordered">
-                  More About Us
-                </a>
-=======
-                <NavLink to="/about" className="btn btn__rounded-bordered">
-                  More About Us
-                </NavLink>
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="container-fluid section__one section__three bg-black">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-4 col-md-6 col-12">
-                <h2>A Section Heading</h2>
-                <p className="small">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  nemo enim fuga ducimus quos ex. Cum, soluta? Inventore eum
-                  quaerat provident aliquid accusamus dicta deserunt esse est
-                  aut. Possimus, modi.
-                </p>
-<<<<<<< HEAD
-                <a href="#" className="btn btn__rounded-bordered">
-                  More About Us
-                </a>
-=======
-                <NavLink to="/about" className="btn btn__rounded-bordered">
-                  More About Us
-                </NavLink>
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
-              </div>
-              <div className="col-lg-8 col-md-6 col-12 empty" />
-            </div>
-          </div>
-        </section>
-        <section className="container-fluid section__two section__four">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-8 col-md-6 col-12">
-                <img
-                  src="assets/images/homepage.png"
-                  alt
-                  className="img-fluid"
-                />
-              </div>
-              <div className="col-lg-4 col-md-6 col-12">
-                <h2>A Section Heading</h2>
-                <p className="small">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  nemo enim fuga ducimus quos ex. Cum, soluta? Inventore eum
-                  quaerat provident aliquid accusamus dicta deserunt esse est
-                  aut. Possimus, modi.
-                </p>
-<<<<<<< HEAD
-                <a href="#" className="btn btn__rounded-bordered">
-                  More About Us
-                </a>
-=======
-                <NavLink to="/about" className="btn btn__rounded-bordered">
-                  More About Us
-                </NavLink>
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="container-fluid section__one section__five">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-4 col-md-6 col-12">
-                <h2>A Section Heading</h2>
-                <p className="small">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  nemo enim fuga ducimus quos ex. Cum, soluta? Inventore eum
-                  quaerat provident aliquid accusamus dicta deserunt esse est
-                  aut. Possimus, modi.
-                </p>
-<<<<<<< HEAD
-                <a href="#" className="btn btn__rounded-bordered">
-                  More About Us
-                </a>
-=======
-                <NavLink to="/about" className="btn btn__rounded-bordered">
-                  More About Us
-                </NavLink>
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
-              </div>
-              <div className="col-lg-8 col-md-6 col-12 empty" />
-            </div>
-          </div>
-        </section>
-        <section className="container-fluid section__two section__six">
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-lg-8 col-md-6 col-12">
-                <img src="assets/images/phone.jpg" alt className="img-fluid" />
-              </div>
-              <div className="col-lg-4 col-md-6 col-12">
-                <h2>A Section Heading</h2>
-                <p className="small">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                  nemo enim fuga ducimus quos ex. Cum, soluta? Inventore eum
-                  quaerat provident aliquid accusamus dicta deserunt esse est
-                  aut. Possimus, modi.
-                </p>
-<<<<<<< HEAD
-                <a href="#" className="btn btn__rounded-bordered">
-                  More About Us
-                </a>
-=======
-                <NavLink to="/about" className="btn btn__rounded-bordered">
-                  More About Us
-                </NavLink>
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
-              </div>
-            </div>
-          </div>
-        </section>
+    <section className="showcase">
+      <SideNav/>
+
+      <div style={divStyle}></div>
+      
+      <div className="overlay"></div>
+
+      <div className="text">
+          <h2>We are Currently in the Lab</h2>
+          <h3>Join Our Discord for Pre-Launch Rewards</h3>
+          {/* <a href="https://discord.gg/VSRRjJqFr4">Enter the Lab</a>  */}
+          <NavLink to="/MarketPlace">Enter the Lab</NavLink>
       </div>
-    </div>
+
+      <ul className="social">
+        <li>
+          <a target="_blank" href="https://discord.gg/VSRRjJqFr4">
+            <img src={discord} alt/>
+          </a>
+        </li>
+        
+        <li>
+          <a target="_blank" href="https://medium.com/@aspenlabs1">
+            <img src={medium} alt/>
+          </a>
+        </li>
+        
+        <li>
+          <a target="_blank" href="https://twitter.com/LabsAspen">
+            <img src={twitter} alt className="img-fluid"/>
+          </a>
+        </li>
+        
+      </ul>
+      
+    </section>
   );
 }
 

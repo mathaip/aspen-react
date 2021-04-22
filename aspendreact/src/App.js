@@ -1,11 +1,5 @@
 import { Route, Switch, useHistory } from "react-router-dom";
-import Header from "./Components/Header";
-<<<<<<< HEAD
-import Footer from "./Components/Footer";
-import Home from "./Pages/Home";
-
-import "./App.css";
-=======
+// import Header from "./Components/Header";
 import HeaderLite from "./Components/HeaderLite";
 import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
@@ -18,6 +12,8 @@ import CryptoPunkLeaderboard from "./Pages/CryptoPunkLeaderboard";
 import CryptoPunkSales from "./Pages/CryptoPunkSales";
 import CryptoPunkTopsales from "./Pages/CryptoPunkTopsales";
 import CryptoPunkWrapper from "./Pages/CryptoPunkWrapper";
+import MarketPlace from "./Pages/MarketPlace";
+import MarketDetails from "./Pages/MarketDetails";
 
 import Login from "./Pages/Login";
 import ProjectList from "./Pages/ProjectList";
@@ -26,19 +22,16 @@ import SignUp from "./Pages/SignUp";
 
 import "./App.css";
 import CryptoPunk from "./Pages/CryptoPunk";
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <Header />
+          {/* <Header /> */}
           <Home />
-          <Footer />
+          {/* <Footer /> */}
         </Route>
-<<<<<<< HEAD
-=======
 
         <Route path="/login">
           <HeaderLite />
@@ -113,7 +106,12 @@ function App() {
           <CryptoPunk />
           <Footer />
         </Route>
->>>>>>> 0dfd327e9d5c3e958def78bb5ec4770677c1aaa7
+        <Route path="/MarketPlace">
+          <MarketPlace />
+        </Route>
+        <Route path="/MarketDetails">
+          <MarketDetails />
+        </Route>
       </Switch>
     </div>
   );
