@@ -1,0 +1,17 @@
+{
+    "1": {
+        "name": "George Washington",
+        "description": "First President of the United States of America",
+        "URL": "http://aspenlabs.io/collectables/tokens/1",
+        "img": "https://gateway.pinata.cloud/ipfs/QmQVp3FpZ5uiF7PYDoJKnM7P9yYnECb9wfQRwYRyM9tJYt",
+        "metadata-url": "https://gateway.pinata.cloud/ipfs/QmQVp3FpZ5uiF7PYDoJKnM7P9yYnECb9wfQRwYRyM9tJYt"
+    },
+    "2": {
+        "name": "Thomas Jefferson",
+        "description": "Third President of the United States of America",
+        "URL": "http://aspenlabs.io/collectables/tokens/2",
+        "img": "https://gateway.pinata.cloud/ipfs/QmQVp3FpZ5uiF7PYDoJKnM7P9yYnECb9wfQRwYRyM9tJYt",
+        "metadata-url": "https://gateway.pinata.cloud/ipfs/QmQVp3FpZ5uiF7PYDoJKnM7P9yYnECb9wfQRwYRyM9tJYt"
+
+    }
+}

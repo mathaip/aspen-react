@@ -15,7 +15,7 @@ import CryptoPunkWrapper from "./Pages/CryptoPunkWrapper";
 import MarketPlace from "./Pages/MarketPlace";
 import MarketDetails from "./Pages/MarketDetails";
 
-import Login from "./Pages/Login";
+import Admin from "./Pages/Admin";
 import ProjectList from "./Pages/ProjectList";
 import ResetPassword from "./Pages/ResetPassword";
 import SignUp from "./Pages/SignUp";
@@ -33,10 +33,10 @@ function App() {
           {/* <Footer /> */}
         </Route>
 
-        <Route path="/login">
+        <Route path="/Admin">
           <HeaderLite />
 
-          <Login />
+          <Admin />
           <Footer />
         </Route>
         <Route path="/project_list">
