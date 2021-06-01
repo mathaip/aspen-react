@@ -1,7 +1,47 @@
 import "../stylesheet/new-style.css";
 import {NavLink} from 'react-router-dom'
+import { useEffect, useState } from "react";
+import {Button as MuiButton}  from '@material-ui/core'
+import { connectWallet} from "../utils/interact.js";
+
+
+
+
 
 function NavBar() {
+
+   const [isConnected, setConnectedStatus] = useState(false);
+   const [walletAddress, setWallet] = useState("");
+   const [status, setStatus] = useState("");
+  useEffect(async () => {
+      if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_accounts" })
+          if (accounts.length) {
+            setConnectedStatus(true);
+            setWallet(accounts[0]);
+          } else {
+            setConnectedStatus(false);
+            setStatus("🦊 Connect to Metamask using the top right button.");
+          }
+        } catch {
+          setConnectedStatus(false);
+          setStatus(
+            "🦊 Connect to Metamask using the top right button. " +
+              walletAddress
+          );
+        }
+      }
+    });
+  
+    const connectWalletPressed = async () => {
+      const walletResponse = await connectWallet();
+      setConnectedStatus(walletResponse.connectedStatus);
+      setStatus(walletResponse.status);
+      if (isConnected) {
+        setWallet(walletAddress);
+      }
+    };
   return (
     <div className="container-fluid">
     <div className="row">
@@ -26,12 +66,12 @@ function NavBar() {
         >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" to="/marketplace">
                 NFTS
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" to="/allmoments">
                 EXPLORER
               </NavLink>
             </li>
@@ -48,9 +88,17 @@ function NavBar() {
           </ul>
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink className="nav-btn" to="/">
-                CONNECT WALLET
-            </NavLink>
+
+          <button id="walletButton" className="nav-btn" style={{paddingLeft:"50px"}} onClick={connectWalletPressed}>
+          {isConnected ? (
+            "👛 Connected: " +
+            String(walletAddress).substring(0, 6) +
+            "..." +
+            String(walletAddress).substring(38)
+          ) : (
+            <span>👛 Connect Wallet</span>
+          )}
+        </button>
           </li>
           </ul>
         </div>

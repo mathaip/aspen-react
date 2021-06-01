@@ -52,7 +52,7 @@ body {
   width: 100%;
   min-height: 100vh;
   padding: 100px;
-  display: flex;
+  display: list-item	;
   justify-content: space-between;
   align-items: center;
   background-image:url(https://www.pexels.com/photo/7499835/);
@@ -63,13 +63,13 @@ body {
 header
 {
   position: absolute;
-  top: 0;
+  top: -19px;
   left: 0;
   height: 100%;
-  display: flex;
+  display: list-item	;
   justify-content: space-between;
   align-items: center;
-  background-color: #5CE1E6;
+  background-color: #000000;
 }
 header .logo
 {
@@ -95,7 +95,6 @@ header .logo
     top: 18px;
     left: 10px;
 }
-
 .main {
     position: relative;
     width: 100%;
@@ -186,9 +185,10 @@ header .logo
 .card__product--container {
     position: relative;
     margin-bottom: 10px;
+    
 }
 .card__product {
-    border: 1px solid #ccc;
+    border: 5px solid #ccc;
     padding-top: 10px;
     border-radius: 10px;
 }

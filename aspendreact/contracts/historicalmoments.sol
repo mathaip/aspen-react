@@ -1,14 +1,14 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.6.2 ^0.8.0;
 pragma experimental ABIEncoderV2;
-//"SPDX-License-Identifier: <SPDX-License>"
 
 import "./ERC1155/ERC1155.sol";
 
 contract aspenNFT  is ERC1155 { 
     
     uint256[] public  listIds;
-    address private owner;
-    uint256 private Packprice;
+    address public owner;
+    uint256 public Packprice;
     uint256 private PackSize;
 
     mapping (uint => address) public momentIDToAddress;
@@ -48,6 +48,7 @@ contract aspenNFT  is ERC1155 {
     mapping (address => uint) public pendingWithdrawals;
 
 
+
     modifier onlyOwner() {
     require(msg.sender == owner);
     _;
@@ -55,6 +56,8 @@ contract aspenNFT  is ERC1155 {
 
     event Assign(address indexed to, uint256 momentID);
     event Transfer(address indexed from, address indexed to, uint256 value);
+    event TransferFunds(address indexed from, address indexed to, uint256 value);
+
     event momentTransfer(address indexed from, address indexed to, uint256 momentID);
     event momentOffered(uint indexed momentID, uint minValue, address indexed toAddress);
     event momentBidEntered(uint indexed momentID, uint value, address indexed fromAddress);
@@ -63,7 +66,7 @@ contract aspenNFT  is ERC1155 {
     event momentNoLongerForSale(uint indexed momentID);
     event PacksLeft(uint256 indexed packCount);
    constructor() payable ERC1155
-        ('https://mockapi.io/tokens/{id}'){
+        ('https://aspenlabs.io/collections/tokens/{id}'){
             owner = payable(msg.sender);
         
     }
@@ -87,7 +90,7 @@ contract aspenNFT  is ERC1155 {
     
     
     function setPackPrice(uint256 price) public onlyOwner returns(uint256){
-        Packprice = price;
+        Packprice = 1 ether / price;
         return Packprice;
     }
       function setPackSize(uint256 size) public onlyOwner returns(uint256){
@@ -106,12 +109,12 @@ contract aspenNFT  is ERC1155 {
     function checkContractBalance() onlyOwner public payable  returns(uint) {
         return address(this).balance;
   }
-    function getFundsFromContract(address payable _to) onlyOwner public payable returns(bool){
+    function getFundsFromContract(address payable _to) onlyOwner public payable returns(bool, uint256){
         address _contract = address(this);
         uint256 balance = _contract.balance;
         (bool sent, bytes memory data) = _to.call{value: balance}("");
         require(sent, "Failed to send Ether");
-        return sent;
+        return (sent, balance);
     }
 
     function getCollection(string calldata id) public view returns(Collection memory){
@@ -142,24 +145,22 @@ contract aspenNFT  is ERC1155 {
         momentsOfferedForSale[momentID] = Offer(true, momentID, msg.sender, minSalePriceInWei, toAddress);
         momentOffered(momentID, minSalePriceInWei, toAddress);
     }
+    
+   
 
-    function buyMoment(uint momentID, string memory Collectionname )  payable public  {
-        if(momentIDToAddress[momentID] != owner)revert();
-        if(msg.value < Packprice)revert(); // Didn't send enough ETH
-        uint[] memory amount = new uint[](1);
-        amount[1] = PackSize;
-        uint[] memory id = new uint[](1);
-        id[1] = momentID;
+    function buyMoment(uint256 momentID, string memory Collectionname ) payable public {
+        require(msg.value >= Packprice);
+        TransferFunds(msg.sender,owner,msg.value);
+        uint256 amount = PackSize;
         momentIDToAddress[momentID] = msg.sender;
-        safeBatchTransferFrom(owner, msg.sender, id, amount , '0x01' );
-        Transfer(owner, msg.sender, 1);
+        safeTransferFrom(owner, msg.sender, momentID, amount , '0x01' );
+        Transfer(owner, msg.sender, momentID);
         Collection memory findCollection = Collections[Collectionname];
         uint256 packCount = findCollection.maxPackCount;
         uint256 packsleft = packCount - 1;
         findCollection.maxPackCount = packsleft;
         momentBought(momentID, msg.value, owner, msg.sender);
         PacksLeft(packsleft);
-        
     }
 
     function withdraw() public payable {

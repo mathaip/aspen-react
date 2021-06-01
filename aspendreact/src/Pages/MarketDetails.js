@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { connectWallet, createToken } from "../utils/interact";
+import { connectWallet, setApprovalForAll } from "../utils/interact";
 import "../stylesheet/new-style.css";
 import SideNav from '../Components/SideNav';
 import NavBar from '../Components/NavBar';
@@ -65,20 +65,22 @@ function MarketDetails() {
     
      const BuyPack = async (e) => {
         e.preventDefault()
-        const collectionIDs = americanRevolution;
-        const CollectionName = 'america'
-        const collectionIDObject = collectionIDs[0]
-        var keys = Object.keys(collectionIDObject);
-        const randomID = keys[Math.floor(Math.random() * keys.length)];
+        await setApprovalForAll(walletAddress, true)
+        //const collectionIDs = americanRevolution;
+        const CollectionName = 'american revolution'
+        //const collectionIDObject = collectionIDs[0]
+        //var keys = Object.keys(collectionIDObject);
+        //const randomID = keys[Math.floor(Math.random() * keys.length)];
+        const randomID = 2
         console.log(randomID)
 
         await nftContract.methods
         .buyMoment(randomID, CollectionName)
         .send({ from: walletAddress,
-        gas:2100000 })
-        .then(res => console.log(res.transactionHash));
+        gas:2100000, value:1000000000000000000 })
+        .then(res => console.log(res));
 
-        keys.pop(randomID)
+        //keys.pop(randomID)
         }
     
     const alignTop = {
@@ -99,28 +101,28 @@ function MarketDetails() {
                 <NavBar/>
                 <div className="row mt-4">
                     <div className="col-md-8">
-                        <p className="text-center col-12">From $199</p>
-                        <h1 className="text-center col-12">Taiping Rebellion</h1>
+                        <p className="text-center col-12">From $99</p>
+                        <h1 className="text-center col-12">American Revolution</h1>
                         <div className="col-12">
                             <div className="row justify-content-center">
                                 <div className="col-md-4" style={borderRight}>
-                                    <h4 className="col-12 text-center">170</h4>
+                                    <h4 className="col-12 text-center">448</h4>
                                     <p className="col-12 text-center text-sm">NFTS</p>
                                 </div>
                                 <div className="col-md-4" style={borderRight}>
-                                    <h4 className="col-12 text-center">3rd</h4>
-                                    <p className="col-12 text-center text-sm">Most Deadly Conflict</p>
+                                    <h4 className="col-12 text-center">1st</h4>
+                                    <p className="col-12 text-center text-sm">Liberty's First Steps</p>
                                 </div>
                                 <div className="col-md-4">
-                                    <h4 className="col-12 text-center">1850-1871</h4>
-                                    <p className="col-12 text-center text-sm">Birth of the Heavenly Kingdom</p>
+                                    <h4 className="col-12 text-center">1776</h4>
+                                    <p className="col-12 text-center text-sm">Birth of the American Republic</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="col-md-4" style={maxHeight}>
                         <img src={product} alt className="img-fluid" />
-                        <MuiButton size="large" variant="contained" color="primary"onClick={BuyPack} >
+                        <MuiButton className="nav-btn" variant="contained" color="inherit" onClick={BuyPack} >
                             Buy Pack
                         </MuiButton>
                     </div>

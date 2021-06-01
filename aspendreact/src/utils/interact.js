@@ -2,6 +2,7 @@ import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../nft-contract"
 import web3 from "../web3";
 
 
+const owner = "0x98250D2ec8226261f609701F662930FAA92Bfb49"
 
 
 export const connectWallet = async() => {
@@ -34,7 +35,14 @@ export const loadContract = async() => {
     return new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 };
 
-
+export const setApprovalForAll = async(operator, boolean) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+    .setApprovalForAll(operator, boolean)
+    .send({ from: owner,
+    gas:2100000})
+    .then(res => console.log(res));
+}
 export const createTokens = async(address, idArray, collectionName, collectionId, amountsArray, maxPackCount, data) => {
 
 

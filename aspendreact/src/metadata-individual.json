@@ -1,16 +1,25 @@
-{
-    "1": {
+{ "ids":[{"id":1,
         "name": "George Washington",
         "description": "First President of the United States of America",
         "URL": "http://aspenlabs.io/collectables/tokens/1",
-        "img": "https://gateway.pinata.cloud/ipfs/QmQVp3FpZ5uiF7PYDoJKnM7P9yYnECb9wfQRwYRyM9tJYt"
+        "img": "https://gateway.pinata.cloud/ipfs/QmYJomSnQAVJtdFousUSUkGRWLBSF4RU7RzGNRAf9mWt8D"
 
     },
-    "2": {
+    {   "id": 2,
         "name": "Thomas Jefferson",
         "description": "Third President of the United States of America",
-        "URL": "http://aspenlabs.io/collectables/tokens/2",
-        "img": "https://gateway.pinata.cloud/ipfs/QmQVp3FpZ5uiF7PYDoJKnM7P9yYnECb9wfQRwYRyM9tJYt"
+        "URL": "http://aspenlabs.io/collectables/tokens/2s",
+        "img": "https://gateway.pinata.cloud/ipfs/QmcpEn7DfzuyPDKWKFEkbKvhThg6czrbzpDXLiyKeAG1ja"
+
+    
+    },
+    {
+        "id":3 ,
+            "name": "Pennsylvania",
+            "description": "One of the original 13 states",
+            "URL": "http://aspenlabs.io/collectables/tokens/3",
+            "img": "https://gateway.pinata.cloud/ipfs/QmQd3qt7eUf786XSPrU5bNgY2XzqkqH7KTvPDuHUZVKyZa"
+
 
     }
-}
+]}

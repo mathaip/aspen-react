@@ -8,7 +8,7 @@ import CryptoPunkAttributes from "./Pages/CryptoPunkAttributes";
 import CryptoPunkBids from "./Pages/CryptoPunkBids";
 import CryptoPunkDetails from "./Pages/CryptoPunkDetails";
 import CryptoPunkForsale from "./Pages/CryptoPunkForsale";
-import CryptoPunkLeaderboard from "./Pages/CryptoPunkLeaderboard";
+import AllMomentsList from "./Pages/AllMoments";
 import CryptoPunkSales from "./Pages/CryptoPunkSales";
 import CryptoPunkTopsales from "./Pages/CryptoPunkTopsales";
 import CryptoPunkWrapper from "./Pages/CryptoPunkWrapper";
@@ -16,9 +16,6 @@ import MarketPlace from "./Pages/MarketPlace";
 import MarketDetails from "./Pages/MarketDetails";
 
 import Admin from "./Pages/Admin";
-import ProjectList from "./Pages/ProjectList";
-import ResetPassword from "./Pages/ResetPassword";
-import SignUp from "./Pages/SignUp";
 
 import "./App.css";
 import CryptoPunk from "./Pages/CryptoPunk";
@@ -39,22 +36,7 @@ function App() {
           <Admin />
           <Footer />
         </Route>
-        <Route path="/project_list">
-          <HeaderLite />
-          <ProjectList />
-          <Footer />
-        </Route>
-        <Route path="/reset_password">
-          <HeaderLite />
-          <ResetPassword />
-          <Footer />
-        </Route>
-        <Route path="/signup">
-          <HeaderLite />
-          <SignUp />
-          <Footer />
-        </Route>
-
+       
         <Route path="/about">
           <HeaderLite />
           <About />
@@ -80,9 +62,9 @@ function App() {
           <CryptoPunkForsale />
           <Footer />
         </Route>
-        <Route path="/leaderboard">
+        <Route path="/allmoments">
           <HeaderLite />
-          <CryptoPunkLeaderboard />
+          <AllMomentsList />
           <Footer />
         </Route>
 

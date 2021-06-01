@@ -27,6 +27,7 @@ import web3 from "../web3";
     const [packPrice, setPackPrice] = useState();
     // Get Pack Price 
     const [getPackPrice, setGetPackPrice] = useState();
+    const [packSize, setPackSize] = useState();
     const [contractBalance, setContractBalance] = useState();
     const [tokenResponse, setTokenResponse] = useState()
     const [operatorAddress, setOperatorAddress] = useState("")
@@ -113,6 +114,13 @@ import web3 from "../web3";
         .send({ from: walletAddress,
         gas:2100000 }).then(res =>  console.log(res));
         console.log(setPackPrice)
+        }
+    const OnClickSetPackSize = async (e) =>{
+      e.preventDefault();
+      await nftContract.methods
+        .setPackSize(packSize)
+        .send({ from: walletAddress,
+        gas:2100000 }).then(res =>  console.log(res));
         }
     const OnClickGetPackprice = async () =>{
       await nftContract.methods
@@ -234,6 +242,11 @@ import web3 from "../web3";
             Get Pack Price 
         </MuiButton >
         <h2>{getPackPrice}</h2>
+        <Box m={8} />
+        <TextField id="standard-basic" label=" Pack Size" onChange={(event) => setPackSize(event.target.value)} />
+        <MuiButton padding="30px" variant="outlined" color="primary" onClick={OnClickSetPackSize}>
+            Set Pack Size 
+        </MuiButton >
         <Box m={8} />
 
         <MuiButton padding="30px" variant="outlined" color="primary" onClick={getContractBalance}>
