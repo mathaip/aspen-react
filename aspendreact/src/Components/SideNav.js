@@ -1,5 +1,5 @@
 import "../stylesheet/new-style.css";
-import logo from '../images/Aspen-logo-black.png';
+import logo from '../images/white-logo.png';
 
 
 function SideNav() {

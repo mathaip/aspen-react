@@ -7,6 +7,7 @@ import frenchrevolution from '../images/frenchrevolution.png';
 import RussianRevolution from '../images/Russian-pack.png'
 import philosophers from '../images/philosophers-pack.png'
 import taiping from '../images/taiping-rebellion.png'
+import cuban from '../images/cuban-revolution-pack.png'
 
 function MarketPlace() {
     const alignTop = {
@@ -27,10 +28,10 @@ function MarketPlace() {
                                     <img src={product} alt className="card__product--img" />
                                 </div>
                                 <h4 className="card__product--heading col-12 text-center">American Revolutuion </h4>
-                                <p className="card__product--text col-12 text-center">448 Packs</p>
-                                <p className="card__product--text col-12 text-center">1 Moment per Pack </p>
+                                <p className="card__product--text col-12 text-center">59 Packs</p>
+                                <p className="card__product--text col-12 text-center">1 NFT per Pack </p>
 
-                                <p className="card__product--price col-12 text-center">USD $149.00</p>
+                                <p className="card__product--price col-12 text-center">USD $150.00</p>
                             </div>
                         </NavLink>
                     </div>
@@ -96,9 +97,9 @@ function MarketPlace() {
                         <NavLink to="/MarketDetails" className="card__product--link">
                             <div className="card__product col-12">
                                 <div className="card__product--img-container">
-                                    <img src={product} alt className="card__product--img" />
+                                    <img src={cuban} alt className="card__product--img" />
                                 </div>
-                                <h4 className="card__product--heading col-12 text-center">Product Heading</h4>
+                                <h4 className="card__product--heading col-12 text-center">Cuban Revolutuion</h4>
                                 <p className="card__product--text col-12 text-center">Product Description</p>
                                 <p className="card__product--price col-12 text-center">USD $4.00</p>
                             </div>

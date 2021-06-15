@@ -8,27 +8,31 @@ body {
 }
 
 .navbar-expand-lg .navbar-nav .nav-link,
-.navbar-expand-lg .navbar-nav .nav-btn
- {
+.navbar-expand-lg .navbar-nav .nav-btn {
     font-family: 'Andalemono';
     transition: 0.5s;
 }
+
 .navbar-expand-lg .navbar-nav .nav-item:focus,
 .navbar-expand-lg .navbar-nav .nav-item:hover {
     border-bottom: .5px solid black;
 }
+
 .navbar-expand-lg .navbar-nav.ml-auto .nav-item:focus,
 .navbar-expand-lg .navbar-nav.ml-auto .nav-item:hover {
     border-bottom: unset;
 }
+
 .navbar-expand-lg .navbar-nav .nav-link:focus,
 .navbar-expand-lg .navbar-nav .nav-link:hover {
     color: black;
 }
+
 .navbar-expand-lg .navbar-nav .nav-link .active {
     border-bottom: .5px solid black;
     color: black;
 }
+
 .navbar-expand-lg .navbar-nav .nav-btn {
     /* width: 150px; */
     display: flex;
@@ -39,174 +43,197 @@ body {
     background-color: #FE6C19;
     transition: all .3s ease;
 }
+
 .navbar-expand-lg .navbar-nav .nav-btn:focus,
 .navbar-expand-lg .navbar-nav .nav-btn:hover {
     border: 1px solid #FE6C19;
     background-color: #fff;
     text-decoration: none;
 }
-.showcase
-{
-  position: absolute;
-  right: 0;
-  width: 100%;
-  min-height: 100vh;
-  padding: 100px;
-  display: list-item	;
-  justify-content: space-between;
-  align-items: center;
-  background-image:url(https://www.pexels.com/photo/7499835/);
-  transition: 0.5s;
-  z-index: 2;
+
+.buy-pack-btn {
+    padding: 10px 20px;
+    border-radius: 0px;
+    color: black;
+    display: flex;
+    background-color: #5CE1E6;
+    justify-content: center;
 }
 
-header
-{
-  position: absolute;
-  top: -19px;
-  left: 0;
-  height: 100%;
-  display: list-item	;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #000000;
+.buy-pack-btn-padding {
+    padding-left: 70px
 }
-header .logo
-{
-  color: rgb(0, 0, 0);
-  text-transform: uppercase;
-  cursor: pointer;
+
+.showcase {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: list-item;
+    justify-content: space-between;
+    align-items: center;
+    background-image: url(https://www.pexels.com/photo/7499835/);
+    transition: 0.5s;
+    z-index: 2;
 }
+
+header {
+    position: absolute;
+    top: -43px;
+    left: 0;
+    height: 100%;
+    display: list-item;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    color: transparent;
+}
+
+header .logo {
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #000000;
+}
+
 .header {
     height: 100%;
     padding: unset;
     display: flex;
     justify-content: center;
 }
+
 .header img {
     float: left;
     width: 130px;
     height: 100px;
-    background: #555;
+    background: #0000;
 }
-  
+
 .header h1 {
     position: relative;
     top: 18px;
     left: 10px;
 }
+
+.grid-container {
+    display: grid;
+    grid-row-gap: 50px;
+}
+
 .main {
     position: relative;
     width: 100%;
     margin-left: 50px;
 }
 
-.text
-{
-  position: relative;
-  margin-left: 250px;
-  /* z-index: 10; */
-}
-.text h2
-{
-  font-size: 4em;
-  font-weight: 800;
-  color: rgb(0, 0, 0);
-  line-height: 1em;
-  text-transform: uppercase;
-}
-.text h3
-{
-  font-size: 3em;
-  font-weight: 700;
-  color: rgb(0, 0, 0);
-  line-height: 1em;
-  text-transform: uppercase;
-}
-.text p
-{
-  font-size: 1.1em;
-  color: rgb(0, 0, 0);
-  margin: 20px 0;
-  font-weight: 400;
-  max-width: 700px;
-}
-.text a
-{
-  display: inline-block;
-  font-size: 1em;
-  background: rgb(0, 0, 0);
-  padding: 10px 30px;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-weight: 500;
-  margin-top: 10px;
-  color: rgb(255, 255, 255);
-  letter-spacing: 2px;
-  transition: 0.2s;
-}
-.text a:hover
-{
-  letter-spacing: 6px;
-}
-.social
-{
-  position: absolute;
-  z-index: 30;
-  bottom: 15px;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  margin-left: 250px;
-  
-  
+.text {
+    position: relative;
+    margin-left: 250px;
+    /* z-index: 10; */
 }
 
-.social li
-{
-  list-style: none;
-  display: inline-block;
+.text h2 {
+    font-size: 4em;
+    font-weight: 800;
+    color: rgb(0, 0, 0);
+    line-height: 1em;
+    text-transform: uppercase;
 }
-.social li a
-{
-  display: inline-block;
-  margin-right: 100px;
-  /* filter: invert(1); */
-  transform: scale(0.5);
-  transition: 0.5s;
-  width: 40%;
-  height: auto;
 
+.text h3 {
+    font-size: 3em;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+    line-height: 1em;
+    text-transform: uppercase;
 }
-.social li a:hover
-{
-  transform: scale(0.9) translateY(-15px);
+
+.text p {
+    font-size: 1.1em;
+    color: rgb(0, 0, 0);
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 700px;
 }
+
+.text a {
+    display: inline-block;
+    font-size: 1em;
+    background: rgb(0, 0, 0);
+    padding: 10px 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+    color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+    transition: 0.2s;
+}
+
+.text a:hover {
+    letter-spacing: 6px;
+}
+
+.social {
+    position: absolute;
+    z-index: 30;
+    bottom: 15px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-left: 250px;
+}
+
+.social li {
+    list-style: none;
+    display: inline-block;
+}
+
+.social li a {
+    display: inline-block;
+    margin-right: 100px;
+    /* filter: invert(1); */
+    transform: scale(0.5);
+    transition: 0.5s;
+    width: 40%;
+    height: auto;
+}
+
+.social li a:hover {
+    transform: scale(0.9) translateY(-15px);
+}
+
 .card__product--container {
     position: relative;
     margin-bottom: 10px;
-    
 }
+
 .card__product {
     border: 5px solid #ccc;
     padding-top: 10px;
     border-radius: 10px;
 }
+
 .card__product--link,
 .card__product--link:focus,
 .card__product--link:hover {
     color: black;
     text-decoration: none;
 }
+
 .card__product--img-container {
-    height: 200px;
+    height: 300px;
     overflow: hidden;
     display: flex;
     justify-content: center;
 }
+
 .card__product--img {
     height: 100%;
 }
+
 .text-sm {
     margin-top: 10px;
     font-size: 14px;

@@ -3,11 +3,21 @@ import metadata from "../metadata-individual.json";
 import {NavLink} from 'react-router-dom';
 import "../stylesheet/new-style.css";
 import NavBar from '../Components/NavBar';
+import { useEffect, useState } from "react";
 
 
-const data = metadata.ids;
-console.log(data)
-const AllMomentsList = props => (
+
+
+
+function AllMomentsList(){
+    
+ 
+   const data = metadata.ids;
+   
+    
+    
+      return(
+    
     <React.Fragment> 
     <NavBar/>
 
@@ -34,6 +44,6 @@ const AllMomentsList = props => (
           ))}
 
     </React.Fragment>
-)
+)}
 
 export default AllMomentsList;

@@ -134,7 +134,7 @@ import web3 from "../web3";
         .checkContractBalance()
         .call({ from: walletAddress,
         gas:2100000 })
-        .then(res => console.log(res));
+        .then(res => setContractBalance(res));
         }
     const onClickGetFundsFromContract = async ()  => {
       await nftContract.methods
@@ -252,7 +252,7 @@ import web3 from "../web3";
         <MuiButton padding="30px" variant="outlined" color="primary" onClick={getContractBalance}>
           Check Contract Balance 
         </MuiButton >
-        <h2>{contractBalance}</h2>
+      <Typography>{contractBalance}</Typography>
         <Box m={8} />
         <Typography>
           Get Funds From Contract

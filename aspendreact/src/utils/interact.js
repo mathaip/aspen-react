@@ -43,6 +43,22 @@ export const setApprovalForAll = async(operator, boolean) => {
     gas:2100000})
     .then(res => console.log(res));
 }
+export const acceptBidForMoment = async(momentID, minValue) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+    .acceptBidForMoment(momentID, minValue)
+    .send({ from: window.ethereum.selectedAddress,
+    gas:2100000})
+    .then(res => console.log(res));
+}
+export const enterBidForMoment = async(momentID) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+    .enterBidForMoment(momentID)
+    .send({ from: window.ethereum.selectedAddress,
+    gas:2100000})
+    .then(res => console.log(res));
+}
 export const createTokens = async(address, idArray, collectionName, collectionId, amountsArray, maxPackCount, data) => {
 
 
