@@ -14,6 +14,7 @@ import CryptoPunkTopsales from "./Pages/CryptoPunkTopsales";
 import CryptoPunkWrapper from "./Pages/CryptoPunkWrapper";
 import MarketPlace from "./Pages/MarketPlace";
 import MarketDetails from "./Pages/MarketDetails";
+import Product from "./Pages/Product";
 
 import Admin from "./Pages/Admin";
 
@@ -63,7 +64,7 @@ function App() {
           <Footer />
         </Route>
         <Route path="/allmoments">
-          <HeaderLite />
+          {/* <HeaderLite /> */}
           <AllMomentsList />
           <Footer />
         </Route>
@@ -93,6 +94,9 @@ function App() {
         </Route>
         <Route path="/MarketDetails">
           <MarketDetails />
+        </Route>
+        <Route path="/Product">
+          <Product />
         </Route>
       </Switch>
     </div>

@@ -65,7 +65,7 @@ header
   position: absolute;
   top: -19px;
   left: 0;
-  height: 100%;
+  height: fit-content;
   display: list-item	;
   justify-content: space-between;
   align-items: center;
@@ -78,7 +78,7 @@ header .logo
   cursor: pointer;
 }
 .header {
-    height: 100%;
+    height: 100vh;
     padding: unset;
     display: flex;
     justify-content: center;
@@ -211,4 +211,24 @@ header .logo
     margin-top: 10px;
     font-size: 14px;
     line-height: 20px;
+}
+
+.product__img--container {
+  height: 450px;
+  padding: 0px;
+  display: flex;
+  vertical-align: middle;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product__img {
+  width: 100%;
+}
+
+.product__description {
+  font-size: 14px;
+  line-height: 15px;
+  text-align: center;
+  margin-top: 20px;
 }
