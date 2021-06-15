@@ -56,8 +56,9 @@ body {
     border-radius: 0px;
     color: black;
     display: flex;
-    background-color: #5CE1E6;
+    background-color: #FE6C19;
     justify-content: center;
+    width: 100%;
 }
 
 .buy-pack-btn-padding {
@@ -79,7 +80,7 @@ body {
 }
 
 header {
-    position: absolute;
+    position: fixed;
     top: -19px;
     left: 0;
     height: fit-content;
@@ -101,6 +102,9 @@ header .logo {
     padding: unset;
     display: flex;
     justify-content: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
 }
 
 .header img {

@@ -52,7 +52,7 @@ export  const Product = ({match}) => {
                             <form className="mt-5">
                                 <div class="form-group">
                                     <input className="form-control" id="exampleInputEmail1" placeholder="$0.00" />
-                                    <button type="submit" className="btn">Place Bid</button>
+                                    <button type="submit" className="buy-pack-btn">Place Bid</button>
                                 </div>
                             </form>
                         </div>
