@@ -89,7 +89,7 @@ function NavBar() {
           <ul className="navbar-nav ml-auto">
           <li className="nav-item">
 
-          <button id="walletButton" className="nav-btn" style={{paddingLeft:"50px"}} onClick={connectWalletPressed}>
+          <button id="walletButton" className="nav-btn btn" style={{paddingLeft:"50px"}} onClick={connectWalletPressed}>
           {isConnected ? (
             "👛 Connected: " +
             String(walletAddress).substring(0, 6) +

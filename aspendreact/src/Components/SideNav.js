@@ -4,7 +4,7 @@ import logo from '../images/white-logo.png';
 
 function SideNav() {
     return (
-        <header>
+        <header className="d-none d-md-flex">
         <div className="header">
             <img src={logo} alt="Logo"/>
             {/* <h1></h1> */}
