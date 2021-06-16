@@ -5,7 +5,7 @@ import productImg from '../../images/american-pack-white-background.png';
 const ProductItem = ({product}) => {
     return (
         <div className="card__product--container col-lg-4 col-md-6 col-12 col-sm-12">
-            <NavLink to={`/detail/${product.id}`} className="card__product--link">
+            <NavLink to={`/collectables/tokens/${product.id}`} className="card__product--link">
                 <div className="card__product col-12">
                     <div className="card__product--img-container">
                         <img src={product.img || productImg} alt="card product diagram" className="card__product--img" />

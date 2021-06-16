@@ -70,7 +70,7 @@ function NavBar() {
               {/* <NavLink className="nav-link" to="/marketplace">
                 NFTS
               </NavLink> */}
-              <NavLink className="nav-link" to="/explore">
+              <NavLink className="nav-link" to="/MarketPlace">
                 NFTS
               </NavLink>
             </li>

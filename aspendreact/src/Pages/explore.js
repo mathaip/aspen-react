@@ -129,7 +129,7 @@ function Explore() {
         }
     }
 
-    var totalCount = Math.round(filteredProducts.length / countPerPage);
+    var totalCount = Math.ceil(filteredProducts.length / countPerPage);
 
     var products = [];
 
@@ -141,7 +141,8 @@ function Explore() {
         lastIndex = countPerPage * page
     products = filteredProducts.slice(startIndex, lastIndex);
 
-    console.log(products);
+    console.log(totalCount);
+    console.log(page);
 
     const alignTop = {
         alignItems: "start",

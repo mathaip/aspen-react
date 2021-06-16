@@ -453,6 +453,10 @@ ul.social-links li{
     display: flex;
 }
 
+.product-detail .MuiInputBase-input{
+    font-size: 25px;
+}
+
 @media (min-width: 768px){
     .search-text {
         width: 80%;

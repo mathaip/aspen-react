@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { 
     MenuItem, 
     Select, 
+    TextField,
     Button,
     Box, 
     FormControl 
@@ -30,11 +31,11 @@ const useStyles = makeStyles((theme) => ({
 
 export const DetailPage = ({match}) => {
     const {
-        params: { productId },
+        params: { tokenId },
     } = match;
 
-    const productid = productId.toString();
-    const product = americanRevolutions[productid];
+    const tokenid = tokenId.toString();
+    const product = americanRevolutions[tokenid];
 
     const classes = useStyles();
     const [quantity, setQuantity] = React.useState('');
@@ -78,25 +79,19 @@ export const DetailPage = ({match}) => {
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                    <Select
+                                    <TextField 
                                         value={quantity}
                                         onChange={handleChange}
                                         displayEmpty
+                                        placeholder="Quantity"
                                         className={classes.selectEmpty}
                                         inputProps={{ 'aria-label': 'Without label' }}
-                                    >
-                                        <MenuItem value="" disabled>
-                                            Select Quantity
-                                        </MenuItem>
-                                        <MenuItem value={1}>Quantity(1)</MenuItem>
-                                        <MenuItem value={2}>Quantity(2)</MenuItem>
-                                        <MenuItem value={3}>Quantity(3)</MenuItem>
-                                    </Select>
+                                    />
                                 </FormControl>
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Purchase</Button>
+                                <Button variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
                                 </FormControl>
                             </div>
                             <div className="col-md-12">

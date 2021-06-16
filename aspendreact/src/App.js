@@ -9,10 +9,8 @@ import AllMomentsList from './Pages/AllMoments'
 
 import MarketPlace from "./Pages/MarketPlace";
 import ExplorePage from "./Pages/explore";
-import NftsPage from "./Pages/nfts";
 import DetailPage from "./Pages/detail";
 import MarketDetails from "./Pages/MarketDetails";
-import Product from "./Pages/Product";
 
 import Admin from "./Pages/Admin";
 
@@ -60,12 +58,8 @@ function App() {
         <Route path="/explore">
           <ExplorePage />
         </Route>
-        <Route path="/explore">
-          <ExplorePage />
+        <Route path="/collectables/tokens/:tokenId" component={DetailPage}>
         </Route>
-        <Route path="/detail/:productId" component={DetailPage}>
-        </Route>
-        <Route path="/collectables/tokens/:tokenId" component={Product}/>
       </Switch>
     </div>
   );
