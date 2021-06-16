@@ -8,6 +8,9 @@ import {useEffect, useState} from 'react'
 import AllMomentsList from './Pages/AllMoments'
 
 import MarketPlace from "./Pages/MarketPlace";
+import ExplorePage from "./Pages/explore";
+import NftsPage from "./Pages/nfts";
+import DetailPage from "./Pages/detail";
 import MarketDetails from "./Pages/MarketDetails";
 import Product from "./Pages/Product";
 
@@ -53,6 +56,14 @@ function App() {
         </Route>
         <Route path="/MarketDetails">
           <MarketDetails />
+        </Route>
+        <Route path="/explore">
+          <ExplorePage />
+        </Route>
+        <Route path="/explore">
+          <ExplorePage />
+        </Route>
+        <Route path="/detail/:productId" component={DetailPage}>
         </Route>
         <Route path="/collectables/tokens/:tokenId" component={Product}/>
       </Switch>

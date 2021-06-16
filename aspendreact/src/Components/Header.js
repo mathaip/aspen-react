@@ -1,6 +1,6 @@
 import "../App.css";
 import img from "../images/undraw_conversation_h12g.png";
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 function Header() {
   return (
     <div className="container-fluid">

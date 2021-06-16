@@ -14,7 +14,7 @@ export  const Product = ({match}) => {
 
     const {
         params: { tokenId },
-      } = match;
+    } = match;
    
       const data = alltokenmetadata;
       const tokenid = tokenId.toString()

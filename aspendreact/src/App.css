@@ -34,8 +34,8 @@ header {
 }
 .navbar-expand-lg .navbar-nav .nav-link {
   margin: 0 20px;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 500;
   color: #272727;
   transition: all .35s ease-in;
 }

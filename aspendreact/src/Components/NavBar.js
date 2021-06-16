@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import { useEffect, useState } from "react";
 import {Button as MuiButton}  from '@material-ui/core'
 import { connectWallet} from "../utils/interact.js";
-
+import MobileMenuButton from "./Drawer";
 
 
 
@@ -49,7 +49,8 @@ function NavBar() {
         {/* <NavLink className="navbar-brand" to="/">
           Navbar
         </NavLink> */}
-        <button
+        <MobileMenuButton/>
+        {/* <button
           className="navbar-toggler"
           type="button"
           data-toggle="collapse"
@@ -59,19 +60,22 @@ function NavBar() {
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon" />
-        </button>
+        </button> */}
         <div
           className="collapse navbar-collapse"
           id="navbarSupportedContent"
         >
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/marketplace">
+              {/* <NavLink className="nav-link" to="/marketplace">
+                NFTS
+              </NavLink> */}
+              <NavLink className="nav-link" to="/explore">
                 NFTS
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/allmoments">
+              <NavLink className="nav-link" to="/explore">
                 EXPLORER
               </NavLink>
             </li>
