@@ -457,6 +457,10 @@ ul.social-links li{
     font-size: 25px;
 }
 
+.main#js-scroll{
+    margin-left: 0 !important;
+}
+
 @media (min-width: 768px){
     .search-text {
         width: 80%;

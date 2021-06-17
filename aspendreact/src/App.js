@@ -10,6 +10,7 @@ import AllMomentsList from './Pages/AllMoments'
 import MarketPlace from "./Pages/MarketPlace";
 import ExplorePage from "./Pages/explore";
 import DetailPage from "./Pages/detail";
+import LandingPage from "./Pages/landing";
 import MarketDetails from "./Pages/MarketDetails";
 
 import Admin from "./Pages/Admin";
@@ -24,7 +25,8 @@ function App() {
       <Switch>
         <Route exact path="/">
           {/* <Header /> */}
-          <Home />
+          {/* <Home /> */}
+          <LandingPage />
           {/* <Footer /> */}
         </Route>
 

@@ -4,5 +4,5 @@ import Web3 from "web3"
 // const web3 = new Web3(web3.currentProvider);
 
 var web3 = new Web3(new Web3.providers.HttpProvider('HTTP://127.0.0.1:8545'));
-console.log(web3)
+// console.log(web3)
 export default web3;
