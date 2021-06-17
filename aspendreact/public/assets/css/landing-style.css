@@ -183,7 +183,8 @@ body.dark{
 .has-scroll-smooth .reflect{
     border-radius:50%;
     /* box-shadow:inset -20px 20px 60px #fff; */
-    box-shadow:inset -20px 20px 60px #5CE1E6;
+    /* box-shadow:inset -20px 20px 60px #5CE1E6; */
+    box-shadow:inset -20px 20px 60px #FE6C19;
     mix-blend-mode:overlay;
     opacity:0
 }
@@ -197,7 +198,8 @@ body.dark{
 
 .has-scroll-smooth .grey{
     /* background:#c1cdff; */
-    background:#5CE1E6;
+    /* background:#5CE1E6; */
+    background:#FE6C19;
     mix-blend-mode:color;
     transition:opacity .6s ease;
     opacity:0
