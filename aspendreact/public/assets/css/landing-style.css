@@ -167,32 +167,37 @@ body.dark{
 
 .has-scroll-smooth .light{
     border-radius:50%;
-    box-shadow:inset -200px 20px 80px #ffdb00;
+    /* box-shadow:inset -200px 20px 80px #ffdb00; */
+    box-shadow:inset -200px 20px 80px #5CE1E6;
     mix-blend-mode:overlay;
     opacity:1
 }
 
 .has-scroll-smooth .color{
-    background:#000;
+    /* background:#000; */
+    background: #FE6C19;
     mix-blend-mode:color;
     opacity:.4
 }
 
 .has-scroll-smooth .reflect{
     border-radius:50%;
-    box-shadow:inset -20px 20px 60px #fff;
+    /* box-shadow:inset -20px 20px 60px #fff; */
+    box-shadow:inset -20px 20px 60px #5CE1E6;
     mix-blend-mode:overlay;
     opacity:0
 }
 
 .has-scroll-smooth .saturate{
-    background:#001670;
+    /* background:#001670; */
+    background:#FE6C19;
     mix-blend-mode:lighten;
     opacity:1
 }
 
 .has-scroll-smooth .grey{
-    background:#c1cdff;
+    /* background:#c1cdff; */
+    background:#5CE1E6;
     mix-blend-mode:color;
     transition:opacity .6s ease;
     opacity:0
