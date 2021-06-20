@@ -38,26 +38,95 @@ export const loadContract = async() => {
 export const setApprovalForAll = async(operator, boolean) => {
     let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
-    .setApprovalForAll(operator, boolean)
-    .send({ from: owner,
-    gas:2100000})
-    .then(res => console.log(res));
+        .setApprovalForAll(operator, boolean)
+        .send({
+            from: owner,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
 }
 export const acceptBidForMoment = async(momentID, minValue) => {
     let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
-    .acceptBidForMoment(momentID, minValue)
-    .send({ from: window.ethereum.selectedAddress,
-    gas:2100000})
-    .then(res => console.log(res));
+        .acceptBidForMoment(momentID, minValue)
+        .send({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
 }
 export const enterBidForMoment = async(momentID) => {
     let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
-    .enterBidForMoment(momentID)
-    .send({ from: window.ethereum.selectedAddress,
-    gas:2100000})
-    .then(res => console.log(res));
+        .enterBidForMoment(momentID)
+        .send({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
+}
+export const withdrawBidForMoment = async(momentID) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+        .withdrawBidForMoment(momentID)
+        .send({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
+}
+
+export const offerMomentForSale = async(momentID, minPrice) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+        .offerMomentForSale(momentID, minPrice)
+        .send({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
+}
+export const momentsOfferedForSale = async(momentID) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+        .momentsOfferedForSale(momentID)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
+}
+export const momentsNoLongerForSale = async(momentID) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+        .momentsNoLongerForSale(momentID)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
+}
+
+export const momentBids = async(momentID) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+        .momentBids(momentID)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => console.log(res));
+}
+
+export const momentIDToAddress = async(momentID) => {
+    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    await nftContract.methods
+        .momentIDToAddress(momentID)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => res);
 }
 export const createTokens = async(address, idArray, collectionName, collectionId, amountsArray, maxPackCount, data) => {
 

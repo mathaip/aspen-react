@@ -21,17 +21,18 @@ function SideNav() {
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a target="_blank" href="https://medium.com/@aspenlabs1">
+           
                         <img src={medium} className="social-link"/>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a target="_blank" href="https://twitter.com/LabsAspen"> 
                         <img src={twitter} className="social-link"/>
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a target="_blank" href="https://discord.gg/VSRRjJqFr4" >
                         <img src={discord} className="social-link"/>
                     </a>
                 </li>

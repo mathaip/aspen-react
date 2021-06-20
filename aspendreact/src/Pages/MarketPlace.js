@@ -14,8 +14,8 @@ function MarketPlace() {
         {
             name: 'American Revolutuion',
             img: product,
-            description: '448 Packs',
-            price: 'USD $149.00',
+            description: '59 Packs',
+            price: 'USD $150.00',
             releaseDate: '1 Moment per Pack'
         },
         {
@@ -47,10 +47,10 @@ function MarketPlace() {
             releaseDate: 'Fall 2021'
         },
         {
-            name: 'Demo Product',
-            img: product,
-            description: 'Demo Product Description',
-            price: 'USD $4.00',
+            name: 'Cuban Revolutions',
+            img: cuban,
+            description: 'Pack Size TBD',
+            price: 'Price TBD',
             releaseDate: 'Fall 2021'
         }
     ];

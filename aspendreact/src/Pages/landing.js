@@ -88,7 +88,7 @@ var landingContent = `
             <div class="about first-section"> 
                 <p class="small"> A decentralized application company. </p>
                 <p class="small"> 
-                    <a class="btn-enter" href="/explore">Enter the Lab</a> 
+                    <a class="btn-enter" href="/marketplace">Enter the Lab</a> 
                     <span class="arrow flipped"> 
                         <svg viewBox="0 0 80 80" class="cl-t"> 
                             <polyline points="19.89 15.25 64.03 15.25 64.03 59.33"></polyline> 
@@ -109,18 +109,17 @@ var landingContent = `
         </div>
         <div class="intro wrapper" id="colorOverlay" data-scroll data-scroll-delay="0.07" data-scroll-speed="-3" data-scroll-offset="-50%, 20%"> 
             <p class="small">/ ABOUT</p>
-            <p class="large-text">Aspen Labs is a technology innovation Company. We focus on designing innovations in digital industry, and transform emerging ideas into viable products that move the digital industry forward.</p>
+            <p class="large-text"> <strong> Aspen is a decentralized application development company.</strong> We construct layers on-top of current open source protocols to enable a higher degree of user accessibility to financial options.</p>
             <hr> 
             <div class="expertise"> 
                 <p class="small">Our technologists research key areas to uncover new ways to help companies do different things and do things differently.
                     <br><br><br><br>/ KEY AREAS
                 </p>
                 <ul> 
-                    <li>Natural Language Processing <span>01</span></li>
-                    <li>Machine Learning &amp; Deep Learning <span>02</span></li>
-                    <li>Convolutional Neural Network <span>03</span></li>
-                    <li>Computer Vision &amp; Augmented Reality <span>04</span></li>
-                    <li>Blockchain <span>05</span></li>
+                    <li>A Hypersphere Company<span>01</span></li>
+                    <li>A Lending Platform<span>02</span></li>
+                    <li>A NFT Marketplace <span>03</span></li>
+                    <li>We are the Lab <span>04</span></li>
                 </ul> 
             </div>
         </div>
@@ -131,13 +130,12 @@ var landingContent = `
         <div class="title wrapper"> 
             <h1 class="bottom" data-scroll data-scroll-delay="0.09" data-scroll-speed="4" data-scroll-offset="-50%, 20%">Aspen Labs</h1> 
             <div class="about"> 
-                <p class="small"> &copy; 2020 
+                <p class="small"> &copy; 2021 
                     <a href="/">Aspen Labs Technologies</a>.
-                    <br>All rights reserved.<br>Website by 
-                    <a href="/" title="Fleava — Singapore Digital Agency" target="_blank" rel="noopener noreferrer">Fleava</a> 
+                    <br>All rights reserved.<br>
                 </p>
                 <p class="small"> 
-                    <a href="">Get in Touch</a> 
+                    <a href="/marketplace">Enter the Lab</a> 
                     <span class="arrow"> 
                         <svg viewBox="0 0 80 80" class="cl-t"> 
                             <polyline points="19.89 15.25 64.03 15.25 64.03 59.33"></polyline> 
@@ -152,9 +150,13 @@ var landingContent = `
 `;
 
 export default class LandingPage extends Component {
-  render(){
-    return (
-      <div className="landing-section" dangerouslySetInnerHTML={ {__html: landingContent} } />
-    );
-  }
+    render() {
+        return ( <
+            div className = "landing-section"
+            dangerouslySetInnerHTML = {
+                { __html: landingContent }
+            }
+            />
+        );
+    }
 }

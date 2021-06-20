@@ -6,6 +6,7 @@ import SideNav from '../Components/SideNav'
 import thomas from '../images/thomasJeff.jpeg';
 import metadata from "../metadata-individual.json";
 import {useEffect} from 'react';
+import {withdraw}
 
 import alltokenmetadata from '../metadata-all-tokens'
 

@@ -5,8 +5,16 @@ import SideNav from '../Components/SideNav';
 import NavBar from '../Components/NavBar';
 import {NavLink} from 'react-router-dom';
 import product from '../images/american-pack-white-background.png';
-import { Button as MuiButton } from '@material-ui/core'
-import Box from '@material-ui/core/Box';
+import { 
+  MenuItem, 
+  Select, 
+  TextField,
+  Button,
+  Box, 
+  FormControl 
+} from '@material-ui/core';
+import PurchaseIcon from '@material-ui/icons/ShoppingBasketOutlined';
+
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../nft-contract";
 import web3 from "../web3";
 import {americanRevolution} from "../Collections/metadata-individual"
@@ -29,6 +37,7 @@ function MarketDetails() {
     const [walletAddress, setWallet] = useState("");
     const [status, setStatus] = useState("");
     const [transactionHash, setTransactionHash] = useState([])
+    const [packsLeft, setPacksLeft] = useState()
     
     useEffect(async () => {
         if (window.ethereum) {
@@ -68,11 +77,11 @@ function MarketDetails() {
         e.preventDefault()
         await setApprovalForAll(walletAddress, true)
         //const collectionIDs = americanRevolution;
-        const CollectionName = 'american revolution'
+        const CollectionName = 'american'
         //const collectionIDObject = collectionIDs[0]
         //var keys = Object.keys(collectionIDObject);
         //const randomID = keys[Math.floor(Math.random() * keys.length)];
-        const randomID = 6
+        const randomID = 7
         console.log(randomID)
 
         await nftContract.getPastEvents('PacksLeft', {
@@ -83,11 +92,13 @@ function MarketDetails() {
       .then(function(events){
           console.log(events) // same results as the optional callback above
       });
-      await nftContract.once('PacksLeft', { 
-         filter: {myIndexedParam: [20,23], myOtherIndexedParam: '0x123456789...'}, // Using an array means OR: e.g. 20 or 23
-          fromBlock: 0,
-          toBlock: 'latest'
-    }, function(error, event){ console.log(event); });
+      await nftContract.events.PacksLeft({
+        filter: {myIndexedParam: [20,23], myOtherIndexedParam: '0x123456789...'}, // Using an array means OR: e.g. 20 or 23
+        fromBlock: 0
+    }, function(error, event){ console.log(event); })
+    .on("connected", function(subscriptionId){
+        console.log(subscriptionId);
+    })
 
 
         await nftContract.events.momentBought({
@@ -101,11 +112,11 @@ function MarketDetails() {
         await nftContract.methods
         .buyMoment(randomID, CollectionName)
         .send({ from: walletAddress,
-        gas:2100000, value:1000000000000000000 })
-        .then(res => console.log(res));
+        gas:2100000, value:10000000000000000 })
+        .then(res => setPacksLeft(res.events.PacksLeft.returnValues.packCount));
 
         
-        
+        history.push("/collectables/tokens/" + randomID)
         
 
 
@@ -156,11 +167,14 @@ function MarketDetails() {
                     <div className="col-md-4" style={maxHeight}>
                         <img src={product} alt className="img-fluid" />
                         <Box m={4} />
-                    <div className="buy-pack-btn-padding">
-                    <button id="buypackButton" className="buy-pack-btn" >
-                        Buy Pack
-                      </button>
-                    </div>
+                    
+                      <Button variant="outlined" onClick={BuyPack}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>  Buy Pack</Button>
+
+                      <div>
+                        <p>
+                          Packs Left: {packsLeft}
+                        </p>
+                      </div>
                   
                         
                     </div>
