@@ -1,7 +1,7 @@
-/* @font-face {
+@font-face {
     font-family: 'Montserrat';
     src: local('Montserrat'), url(../fonts/Montserrat-Regular.otf) format('truetype');
-} */
+}
 
 html.has-scroll-smooth{
     overflow:hidden;
