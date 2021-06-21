@@ -574,7 +574,21 @@ ul.social-links li{
     }
 }
 
-
+@media screen and (max-width: 500px){
+    .content-row{
+        padding: 10px 15px;
+    }
+    .search-text{
+        width: 80%;
+    }
+    .product-grid {
+        padding: 0;
+    }
+    .navbar.navbar-expand-lg.navbar-light{
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 
 
 /* @media (max-width: 1366px){
