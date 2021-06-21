@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 0);
   setTimeout(function () {
     triggerResize();
-    console.log("aaaaaaaaaaaaaa");
     loading.classList.add('hide');
   }, 1000);
 });
