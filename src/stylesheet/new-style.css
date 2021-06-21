@@ -389,6 +389,7 @@ header .logo {
 
 #walletButton:hover span {
     color: #FE6C19 !important;
+    text-align: center;
 }
 
 .explore .card__product--heading,

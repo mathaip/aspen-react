@@ -174,7 +174,7 @@ body.dark{
 
 .has-scroll-init .light{
     border-radius:50%;
-    box-shadow:inset -200px 20px 80px #FE6C19;
+    box-shadow:inset -200px 20px 80px #0dbfbf;
     mix-blend-mode:overlay;
     opacity:1
 }
@@ -199,7 +199,7 @@ body.dark{
 }
 
 .has-scroll-init .grey{
-    background:#FE6C19;
+    background:#5ce1e6;
     mix-blend-mode:color;
     transition:opacity .6s ease;
     opacity:0
