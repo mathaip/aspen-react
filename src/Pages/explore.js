@@ -214,39 +214,7 @@ function Explore() {
                                 </FormGroup>
                             </AccordionDetails>
                         </Accordion>
-                        <Accordion>
-                            <AccordionSummary
-                            expandIcon={<ExpandMoreIcon  />}
-                            aria-controls="panel2a-content"
-                            id="panel2a-header"
-                            >
-                            Category
-                            </AccordionSummary>
-                            <AccordionDetails>
-                            <FormGroup row>
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                color="default"
-                                                inputProps={{ 'aria-label': 'checkbox with default color' }}
-                                            />
-                                        }
-                                        label="Category 1"
-                                    />
-                                    <FormControlLabel
-                                        control={
-                                            <Checkbox
-                                                color="default"
-                                                inputProps={{ 'aria-label': 'checkbox with default color' }}
-                                            />
-                                        }
-                                        label="Category 2"
-                                    />
-                            
-                                </FormGroup>
-                            </AccordionDetails>
-                        </Accordion>
-                        <PriceSelector />
+                        
                     </div>
                     <div className="col-lg-9 col-md-12 col-sm-12 col-xs-12 right-sidebar">
                         <div className="row product-grid col-12">
