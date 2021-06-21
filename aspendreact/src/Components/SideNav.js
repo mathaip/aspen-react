@@ -10,7 +10,7 @@ function SideNav() {
     return (
         <header className="d-none d-md-flex">
         <div className="header">
-            <a href="/">
+            <a href="/MarketDetails">
                 <img src={logo} alt="Logo"/>
             </a>
             {/* <NavLink to="">
@@ -19,7 +19,7 @@ function SideNav() {
             <h2 className="title">DCOLLECT</h2>
             <ul className="social-links">
                 <li>
-                    <a>
+                    <a target="_blank" href="https://t.me/aspenlabs">
                         <img src={telegram} className="social-link"/>
                     </a>
                 </li>

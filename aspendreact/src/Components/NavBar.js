@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {Button as MuiButton}  from '@material-ui/core'
 import { connectWallet} from "../utils/interact.js";
 import MobileMenuButton from "./Drawer";
+import web3 from '../web3'
 
 
 
@@ -33,6 +34,19 @@ function NavBar() {
         }
       }
     });
+
+    if(window.ethereum) {
+      window.ethereum.on('accountsChanged', function () {
+          web3.eth.getAccounts(function(error, accounts) {
+              setWallet(accounts[0])
+              document.getElementById('walletButton').innerHTML = 
+              " Connected: " +
+              String(walletAddress).substring(0, 6) +
+              "..." +
+              String(walletAddress).substring(38)
+          });
+      });
+  }
   
     const connectWalletPressed = async () => {
       const walletResponse = await connectWallet();
@@ -100,7 +114,7 @@ function NavBar() {
             "..." +
             String(walletAddress).substring(38)
           ) : (
-            <span>👛 Connect Wallet</span>
+            <span id="walletButton">👛 Connect Wallet</span>
           )}
         </button>
           </li>

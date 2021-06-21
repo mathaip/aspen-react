@@ -146,8 +146,8 @@ function MarketDetails() {
                         <div className="col-12">
                             <div className="row justify-content-center">
                                 <div className="col-md-4" style={borderRight}>
-                                    <h4 className="col-12 text-center">59 Unique</h4>
-                                    <p className="col-12 text-center text-sm">NFTS</p>
+                                    <h4 className="col-12 text-center"><strong>59</strong> </h4>
+                                    <p className="col-12 text-center text-sm">Unique NFTS</p>
                                 </div>
                                 <div className="col-md-4" style={borderRight}>
                                     <h4 className="col-12 text-center">13 </h4>
@@ -168,7 +168,7 @@ function MarketDetails() {
                         <img src={product} alt className="img-fluid" />
                         <Box m={4} />
                     
-                      <Button variant="outlined" onClick={BuyPack}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>  Buy Pack</Button>
+                        <Button disabled={true} variant="outlined" onClick={BuyPack}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>  Buy Pack</Button>
 
                       <div>
                         <p>

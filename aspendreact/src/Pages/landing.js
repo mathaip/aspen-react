@@ -109,10 +109,8 @@ var landingContent = `
         </div>
         <div class="intro wrapper" id="colorOverlay" data-scroll data-scroll-delay="0.07" data-scroll-speed="-3" data-scroll-offset="-50%, 20%"> 
             <p class="small">/ ABOUT</p>
-            <p class="large-text"> <strong> Aspen is a decentralized application development company.</strong> We construct layers on-top of current open source protocols to enable a higher degree of user accessibility to financial options.</p>
             <hr> 
             <div class="expertise"> 
-                <p class="small">Our technologists research key areas to uncover new ways to help companies do different things and do things differently.
                     <br><br><br><br>/ KEY AREAS
                 </p>
                 <ul> 
