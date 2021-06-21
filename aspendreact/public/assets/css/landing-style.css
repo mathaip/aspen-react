@@ -93,11 +93,9 @@ html.has-scroll-dragging{
     bottom:0
 }
 
-
 .has-scroll-smooth *{
     outline:none;
-    box-sizing:border-box;
-    font-family: Monsserat !important;
+    box-sizing:border-box
 }
 
 .has-scroll-smooth body{
