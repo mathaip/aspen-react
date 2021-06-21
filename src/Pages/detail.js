@@ -58,6 +58,9 @@ export const DetailPage = ({match}) => {
     const [acceptBidMinPrice,setAcceptBidMinPrice ] = useState();
     const [enterBidValue, setEnterBidValue] = useState();
     const [offerMinPrice, setOfferMinPrice] = useState();
+    const [currentBid, setCurrentBid] = useState();
+    const [currentBidder, setCurrentBidder] = useState();
+
 
 
 
@@ -77,6 +80,20 @@ export const DetailPage = ({match}) => {
                 gas: 2100000
             })
             .then(res => setHasBids(res.hasBid));
+        await nftContract.methods
+            .momentBids(tokenId)
+            .call({
+                from: window.ethereum.selectedAddress,
+                gas: 2100000
+            })
+            .then(res => setCurrentBid(res.value));
+        await nftContract.methods
+            .momentBids(tokenId)
+            .call({
+                from: window.ethereum.selectedAddress,
+                gas: 2100000
+            })
+            .then(res => setCurrentBidder(res.bidder));
         await nftContract.methods
             .momentsOfferedForSale(tokenId)
             .call({
@@ -110,6 +127,50 @@ export const DetailPage = ({match}) => {
 
   const onclickAcceptBid = async()=>{
     await acceptBidForMoment(tokenId, acceptBidMinPrice)
+    await nftContract.methods
+        .momentIDToAddress(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setOwnedBy(res));
+    await nftContract.methods
+        .momentBids(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setHasBids(res.hasBid));
+    await nftContract.methods
+        .momentBids(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setCurrentBid(res.value));
+    await nftContract.methods
+        .momentBids(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setCurrentBidder(res.bidder));
+    await nftContract.methods
+        .momentsOfferedForSale(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setisForSale(res.isForSale));
+    await nftContract.methods
+        .momentsOfferedForSale(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setMinPrice(res.minValue));
+        
+
   }
 
   const onclickEnterBid = async()=>{
@@ -125,6 +186,15 @@ export const DetailPage = ({match}) => {
 
   const onclickWithdrawBid = async()=>{
     await nftContract.methods
+    .withdraw()
+    .send({
+        from: window.ethereum.selectedAddress,
+        gas: 2100000
+    })
+    .then(res => console.log(res));
+}
+const onclickWithdrawBidForMoment = async()=>{
+    await nftContract.methods
     .withdrawBidForMoment(tokenId)
     .send({
         from: window.ethereum.selectedAddress,
@@ -132,6 +202,7 @@ export const DetailPage = ({match}) => {
     })
     .then(res => console.log(res));
 }
+  
   
 const onclickOfferMomentForSale = async()=>{
     await nftContract.methods
@@ -141,16 +212,45 @@ const onclickOfferMomentForSale = async()=>{
             gas: 2100000
         })
         .then(res => console.log(res));
+    await nftContract.methods
+        .momentsOfferedForSale(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setisForSale(res.isForSale));
+    await nftContract.methods
+        .momentsOfferedForSale(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setMinPrice(res.minValue));
+        
 }
 
 const onClickRemoveFromMarket = async()=>{
     await nftContract.methods
         .momentsNoLongerForSale(tokenId)
-        .call({
+        .send({
             from: window.ethereum.selectedAddress,
             gas: 2100000
         })
         .then(res => console.log(res));
+    await nftContract.methods
+        .momentsOfferedForSale(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setisForSale(res.isForSale));
+    await nftContract.methods
+        .momentsOfferedForSale(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setMinPrice(res.minValue));
 }
 
   
@@ -179,6 +279,12 @@ const onClickRemoveFromMarket = async()=>{
                                 <span className="badge badge-custom"> Minimum Bid Price:{minPrice}</span>
                             </div>
                             <div className="col-md-12">
+                                <span className="badge badge-custom"> Current Bid (Wei):{currentBid}</span>
+                            </div>
+                            <div className="col-md-12">
+                                <span className="badge badge-custom"> Current Bidder :{currentBidder}</span>
+                            </div>
+                            <div className="col-md-12">
                                 <h1 className="product-title">{product.name}</h1>
                             </div>
                             <div className="col-md-12">
@@ -205,13 +311,21 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button onClick={onclickEnterBid} disabled={disableBidsButtons}    classeName={{ disabled: classes.disabledButton }}  variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
+                                <Button onClick={onclickEnterBid}    classeName={{ disabled: classes.disabledButton }}  variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
-                                <Button variant="outlined" onClick={onclickWithdrawBid} disabled={disableBidsButtons}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Bid</Button>
 
                                 </FormControl>
+                                <FormControl variant="outlined" className={classes.formControl}>
+
+                                <Button variant="outlined" onClick={onclickWithdrawBidForMoment}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Bid For Current Bidder</Button>
+                                <Box component="fieldset" mb={3} borderColor="transparent" className="box">
+                                </Box>
+                                <Button variant="outlined" onClick={onclickWithdrawBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Bid For Bidders Whose Bid Was Beaten</Button>
+
+                                </FormControl>
+
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
@@ -226,7 +340,7 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" onClick={onclickAcceptBid} disabled={disableOwnerButtons} size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Accept Bid</Button>
+                                <Button variant="outlined" onClick={onclickAcceptBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Accept Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
@@ -246,11 +360,11 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" onclick={onclickOfferMomentForSale} disabled={disableOwnerButtons} size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Offer for Sale</Button>
+                                <Button variant="outlined" onClick={onclickOfferMomentForSale}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Offer for Sale</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
-                                <Button variant="outlined" onclickOfferMomentForSale disabled={disableOwnerButtons} size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Remove From Market</Button>
+                                <Button variant="outlined" onClick={onClickRemoveFromMarket}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Remove From Market</Button>
 
                                 </FormControl>
                             </div>

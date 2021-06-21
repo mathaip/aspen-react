@@ -1,5 +1,14 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(../fonts/Montserrat-Regular.otf) format('truetype');
+}
+
 html.has-scroll-smooth{
-    overflow:hidden
+    overflow:hidden;
+}
+
+html.has-scroll-init *{
+    font-family: "Montserrat" !important;
 }
 
 html.has-scroll-dragging{
@@ -13,7 +22,7 @@ html.has-scroll-dragging{
     overflow:hidden
 }
 
-.has-scroll-smooth [data-scroll-container]{
+.has-scroll-init [data-scroll-container]{
     min-height:100vh
 }
 
@@ -84,14 +93,12 @@ html.has-scroll-dragging{
     bottom:0
 }
 
-
-.has-scroll-smooth *{
+.has-scroll-init *{
     outline:none;
-    box-sizing:border-box;
-    font-family: Monsserat !important;
+    box-sizing:border-box
 }
 
-.has-scroll-smooth body{
+.has-scroll-init body{
     background-color:white;
     color:black;
     margin:0;
@@ -107,12 +114,12 @@ body.dark{
     background-color:#171727
 }
 
-.has-scroll-smooth a{
+.has-scroll-init a{
     color:#fff;
     text-decoration:none
 }
 
-.has-scroll-smooth a.btn-enter{
+.has-scroll-init a.btn-enter{
     color:black;
 }
 
@@ -128,12 +135,12 @@ body.dark{
     clip-path:inset(0% 0% 0% 0%)
 }
 
-.has-scroll-smooth .loading_screen.hide{
+.has-scroll-init .loading_screen.hide{
     pointer-events:none;
     clip-path:inset(0% 0% 100% 0%)
 }
 
-.has-scroll-smooth .loading_screen .loading_circle{
+.has-scroll-init .loading_screen .loading_circle{
     position:fixed;
     width:70vh;
     height:70vh;
@@ -144,7 +151,7 @@ body.dark{
     border:2px solid #45495d
 }
 
-.has-scroll-smooth .evoulve_circle{
+.has-scroll-init .evoulve_circle{
     position:fixed;
     width:70vh;
     height:70vh;
@@ -155,7 +162,7 @@ body.dark{
     border-radius:50%
 }
 
-.has-scroll-smooth .overlay,.show{
+.has-scroll-init .overlay,.show{
     position:absolute;
     width:100%;
     height:100%;
@@ -165,47 +172,40 @@ body.dark{
     border-radius:50%
 }
 
-.has-scroll-smooth .light{
+.has-scroll-init .light{
     border-radius:50%;
-    /* box-shadow:inset -200px 20px 80px #ffdb00; */
-    box-shadow:inset -200px 20px 80px #5CE1E6;
+    box-shadow:inset -200px 20px 80px #FE6C19;
     mix-blend-mode:overlay;
     opacity:1
 }
 
-.has-scroll-smooth .color{
-    /* background:#000; */
+.has-scroll-init .color{
     background: #FE6C19;
     mix-blend-mode:color;
     opacity:.4
 }
 
-.has-scroll-smooth .reflect{
+.has-scroll-init .reflect{
     border-radius:50%;
-    /* box-shadow:inset -20px 20px 60px #fff; */
-    /* box-shadow:inset -20px 20px 60px #5CE1E6; */
     box-shadow:inset -20px 20px 60px #FE6C19;
     mix-blend-mode:overlay;
     opacity:0
 }
 
-.has-scroll-smooth .saturate{
-    /* background:#001670; */
-    background:#FE6C19;
+.has-scroll-init .saturate{
+    background:#ff5722;
     mix-blend-mode:lighten;
     opacity:1
 }
 
-.has-scroll-smooth .grey{
-    /* background:#c1cdff; */
-    /* background:#5CE1E6; */
+.has-scroll-init .grey{
     background:#FE6C19;
     mix-blend-mode:color;
     transition:opacity .6s ease;
     opacity:0
 }
 
-.has-scroll-smooth section{
+.has-scroll-init section{
     min-height:100vh;
     position:relative;
     z-index:1;
@@ -215,26 +215,26 @@ body.dark{
     overflow:hidden
 }
 
-.has-scroll-smooth section.black{
+.has-scroll-init section.black{
     background-color:#000
 }
 
-.has-scroll-smooth section .wrapper{
+.has-scroll-init section .wrapper{
     width:80%;
     margin:0 auto
 }
 
-.has-scroll-smooth section .wrapper.intro{
+.has-scroll-init section .wrapper.intro{
     padding:30vh 0;
     position:relative;
     z-index:2
 }
 
-.has-scroll-smooth section h1{
+.has-scroll-init section h1{
     font-weight:400;
     width:40vw;
     top:-20vh;
-    font-size:12vw;
+    font-size:11vw;
     word-wrap:break-word;
     text-transform:uppercase;
     position:relative;
@@ -243,17 +243,17 @@ body.dark{
     padding:0
 }
 
-.has-scroll-smooth  h1.bottom{
+.has-scroll-init  h1.bottom{
     top:0;
     color: white;
 }
 
-.has-scroll-smooth  h1 span{
+.has-scroll-init  h1 span{
     position:relative;
     display:inline-block
 }
 
-.has-scroll-smooth section p{
+.has-scroll-init section p{
     text-transform:uppercase;
     width:100%;
     font-size:3vw;
@@ -262,19 +262,19 @@ body.dark{
     padding-bottom:0
 }
 
-.has-scroll-smooth hr{
+.has-scroll-init hr{
     padding-bottom:10vh;
     margin-bottom:10vh;
     border:none;
     border-bottom:2px solid #bababa
 }
 
-.has-scroll-smooth section .expertise{
+.has-scroll-init section .expertise{
     display:flex;
     justify-content:space-between
 }
 
-.has-scroll-smooth section p.small{
+.has-scroll-init section p.small{
     text-transform:none;
     width:90%;
     max-width:300px;
@@ -286,14 +286,14 @@ body.dark{
     margin-bottom:0
 }
 
-.has-scroll-smooth section ul{
+.has-scroll-init section ul{
     padding:0;
     width:90%;
     max-width:400px;
     margin-top:150px
 }
 
-.has-scroll-smooth section ul li{
+.has-scroll-init section ul li{
     padding:10px 0;
     list-style:none;
     font-size:14px;
@@ -304,11 +304,11 @@ body.dark{
     justify-content:space-between
 }
 
-.has-scroll-smooth section ul li span{
+.has-scroll-init section ul li span{
     opacity:.5
 }
 
-.has-scroll-smooth section .about{
+.has-scroll-init section .about{
     position:absolute;
     right:5vw;
     bottom:20vh;
@@ -316,7 +316,7 @@ body.dark{
     width:80%
 }
 
-.has-scroll-smooth section .about p.small{
+.has-scroll-init section .about p.small{
     font-size:11px;
     text-transform:uppercase;
     padding:25px 0;
@@ -324,7 +324,7 @@ body.dark{
     color: white;
 }
 
-.has-scroll-smooth section .about p.small .arrow svg{
+.has-scroll-init section .about p.small .arrow svg{
     position:relative;
     top:5px;
     left:20px;
@@ -332,18 +332,18 @@ body.dark{
     width:25px
 }
 
-.has-scroll-smooth section .about p.small .arrow.flipped svg{
+.has-scroll-init section .about p.small .arrow.flipped svg{
     transform:scaleY(-1)
 }
 
-.has-scroll-smooth .arrow svg *{
+.has-scroll-init .arrow svg *{
     fill:none;
     stroke:#BABABA;
     stroke-miterlimit:10;
     stroke-width:3px
 }
 
-.has-scroll-smooth .evoulve_wires{
+.has-scroll-init .evoulve_wires{
     position:fixed;
     width:70vh;
     height:70vh;
@@ -352,13 +352,13 @@ body.dark{
     transform:translate(-50%,-50%)
 }
 
-.has-scroll-smooth .evoulve_wires .evoulve_wires-inner{
+.has-scroll-init .evoulve_wires .evoulve_wires-inner{
     width:100%;
     height:100%;
     background-color:#000
 }
 
-.has-scroll-smooth .evoulve_wires .evoulve_wires-overlay{
+.has-scroll-init .evoulve_wires .evoulve_wires-overlay{
     width:100%;
     height:100%;
     mix-blend-mode:overlay;
@@ -368,37 +368,37 @@ body.dark{
     opacity:.2
 }
 
-.has-scroll-smooth .evoulve_wires img{
+.has-scroll-init .evoulve_wires img{
     width:100%;
     height:100%;
     opacity:.3
 }
 
-.has-scroll-smooth html:not(.has-scroll-smooth) section{
+html:not(.has-scroll-smooth) section{
     clip:rect(0,auto,auto,0);
     -webkit-clip-path:polygon(100% 0,100% 100%,0 100%,0 0);
     clip-path:polygon(100% 0,100% 100%,0 100%,0 0)
 }
 
-.has-scroll-smooth .first-section .small{
+.has-scroll-init .first-section .small{
     color: black !important;
 }
 
-.has-scroll-smooth .large-text{
+.has-scroll-init .large-text{
     line-height: 1.2;
 }
 
 @media screen and (max-width: 500px){
-    .has-scroll-smooth .evoulve_circle,.evoulve_wires,.loading_screen .loading_circle{
-        width:70vw;
-        height:70vw
+    .evoulve_circle, .evoulve_wires, .loading_screen .loading_circle{
+        width:70vw !important;
+        height:70vw !important;
     }
     
-    .has-scroll-smooth section{
+    .has-scroll-init section{
         padding:10vh 0
     }
     
-    .has-scroll-smooth section p{
+    .has-scroll-init section p{
         width:100%;
         font-size:4vw;
         line-height:1.8;
@@ -407,38 +407,38 @@ body.dark{
         margin-bottom:10vw
     }
     
-    .has-scroll-smooth section h1{
+    .has-scroll-init section h1{
         width:60vw;
-        font-size:20vw;
-        top:0
+        font-size:17vw;
+        top:40vw;
     }
     
-    .has-scroll-smooth section h1.bottom{
-        top:0
+    .has-scroll-init section h1.bottom{
+        top:40vw;
     }
     
-    .has-scroll-smooth section .wrapper.intro{
+    .has-scroll-init section .wrapper.intro{
         padding:0
     }
     
-    .has-scroll-smooth hr{
+    .has-scroll-init hr{
         padding-bottom:0;
         margin-bottom:50px;
         margin-top:0;
         padding-top:0
     }
     
-    .has-scroll-smooth section .about{
+    .has-scroll-init section .about{
         left:10vw;
         bottom:15vh
     }
     
-    .has-scroll-smooth section ul{
+    .has-scroll-init section ul{
         margin-top:50px;
         padding-bottom:50px
     }
     
-    .has-scroll-smooth section .expertise{
+    .has-scroll-init section .expertise{
         display:block
     }
     
