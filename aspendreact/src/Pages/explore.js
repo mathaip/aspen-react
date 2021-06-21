@@ -111,8 +111,10 @@ function Explore() {
     var data = americanRevolutions;
 
     if (query != ''){
+        var converted_query = query.toLowerCase();
         for(var i = 0; i < Object.keys(americanRevolutions).length; i++){
-            if (americanRevolutions[ i + 1 ].name.search(query) != -1){
+            var name = americanRevolutions[ i + 1 ].name.toLowerCase();
+            if (name.search(converted_query) != -1){
                 filteredProducts.push({
                     ...americanRevolutions[ i + 1 ],
                     id: i + 1});
