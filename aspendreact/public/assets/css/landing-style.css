@@ -1,5 +1,14 @@
+/* @font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'), url(../fonts/Montserrat-Regular.otf) format('truetype');
+} */
+
 html.has-scroll-smooth{
-    overflow:hidden
+    overflow:hidden;
+}
+
+html.has-scroll-smooth *{
+    font-family: "Montserrat" !important;
 }
 
 html.has-scroll-dragging{
@@ -225,7 +234,7 @@ body.dark{
     font-weight:400;
     width:40vw;
     top:-20vh;
-    font-size:12vw;
+    font-size:11vw;
     word-wrap:break-word;
     text-transform:uppercase;
     position:relative;
@@ -380,9 +389,9 @@ body.dark{
 }
 
 @media screen and (max-width: 500px){
-    .has-scroll-smooth .evoulve_circle,.evoulve_wires,.loading_screen .loading_circle{
-        width:70vw;
-        height:70vw
+    .evoulve_circle, .evoulve_wires, .loading_screen .loading_circle{
+        width:70vw !important;
+        height:70vw !important;
     }
     
     .has-scroll-smooth section{
