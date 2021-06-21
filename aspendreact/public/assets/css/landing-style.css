@@ -410,11 +410,11 @@ html:not(.has-scroll-smooth) section{
     .has-scroll-init section h1{
         width:60vw;
         font-size:17vw;
-        top:0
+        top:40vw;
     }
     
     .has-scroll-init section h1.bottom{
-        top:0
+        top:40vw;
     }
     
     .has-scroll-init section .wrapper.intro{
