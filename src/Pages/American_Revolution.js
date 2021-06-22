@@ -172,7 +172,6 @@ function AmericanRevolutionPack() {
 
                       <div>
                         <p>
-                          Packs Left: {packsLeft}
                         </p>
                       </div>
                   
