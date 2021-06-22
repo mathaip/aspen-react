@@ -15,43 +15,53 @@ function MarketPlace() {
             name: 'American Revolutuion',
             img: product,
             description: '59 Packs',
-            price: 'USD $150.00',
-            releaseDate: '1 Moment per Pack'
+            price: 'USD $150.00 (Eth)',
+            releaseDate: '4th of July',
+            path:'/AmericanRevolution'
         },
         {
             name: 'French Revolutuion',
             img: frenchrevolution,
-            description: 'Pack Size TBD',
+            description: '33 Packs',
             price: 'Price TBD',
-            releaseDate: 'July 2021'
+            releaseDate: 'Coming Soon',
+            path: '/FrenchRevolution'
+
         },
         {
             name: 'Russian Revolutuion',
             img: RussianRevolution,
-            description: 'Pack Size TBD',
+            description: '39 Packs',
             price: 'Price TBD',
-            releaseDate: 'August 2021'
+            releaseDate: 'Coming Soon',
+            path: '/RussianRevolution'
+
         },
         {
             name: 'Philosophers',
             img: philosophers,
-            description: 'Pack Size TBD',
+            description: '25 Packs',
             price: 'Price TBD',
-            releaseDate: 'Fall 2021'
+            releaseDate: 'Coming Soon',
+            path: '/Philosphers'
+
         },
         {
             name: 'Taiping Rebellion',
             img: taiping,
-            description: 'Pack Size TBD',
+            description: '29 Packs',
             price: 'Price TBD',
-            releaseDate: 'Fall 2021'
+            releaseDate: 'Coming Soon',
+            path: '/TaipingRebellion'
+
         },
         {
             name: 'Cuban Revolutions',
             img: cuban,
-            description: 'Pack Size TBD',
+            description: '29 Packs',
             price: 'Price TBD',
-            releaseDate: 'Fall 2021'
+            releaseDate: 'Coming Soon',
+            path: '/CubanRevolution'
         }
     ];
     const alignTop = {
@@ -68,7 +78,7 @@ function MarketPlace() {
                     {
                         products.map(product => (
                             <div className="card__product--container col-md-4 col-6">
-                                <NavLink to="/MarketDetails" className="card__product--link">
+                                <NavLink to={product.path} className="card__product--link">
                                     <div className="card__product col-12">
                                         <div className="card__product--img-container">
                                             <img src={product.img} alt="card product diagram" className="card__product--img" />

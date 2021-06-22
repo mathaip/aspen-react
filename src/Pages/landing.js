@@ -88,7 +88,7 @@ var landingContent = `
             <div class="about first-section"> 
                 <p class="small"> A decentralized application company. </p>
                 <p class="small"> 
-                    <a class="btn-enter" href="/marketplace">Enter the Lab</a> 
+                    <a class="btn-enter" href="/Collections">Enter the Lab</a> 
                     <span class="arrow flipped"> 
                         <svg viewBox="0 0 80 80" class="cl-t"> 
                             <polyline points="19.89 15.25 64.03 15.25 64.03 59.33"></polyline> 
@@ -133,7 +133,7 @@ var landingContent = `
                     <br>All rights reserved.<br>
                 </p>
                 <p class="small"> 
-                    <a href="/marketplace">Enter the Lab</a> 
+                    <a href="/Collections">Enter the Lab</a> 
                     <span class="arrow"> 
                         <svg viewBox="0 0 80 80" class="cl-t"> 
                             <polyline points="19.89 15.25 64.03 15.25 64.03 59.33"></polyline> 

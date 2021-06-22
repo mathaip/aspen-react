@@ -4,7 +4,7 @@ import "../stylesheet/new-style.css";
 import SideNav from '../Components/SideNav';
 import NavBar from '../Components/NavBar';
 import {NavLink} from 'react-router-dom';
-import product from '../images/american-pack-white-background.png';
+import product from '../images/philosophers-pack.png';
 import { 
   MenuItem, 
   Select, 
@@ -28,7 +28,7 @@ const NFT_Contract = new web3.eth.Contract(
     CONTRACT_ABI,
     CONTRACT_ADDRESS
   );
-function MarketDetails() {
+function PhilosophersPack() {
     const history = useHistory();
     const accounts = web3.eth.getAccounts();
     
@@ -141,25 +141,25 @@ function MarketDetails() {
                 <NavBar/>
                 <div className="row mt-4">
                     <div className="col-md-8">
-                        <p className="text-center col-12">From $150 USD</p>
-                        <h1 className="text-center col-12">American Revolution</h1>
+                        <p className="text-center col-12">Price TBD</p>
+                        <h1 className="text-center col-12">Philosophers</h1>
                         <div className="col-12">
                             <div className="row justify-content-center">
                                 <div className="col-md-4" style={borderRight}>
-                                    <h4 className="col-12 text-center"><strong>59</strong> </h4>
+                                    <h4 className="col-12 text-center"><strong>25</strong> </h4>
                                     <p className="col-12 text-center text-sm">Unique NFTS</p>
                                 </div>
                                 <div className="col-md-4" style={borderRight}>
-                                    <h4 className="col-12 text-center">13 </h4>
-                                    <p className="col-12 text-center text-sm">Founding Fathers</p>
+                                    <h4 className="col-12 text-center">13  </h4>
+                                    <p className="col-12 text-center text-sm">Countries</p>
                                 </div>
                                 <div className="col-md-4">
-                                    <h4 className="col-12 text-center">1776</h4>
-                                    <p className="col-12 text-center text-sm">Birth of the American Republic</p>
+                                    <h4 className="col-12 text-center"> ∞ </h4>
+                                    <p className="col-12 text-center text-sm">Power of the Mind</p>
                                 </div>
                                 <Box m={6} />
                                 <div>
-                                <p className="col-12 text-center text-md">The revolution that created the United States of America. Taxes, tea and property rights spurred the founding fathers to engage in a struggle for freedom against the rising empire of Britain. </p>
+                                <p className="col-12 text-center text-md">The first in our Philosopher series we present great thinkers from across the planet. Featuring Voltaire, Kabir and Cho Je-u this is the series for the lovers for philosophy out there.   </p>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +172,6 @@ function MarketDetails() {
 
                       <div>
                         <p>
-                          Packs Left: {packsLeft}
                         </p>
                       </div>
                   
@@ -190,4 +189,4 @@ function MarketDetails() {
     )
 }
 
-export default MarketDetails;
+export default PhilosophersPack;

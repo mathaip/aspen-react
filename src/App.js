@@ -11,7 +11,15 @@ import MarketPlace from "./Pages/MarketPlace";
 import ExplorePage from "./Pages/explore";
 import DetailPage from "./Pages/detail";
 import LandingPage from "./Pages/landing";
-import MarketDetails from "./Pages/MarketDetails";
+import AmericanRevolutionPack from "./Pages/American_Revolution";
+import FrenchRevolutionPack from "./Pages/French_Revolution";
+import PhilosphersPack from './Pages/Philosophers';
+import CubanRevolutionPack from './Pages/Cuban_Revolution'
+import TaipingRebellionPack from './Pages/Taiping_Rebellion'
+import RussianRevolutionPack from './Pages/Russian_Revolution'
+
+
+
 
 import Admin from "./Pages/Admin";
 
@@ -58,11 +66,26 @@ function App() {
         }}/>
 
 
-        <Route path="/MarketPlace">
+        <Route path="/Collections">
           <MarketPlace />
         </Route>
-        <Route path="/MarketDetails">
-          <MarketDetails />
+        <Route path="/AmericanRevolution">
+          <AmericanRevolutionPack />
+        </Route>
+        <Route path="/FrenchRevolution">
+          <FrenchRevolutionPack />
+        </Route>
+        <Route path="/TaipingRebellion">
+          <TaipingRebellionPack />
+        </Route>
+        <Route path="/RussianRevolution">
+          <RussianRevolutionPack />
+        </Route>
+        <Route path="/CubanRevolution">
+          <CubanRevolutionPack />
+        </Route>
+        <Route path="/Philosphers">
+          <PhilosphersPack />
         </Route>
         <Route path="/explore">
           <ExplorePage />
