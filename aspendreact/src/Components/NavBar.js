@@ -84,7 +84,7 @@ function NavBar() {
               {/* <NavLink className="nav-link" to="/marketplace">
                 NFTS
               </NavLink> */}
-              <NavLink className="nav-link" to="/MarketPlace">
+              <NavLink className="nav-link" to="/Collections">
                 NFTS
               </NavLink>
             </li>
@@ -94,12 +94,12 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" to="/ROADMAP">
                 ROADMAP
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" to="/FAQS">
                 FAQS
               </NavLink>
             </li>

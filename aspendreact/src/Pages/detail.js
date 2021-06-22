@@ -311,7 +311,7 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button onClick={onclickEnterBid}    classeName={{ disabled: classes.disabledButton }}  variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
+                                <Button onClick={onclickEnterBid} disabled={true}   classeName={{ disabled: classes.disabledButton }}  variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
@@ -319,10 +319,10 @@ const onClickRemoveFromMarket = async()=>{
                                 </FormControl>
                                 <FormControl variant="outlined" className={classes.formControl}>
 
-                                <Button variant="outlined" onClick={onclickWithdrawBidForMoment}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Bid For Current Bidder</Button>
+                                <Button variant="outlined" disabled={true} onClick={onclickWithdrawBidForMoment}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Current Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
-                                <Button variant="outlined" onClick={onclickWithdrawBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Bid For Bidders Whose Bid Was Beaten</Button>
+                                <Button variant="outlined" disabled={true} onClick={onclickWithdrawBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Losing Bid</Button>
 
                                 </FormControl>
 
@@ -340,7 +340,7 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" onClick={onclickAcceptBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Accept Bid</Button>
+                                <Button variant="outlined" disabled={true} onClick={onclickAcceptBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Accept Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
@@ -360,11 +360,11 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" onClick={onclickOfferMomentForSale}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Offer for Sale</Button>
+                                <Button variant="outlined" disabled={true} onClick={onclickOfferMomentForSale}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Offer for Sale</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
-                                <Button variant="outlined" onClick={onClickRemoveFromMarket}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Remove From Market</Button>
+                                <Button variant="outlined" disabled={true} onClick={onClickRemoveFromMarket}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Remove From Market</Button>
 
                                 </FormControl>
                             </div>
