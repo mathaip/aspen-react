@@ -60,10 +60,7 @@ function App() {
           window.location.href = 'https://app.gitbook.com/@aspen-labs/s/aspen-labs/roadmap'; 
           return null;
         }}/>
-        <Route path="/FAQS"component={() => { 
-          window.location.href = 'https://app.gitbook.com/@aspen-labs/s/aspen-labs/faqs'; 
-          return null;
-        }}/>
+       
 
 
         <Route path="/Collections">

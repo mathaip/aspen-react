@@ -94,14 +94,12 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/ROADMAP">
-                ROADMAP
-              </NavLink>
+            <a target="_blank" className="nav-link" href='https://app.gitbook.com/@aspen-labs/s/aspen-labs/roadmap'>ROADMAP</a>
+
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/FAQS">
-                FAQS
-              </NavLink>
+            <a target="_blank" className="nav-link" href='https://app.gitbook.com/@aspen-labs/s/aspen-labs/faqs'>FAQS</a>
+
             </li>
           </ul>
           <ul className="navbar-nav ml-auto">
