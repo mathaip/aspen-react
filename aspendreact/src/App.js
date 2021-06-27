@@ -56,10 +56,7 @@ function App() {
           <AllMomentsList />
           <Footer />
         </Route>
-        <Route path="/Roadmap"component={() => { 
-          window.location.href = 'https://app.gitbook.com/@aspen-labs/s/aspen-labs/roadmap'; 
-          return null;
-        }}/>
+        
        
 
 
