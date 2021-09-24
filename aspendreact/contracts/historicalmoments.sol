@@ -2,12 +2,12 @@
 pragma solidity >=0.6.2 ^0.8.0;
 pragma experimental ABIEncoderV2;
 
-import "./ERC1155/ERC1155.sol";
+import './AllowanceWrapper.sol';
 
-contract aspenNFT  is ERC1155 { 
+contract aspenNFT  is AllowanceWrapper { 
     
     uint256[] public  listIds;
-    address public owner;
+    address payable owner;
     uint256 public Packprice;
     uint256 private PackSize;
 
@@ -66,7 +66,7 @@ contract aspenNFT  is ERC1155 {
     event momentNoLongerForSale(uint indexed momentID);
     event PacksLeft(uint256 indexed packCount);
    constructor() payable ERC1155
-        ('https://aspenlabs.io/collections/tokens/{id}'){
+        ('https://aspenlabs.io/collectables/tokens/{id}'){
             owner = payable(msg.sender);
         
     }
@@ -90,7 +90,7 @@ contract aspenNFT  is ERC1155 {
     
     
     function setPackPrice(uint256 price) public onlyOwner returns(uint256){
-        Packprice = 1 ether / price;
+        Packprice = price;
         return Packprice;
     }
       function setPackSize(uint256 size) public onlyOwner returns(uint256){
@@ -106,16 +106,7 @@ contract aspenNFT  is ERC1155 {
         return Packprice;
         
     }
-    function checkContractBalance() onlyOwner public payable  returns(uint) {
-        return address(this).balance;
-  }
-    function getFundsFromContract(address payable _to) onlyOwner public payable returns(bool, uint256){
-        address _contract = address(this);
-        uint256 balance = _contract.balance;
-        (bool sent, bytes memory data) = _to.call{value: balance}("");
-        require(sent, "Failed to send Ether");
-        return (sent, balance);
-    }
+    
 
     function getCollection(string calldata id) public view returns(Collection memory){
         return Collections[id];
@@ -146,10 +137,15 @@ contract aspenNFT  is ERC1155 {
         momentOffered(momentID, minSalePriceInWei, toAddress);
     }
     
+    function getMomentIDToAddress(uint momentID) public view returns(address) {
+       address currentownerofID = momentIDToAddress[momentID];
+       return currentownerofID;
+    }
    
 
     function buyMoment(uint256 momentID, string memory Collectionname ) payable public {
         require(msg.value >= Packprice);
+        owner.transfer(msg.value);
         TransferFunds(msg.sender,owner,msg.value);
         uint256 amount = PackSize;
         momentIDToAddress[momentID] = msg.sender;

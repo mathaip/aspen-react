@@ -17,17 +17,13 @@ import PhilosphersPack from './Pages/Philosophers';
 import CubanRevolutionPack from './Pages/Cuban_Revolution'
 import TaipingRebellionPack from './Pages/Taiping_Rebellion'
 import RussianRevolutionPack from './Pages/Russian_Revolution'
-
-
-
-
+import useGaTracker from './utils/usegatracker'
 import Admin from "./Pages/Admin";
-
 import "./App.css";
 
 function App() {
 
-  
+
   return (
     <div className="App">
       <Switch>
@@ -56,7 +52,10 @@ function App() {
           <AllMomentsList />
           <Footer />
         </Route>
-        
+        <Route path="/Roadmap"component={() => { 
+          window.location.href = 'https://app.gitbook.com/@aspen-labs/s/aspen-labs/roadmap'; 
+          return null;
+        }}/>
        
 
 

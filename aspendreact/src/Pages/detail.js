@@ -20,9 +20,9 @@ import americanRevolutions from '../american-revolution';
 import productImage from '../images/american-pack-white-background.png';
 import {momentBids, momentsOfferedForSale, offerMomentForSale,withdrawBidForMoment,enterBidForMoment,acceptBidForMoment,momentsNoLongerForSale} from '../utils/interact'
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../nft-contract"
-import web3 from "../web3";
+import currentproviderweb3 from "../currentproviderweb3";
 
-const nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+const nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
 
 
 const useStyles = makeStyles((theme) => ({
@@ -60,19 +60,51 @@ export const DetailPage = ({match}) => {
     const [offerMinPrice, setOfferMinPrice] = useState();
     const [currentBid, setCurrentBid] = useState();
     const [currentBidder, setCurrentBidder] = useState();
+    const [ownedStatus, setOwnedStatus] = useState(false);
+    const [collectionName, setCollectionName] = useState();
 
 
 
 
     useEffect(async() => {
+        if(tokenId > 59 ){
+            setCollectionName("Renaissance")
+        }
+        if(tokenId <= 59){
+            setCollectionName("American Revolution")
+        }
 
-        await nftContract.methods
+        if (window.ethereum) {
+        try {
+          const accounts = await window.ethereum.request({ method: "eth_accounts" })
+          if (accounts.length) {
+            setConnectedStatus(true);
+            setWallet(accounts[0]);
+            await nftContract.methods
             .momentIDToAddress(tokenId)
             .call({
                 from: window.ethereum.selectedAddress,
                 gas: 2100000
             })
             .then(res => setOwnedBy(res));
+
+            
+
+
+          } else {
+            setConnectedStatus(false);
+            setStatus("🦊 Connect to Metamask using the top right button.");
+          }
+        } catch {
+          setConnectedStatus(false);
+          setStatus(
+            "🦊 Connect to Metamask using the top right button. " +
+              walletAddress
+          );
+        }
+      
+
+
         await nftContract.methods
             .momentBids(tokenId)
             .call({
@@ -107,11 +139,15 @@ export const DetailPage = ({match}) => {
                 from: window.ethereum.selectedAddress,
                 gas: 2100000
             })
-            .then(res => setMinPrice(res.minValue));
-            
-       
+            .then(res => setMinPrice(res.minValue));        
+        
+        if (ownedBy == 1){
+            setOwnedStatus(true)
+        }
+        }
 
-    },[]);
+
+    },[setOwnedStatus,walletAddress,ownedBy,tokenId,setConnectedStatus]);
 
 
     const classes = useStyles();
@@ -119,6 +155,22 @@ export const DetailPage = ({match}) => {
     const handleChange = (event) => {
         setQuantity(event.target.value);
     };
+
+    const updateOwnedState = ()=>{
+        if (ownedBy === 1){
+            setOwnedStatus(true)
+        }
+        
+    }
+
+    const updateCollectionName = () => {
+        if(tokenId > 59 ){
+            setCollectionName("Renaissance")
+        }
+        if(tokenId <= 59){
+            setCollectionName("American Revolution")
+        }
+    }
 
     const alignTop = {
         alignItems: "start",
@@ -134,6 +186,7 @@ export const DetailPage = ({match}) => {
             gas: 2100000
         })
         .then(res => setOwnedBy(res));
+    await updateOwnedState();
     await nftContract.methods
         .momentBids(tokenId)
         .call({
@@ -182,6 +235,28 @@ export const DetailPage = ({match}) => {
             value: enterBidValue
         })
         .then(res => console.log(res));
+    await nftContract.methods
+        .momentBids(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setCurrentBid(res.value));
+    await nftContract.methods
+        .momentBids(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setCurrentBidder(res.bidder));
+    await nftContract.methods
+            .momentBids(tokenId)
+            .call({
+                from: window.ethereum.selectedAddress,
+                gas: 2100000
+            })
+            .then(res => setHasBids(res.hasBid));
+
   } 
 
   const onclickWithdrawBid = async()=>{
@@ -192,6 +267,30 @@ export const DetailPage = ({match}) => {
         gas: 2100000
     })
     .then(res => console.log(res));
+
+    await nftContract.methods
+        .momentBids(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+        .then(res => setCurrentBid(res.value));
+    await nftContract.methods
+        .momentBids(tokenId)
+        .call({
+            from: window.ethereum.selectedAddress,
+            gas: 2100000
+        })
+    .then(res => setCurrentBidder(res.bidder));
+    await nftContract.methods
+            .momentBids(tokenId)
+            .call({
+                from: window.ethereum.selectedAddress,
+                gas: 2100000
+            })
+    .then(res => setHasBids(res.hasBid));
+    console.log(hasBids)
+    console.log(currentBid)
 }
 const onclickWithdrawBidForMoment = async()=>{
     await nftContract.methods
@@ -267,7 +366,7 @@ const onClickRemoveFromMarket = async()=>{
                     <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <div className="row content-row">
                             <div className="col-md-12">
-                                <span className="badge badge-custom">Owned By: {ownedBy}</span>
+                                <span className="badge badge-custom">Owner: {ownedBy}</span>
                             </div>
                             <div className="col-md-12">
                                 <span className="badge badge-custom"> Has Bids:{JSON.stringify(hasBids)}</span>
@@ -291,7 +390,7 @@ const onClickRemoveFromMarket = async()=>{
                                 <h4>{product.description}</h4>
                             </div>
                             <div className="col-md-6">
-                                <p>{product.price || " American Revolution "}</p>
+                                <p>{product.price ||  collectionName}</p>
                             </div>
                             <div className="col-md-6">
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
@@ -311,7 +410,7 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button onClick={onclickEnterBid} disabled={true}   classeName={{ disabled: classes.disabledButton }}  variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
+                                <Button onClick={onclickEnterBid} disabled={false}   classeName={{ disabled: classes.disabledButton }}  variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
@@ -319,10 +418,10 @@ const onClickRemoveFromMarket = async()=>{
                                 </FormControl>
                                 <FormControl variant="outlined" className={classes.formControl}>
 
-                                <Button variant="outlined" disabled={true} onClick={onclickWithdrawBidForMoment}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Current Bid</Button>
+                                <Button variant="outlined" disabled={false} onClick={onclickWithdrawBidForMoment}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Current Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
-                                <Button variant="outlined" disabled={true} onClick={onclickWithdrawBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Losing Bid</Button>
+                                <Button variant="outlined" disabled={false} onClick={onclickWithdrawBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Losing Bid</Button>
 
                                 </FormControl>
 
@@ -340,7 +439,7 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" disabled={true} onClick={onclickAcceptBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Accept Bid</Button>
+                                <Button variant="outlined" disabled={false} onClick={onclickAcceptBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Accept Bid</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
@@ -360,11 +459,11 @@ const onClickRemoveFromMarket = async()=>{
                             </div>
                             <div className="col-md-12">
                                 <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" disabled={true} onClick={onclickOfferMomentForSale}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Offer for Sale</Button>
+                                <Button variant="outlined" disabled={false} onClick={onclickOfferMomentForSale}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Offer for Sale</Button>
                                 <Box component="fieldset" mb={3} borderColor="transparent" className="box">
                                 </Box>
 
-                                <Button variant="outlined" disabled={true} onClick={onClickRemoveFromMarket}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Remove From Market</Button>
+                                <Button variant="outlined" disabled={false} onClick={onClickRemoveFromMarket}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Remove From Market</Button>
 
                                 </FormControl>
                             </div>

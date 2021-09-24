@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../nft-contract"
-import web3 from "../web3";
+import currentproviderweb3 from "../currentproviderweb3";
 
 
   
@@ -34,7 +34,7 @@ import web3 from "../web3";
     const [approval, setApproval] = useState("")
     const [funds, setFunds] = useState("")
 
-    const nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    const nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
 
 
   
@@ -72,7 +72,7 @@ import web3 from "../web3";
   
    async function clickCreate(e) {
       e.preventDefault();
-      let data = web3.eth.abi.encodeParameter('bytes','0x01')
+      let data = currentproviderweb3.eth.abi.encodeParameter('bytes','0x01')
       let address= walletAddress
       let idarray = []
       let splitarr = ids.split(',')
@@ -97,7 +97,7 @@ import web3 from "../web3";
 
       await nftContract.methods
         .createToken(address, idarray, collection, collectionid,amountarray,packcount,data)
-        .send({ from: address,gas:2100000}).then(res =>  console.log(res.events.Assign));
+        .send({ from: address,gas:3000000}).then(res =>  console.log(res.events.Assign));
     };
     
     const getCollectionTokens = async ()  => {

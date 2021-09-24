@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { connectWallet, setApprovalForAll } from "../utils/interact";
+import { connectWallet } from "../utils/interact";
 import "../stylesheet/new-style.css";
 import SideNav from '../Components/SideNav';
 import NavBar from '../Components/NavBar';
 import {NavLink} from 'react-router-dom';
 import product from '../images/american-pack-white-background.png';
+import Web3 from "web3";
+
 import { 
   MenuItem, 
   Select, 
@@ -16,7 +18,8 @@ import {
 import PurchaseIcon from '@material-ui/icons/ShoppingBasketOutlined';
 
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../nft-contract";
-import web3 from "../web3";
+
+import currentproviderweb3 from "../currentproviderweb3";
 import {americanRevolution} from "../Collections/metadata-individual"
 import {
     useParams,
@@ -24,13 +27,32 @@ import {
     useLocation
   } from "react-router-dom";
 
-const NFT_Contract = new web3.eth.Contract(
+import firebase from "firebase/app";
+
+import "firebase/auth";
+import "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDTPyKLdhLv1qon3CTWD6io7Ja2Q534ASI",
+  authDomain: "aspen-923c0.firebaseapp.com",
+  projectId: "aspen-923c0",
+  storageBucket: "aspen-923c0.appspot.com",
+  messagingSenderId: "280515005163",
+  appId: "1:280515005163:web:b0c02760950aa2ea638cae",
+  measurementId: "G-JHD61VC7FN"
+};
+
+// Initialize Firebase
+
+
+
+const NFT_Contract = new currentproviderweb3.eth.Contract(
     CONTRACT_ABI,
     CONTRACT_ADDRESS
   );
 function AmericanRevolutionPack() {
     const history = useHistory();
-    const accounts = web3.eth.getAccounts();
+    const accounts = currentproviderweb3.eth.getAccounts();
     
     const [boughtMoment, setBoughtMoment] = useState()
     const [isConnected, setConnectedStatus] = useState(false);
@@ -38,6 +60,8 @@ function AmericanRevolutionPack() {
     const [status, setStatus] = useState("");
     const [transactionHash, setTransactionHash] = useState([])
     const [packsLeft, setPacksLeft] = useState()
+    const [listIdsFromFirebase,setListIdsFromFirebase] = useState([])
+    const [disableBuy, setDisableBuy] = useState(false)
     
     useEffect(async () => {
         if (window.ethereum) {
@@ -58,7 +82,23 @@ function AmericanRevolutionPack() {
             );
           }
         }
+        if (!firebase.apps.length) {
+          firebase.initializeApp(firebaseConfig);
+        }else {
+          firebase.app(); // if already initialized, use that one
+        }
+        let newcollectionIDs;
+        const db = firebase.firestore()
+        await db.collection('AmericanRevolutionids').doc('american-ids').get().then((res) => {newcollectionIDs = res.data()})
+        var collectionIDs = newcollectionIDs.ids;
+        var packCount = collectionIDs.length
+        console.log(collectionIDs.length);
+        setPacksLeft(packCount)
+        if (packsLeft == 0){
+          setDisableBuy(true);
+        }
       });
+      
     
       const connectWalletPressed = async () => {
         const walletResponse = await connectWallet();
@@ -69,36 +109,27 @@ function AmericanRevolutionPack() {
         }
       };
 
-      var nftContract= new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+      var nftContract= new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
 
     
      const BuyPack = async (e) => {
         e.preventDefault()
-        await setApprovalForAll(walletAddress, true)
-        //const collectionIDs = americanRevolution;
-        const CollectionName = 'american'
-        //const collectionIDObject = collectionIDs[0]
-        //var keys = Object.keys(collectionIDObject);
-        //const randomID = keys[Math.floor(Math.random() * keys.length)];
-        const randomID = 7
-        console.log(randomID)
+        let newcollectionIDs;
+        const db = firebase.firestore()
+        await db.collection('AmericanRevolutionids').doc('american-ids').get().then((res) => {newcollectionIDs = res.data()})
+        var collectionIDs = newcollectionIDs.ids;
+        console.log(collectionIDs.length);
 
-        await nftContract.getPastEvents('PacksLeft', {
-          filter: {myIndexedParam: [20,23], myOtherIndexedParam: '0x123456789...'}, // Using an array means OR: e.g. 20 or 23
-          fromBlock: 0,
-          toBlock: 'latest'
-      }, function(error, events){ console.log(events); })
-      .then(function(events){
-          console.log(events) // same results as the optional callback above
-      });
-      await nftContract.events.PacksLeft({
-        filter: {myIndexedParam: [20,23], myOtherIndexedParam: '0x123456789...'}, // Using an array means OR: e.g. 20 or 23
-        fromBlock: 0
-    }, function(error, event){ console.log(event); })
-    .on("connected", function(subscriptionId){
-        console.log(subscriptionId);
-    })
+
+
+        if(collectionIDs.length > 0){
+        //const collectionIDs = americanRevolution;
+        const CollectionName = 'american revolution'
+        const indexOfCollection = Math.floor(Math.random() * collectionIDs.length);
+        const randomID = collectionIDs[indexOfCollection]
+
+        console.log(randomID)
 
 
         await nftContract.events.momentBought({
@@ -109,19 +140,50 @@ function AmericanRevolutionPack() {
           console.log(event); // same results as the optional callback above
         })
 
+        const owner = "0xAaFfb0079df99299bC578b1806F6E6eF18AF6143"
+        
         await nftContract.methods
-        .buyMoment(randomID, CollectionName)
-        .send({ from: walletAddress,
-        gas:2100000, value:10000000000000000 })
-        .then(res => setPacksLeft(res.events.PacksLeft.returnValues.packCount));
+        .buyMoment(randomID)
+        .send({ from: walletAddress, to:CONTRACT_ADDRESS,
+        gas:3100000,value: 190000000000000000})
+        .on('error', function(error, receipt) { 
+          console.log(error,receipt)})
+        .on('confirmation', function(confirmationNumber, receipt){
+        })
+        .on('receipt', function(receipt){
+            console.log(receipt);
+        });
 
-        
-        history.push("/collectables/tokens/" + randomID)
-        
+       let newArr;
+       for( var i = 0; i < collectionIDs.length; i++){ 
+    
+        if ( collectionIDs[i] === randomID) { 
+    
+        collectionIDs.splice(i, 1); 
+        db.collection('AmericanRevolutionids').doc('american-ids').set({ids:collectionIDs})
+        .then(() => {
+            console.log("Document successfully written!");
+        })
+        .catch((error) => {
+            console.error("Error writing document: ", error);
+        });
+        setPacksLeft(collectionIDs)
 
-
-        //keys.pop(randomID)
         }
+       }
+      
+
+
+
+
+        
+      history.push("/collectables/tokens/" + randomID)
+        
+
+
+        }
+    }
+  
     
     const alignTop = {
         alignItems: "start",
@@ -141,7 +203,7 @@ function AmericanRevolutionPack() {
                 <NavBar/>
                 <div className="row mt-4">
                     <div className="col-md-8">
-                        <p className="text-center col-12">From $150 USD</p>
+                        <p className="text-center col-12">0.19 BNB Per Pack</p>
                         <h1 className="text-center col-12">American Revolution</h1>
                         <div className="col-12">
                             <div className="row justify-content-center">
@@ -168,7 +230,11 @@ function AmericanRevolutionPack() {
                         <img src={product} alt className="img-fluid" />
                         <Box m={4} />
                     
-                        <Button disabled={true} variant="outlined" onClick={BuyPack}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>  Buy Pack</Button>
+                        <Button  variant="outlined" disabled={disableBuy} onClick={BuyPack}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>  Buy Pack</Button>
+                        <Box m={4} />
+
+                        <h5><strong>Pack's left: {packsLeft}</strong> </h5>
+
 
                       <div>
                         <p>

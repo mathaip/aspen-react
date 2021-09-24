@@ -16,7 +16,7 @@ import {
 import PurchaseIcon from '@material-ui/icons/ShoppingBasketOutlined';
 
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../nft-contract";
-import web3 from "../web3";
+import currentproviderweb3 from "../currentproviderweb3";
 import {americanRevolution} from "../Collections/metadata-individual"
 import {
     useParams,
@@ -24,13 +24,13 @@ import {
     useLocation
   } from "react-router-dom";
 
-const NFT_Contract = new web3.eth.Contract(
+const NFT_Contract = new currentproviderweb3.eth.Contract(
     CONTRACT_ABI,
     CONTRACT_ADDRESS
   );
 function TaipingRebellionPack() {
     const history = useHistory();
-    const accounts = web3.eth.getAccounts();
+    const accounts = currentproviderweb3.eth.getAccounts();
     
     const [boughtMoment, setBoughtMoment] = useState()
     const [isConnected, setConnectedStatus] = useState(false);
@@ -69,13 +69,12 @@ function TaipingRebellionPack() {
         }
       };
 
-      var nftContract= new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+      var nftContract= new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 
 
     
      const BuyPack = async (e) => {
         e.preventDefault()
-        await setApprovalForAll(walletAddress, true)
         //const collectionIDs = americanRevolution;
         const CollectionName = 'american'
         //const collectionIDObject = collectionIDs[0]

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import {Button as MuiButton}  from '@material-ui/core'
 import { connectWallet} from "../utils/interact.js";
 import MobileMenuButton from "./Drawer";
-import web3 from '../web3'
+import currentproviderweb3 from '../currentproviderweb3'
 
 
 
@@ -37,7 +37,7 @@ function NavBar() {
 
     if(window.ethereum) {
       window.ethereum.on('accountsChanged', function () {
-          web3.eth.getAccounts(function(error, accounts) {
+          currentproviderweb3.eth.getAccounts(function(error, accounts) {
               setWallet(accounts[0])
               document.getElementById('walletButton').innerHTML = 
               " Connected: " +
@@ -94,12 +94,10 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-            <a target="_blank" className="nav-link" href='https://app.gitbook.com/@aspen-labs/s/aspen-labs/roadmap'>ROADMAP</a>
-
+            <a className="nav-link" target="_blank" href="https://aspen-labs.gitbook.io/aspen-labs/roadmap">ROADMAP</a>
             </li>
             <li className="nav-item">
-            <a target="_blank" className="nav-link" href='https://app.gitbook.com/@aspen-labs/s/aspen-labs/faqs'>FAQS</a>
-
+            <a className="nav-link" target="_blank" href="https://aspen-labs.gitbook.io/aspen-labs/faqs">FAQS</a>
             </li>
           </ul>
           <ul className="navbar-nav ml-auto">

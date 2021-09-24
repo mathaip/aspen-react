@@ -5,6 +5,12 @@ import {BrowserRouter} from 'react-router-dom'
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ReactGA from 'react-ga';
+
+
+ReactGA.initialize('UA-201454809-1'); // add your tracking id here.
+ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 ReactDOM.render(
 <React.StrictMode>

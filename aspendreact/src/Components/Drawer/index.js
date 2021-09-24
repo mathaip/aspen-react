@@ -60,14 +60,10 @@ export default function TemporaryDrawer() {
                     </NavLink>
                 </ListItem>
                 <ListItem button key="roadmap">
-                    <NavLink className="nav-link" to="/">
-                        ROADMAP
-                    </NavLink>
+                    <a className="nav-link" target="_blank" href="https://aspen-labs.gitbook.io/aspen-labs/roadmap">ROADMAP</a>
                 </ListItem>
                 <ListItem button key="faqs">
-                    <NavLink className="nav-link" to="/">
-                        FAQS
-                    </NavLink>
+                    <a className="nav-link" target="_blank" href="https://aspen-labs.gitbook.io/aspen-labs/faqs">FAQS</a>
                 </ListItem>
             </List>
             <Divider />

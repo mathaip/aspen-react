@@ -1,8 +1,9 @@
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../nft-contract"
-import web3 from "../web3";
+import currentproviderweb3 from "../currentproviderweb3";
+import ropstenweb3 from "../currentproviderweb3";
 
 
-const owner = "0x98250D2ec8226261f609701F662930FAA92Bfb49"
+const owner = '0xAaFfb0079df99299bC578b1806F6E6eF18AF6143'
 
 
 export const connectWallet = async() => {
@@ -32,21 +33,14 @@ export const connectWallet = async() => {
 };
 
 export const loadContract = async() => {
-    return new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
+    return new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
 };
 
-export const setApprovalForAll = async(operator, boolean) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
-    await nftContract.methods
-        .setApprovalForAll(operator, boolean)
-        .send({
-            from: owner,
-            gas: 2100000
-        })
-        .then(res => console.log(res));
-}
+
+    
+
 export const acceptBidForMoment = async(momentID, minValue) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .acceptBidForMoment(momentID, minValue)
         .send({
@@ -56,7 +50,7 @@ export const acceptBidForMoment = async(momentID, minValue) => {
         .then(res => console.log(res));
 }
 export const enterBidForMoment = async(momentID) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .enterBidForMoment(momentID)
         .send({
@@ -66,7 +60,7 @@ export const enterBidForMoment = async(momentID) => {
         .then(res => console.log(res));
 }
 export const withdrawBidForMoment = async(momentID) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .withdrawBidForMoment(momentID)
         .send({
@@ -77,7 +71,7 @@ export const withdrawBidForMoment = async(momentID) => {
 }
 
 export const offerMomentForSale = async(momentID, minPrice) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .offerMomentForSale(momentID, minPrice)
         .send({
@@ -87,7 +81,7 @@ export const offerMomentForSale = async(momentID, minPrice) => {
         .then(res => console.log(res));
 }
 export const momentsOfferedForSale = async(momentID) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .momentsOfferedForSale(momentID)
         .call({
@@ -97,7 +91,7 @@ export const momentsOfferedForSale = async(momentID) => {
         .then(res => console.log(res));
 }
 export const momentsNoLongerForSale = async(momentID) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .momentsNoLongerForSale(momentID)
         .call({
@@ -108,7 +102,7 @@ export const momentsNoLongerForSale = async(momentID) => {
 }
 
 export const momentBids = async(momentID) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .momentBids(momentID)
         .call({
@@ -119,7 +113,7 @@ export const momentBids = async(momentID) => {
 }
 
 export const momentIDToAddress = async(momentID) => {
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     await nftContract.methods
         .momentIDToAddress(momentID)
         .call({
@@ -131,7 +125,7 @@ export const momentIDToAddress = async(momentID) => {
 export const createTokens = async(address, idArray, collectionName, collectionId, amountsArray, maxPackCount, data) => {
 
 
-    let nftContract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
+    let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
     const transactionParameters = {
         to: CONTRACT_ADDRESS, // Required except during contract publications.
         from: window.ethereum.selectedAddress, // must match user's active address.
