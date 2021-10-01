@@ -3,7 +3,7 @@ import currentproviderweb3 from "../currentproviderweb3";
 import ropstenweb3 from "../currentproviderweb3";
 
 
-const owner = '0xAaFfb0079df99299bC578b1806F6E6eF18AF6143'
+const owner = process.env.OWNER_ADDRESS
 
 
 export const connectWallet = async() => {
@@ -37,7 +37,7 @@ export const loadContract = async() => {
 };
 
 
-    
+
 
 export const acceptBidForMoment = async(momentID, minValue) => {
     let nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)

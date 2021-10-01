@@ -12,69 +12,45 @@ function Home() {
     const divStyle = {
         backgroundImage: `url(${background})`
     };
-    return ( <
-        section className = "showcase" >
+    return ( <section className = "showcase" >
         <
         SideNav / >
 
-        <
-        div style = { divStyle } > < /div>
+        <div style = { divStyle } > </div>
 
-        <
-        div className = "overlay" > < /div>
+        <div className = "overlay" > </div>
 
-        <
-        div className = "text" >
-        <
-        h2 > We are Currently in the Lab < /h2> <
-        h3 > Join Our Discord
-        for Pre - Launch Rewards < /h3> { /* <a href="https://discord.gg/VSRRjJqFr4">Enter the Lab</a>  */ } <
-        NavLink to = "/MarketPlace" > Enter the Lab < /NavLink> <
-        /div>
+        <div className = "text">
+        <h2 > We are Currently in the Lab </h2> 
+        <h3 > Join Our Discord
+        for Pre - Launch Rewards </h3> { /* <a href="https://discord.gg/VSRRjJqFr4">Enter the Lab</a>  */ } <
+        NavLink to = "/MarketPlace" > Enter the Lab </NavLink> </div>
 
-        <
-        ul className = "social" >
-        <
-        li >
-        <
-        a target = "_blank"
+        <ul className = "social" >
+        <li>
+        <a target = "_blank"
         href = "https://discord.gg/VSRRjJqFr4" >
-        <
-        img src = { discord }
-        alt / >
-        <
-        /a> <
-        /li>
+        <img src = { discord }
+        alt/>
+        </a> </li>
 
-        <
-        li >
-        <
-        a target = "_blank"
+        <li>
+        <a target = "_blank"
         href = "https://medium.com/@aspenlabs1" >
-        <
-        img src = { medium }
-        alt / >
-        <
-        /a> <
-        /li>
+        <img src = { medium }
+        alt />
+        </a> </li>
 
-        <
-        li >
-        <
-        a target = "_blank"
+        <li>
+        <a target = "_blank"
         href = "https://twitter.com/LabsAspen" >
-        <
-        img src = { twitter }
+        <img src = { twitter }
         alt className = "img-fluid" / >
-        <
-        /a> <
-        /li>
+        </a> </li>
 
-        <
-        /ul>
+        </ul>
 
-        <
-        /section>
+        </section>
     );
 }
 
