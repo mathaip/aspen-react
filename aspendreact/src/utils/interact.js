@@ -3,7 +3,7 @@ import currentproviderweb3 from "../currentproviderweb3";
 import ropstenweb3 from "../currentproviderweb3";
 
 
-const owner = process.env.OWNER_ADDRESS
+const owner = process.env.OWNER_ADDRESS;
 
 
 export const connectWallet = async() => {
