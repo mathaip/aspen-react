@@ -4,7 +4,8 @@ const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 let currentproviderweb3;
 
-const mnemonicPhrase = process.env.MNEMONIC
+const mnemonicPhrase = process.env.REACT_APP_MNEMONIC
+console.log(mnemonicPhrase)
 let provider = new HDWalletProvider({
     mnemonic: {
         phrase: mnemonicPhrase
