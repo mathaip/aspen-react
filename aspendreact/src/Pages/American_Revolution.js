@@ -230,7 +230,7 @@ function AmericanRevolutionPack() {
                         <img src={product} alt className="img-fluid" />
                         <Box m={4} />
                     
-                        <Button  variant="outlined" disabled={disableBuy} onClick={BuyPack}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>  Buy Pack</Button>
+                        <Button  variant="outlined" disabled={true} onClick={BuyPack}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>  Buy Pack</Button>
                         <Box m={4} />
 
                         <h5><strong>Pack's left: {packsLeft}</strong> </h5>
