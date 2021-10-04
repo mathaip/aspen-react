@@ -9,7 +9,7 @@ body {
 }
 
 * {
-    font-family: "Andalemono" !important;
+    /* font-family: "Andalemono"; */
 }
 
 .navbar-expand-lg .navbar-nav .nav-link,

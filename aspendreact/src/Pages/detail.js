@@ -1,497 +1,119 @@
-import {React, useEffect, useState} from 'react';
-import "../stylesheet/new-style.css";
-
-import { makeStyles } from '@material-ui/core/styles';
-import { 
-    MenuItem, 
-    Select, 
-    TextField,
-    Button,
-    Box, 
-    FormControl 
-} from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
-import PurchaseIcon from '@material-ui/icons/ShoppingBasketOutlined';
-
-import SideNav from '../Components/SideNav';
-import NavBar from '../Components/NavBar';
-import americanRevolutions from '../american-revolution';
-
-import productImage from '../images/american-pack-white-background.png';
-import {momentBids, momentsOfferedForSale, offerMomentForSale,withdrawBidForMoment,enterBidForMoment,acceptBidForMoment,momentsNoLongerForSale} from '../utils/interact'
-import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../nft-contract"
-import currentproviderweb3 from "../currentproviderweb3";
-
-const nftContract = new currentproviderweb3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS)
-
-
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-    buttonDisabled: {
-        color: theme.palette.grey[900] 
-    },
-}));
+import React from "react";
+import "../stylesheet/detail.css";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import detailProduct from "../images/assets/detail-product.png";
+import logo from "../images/assets/Logo.svg";
+import { Link } from "react-router-dom";
+import { AiOutlineGithub } from "react-icons/ai";
+import { SiMinutemailer, SiTwitter, SiDiscord  } from "react-icons/si";
+import { GrLinkedinOption  } from "react-icons/gr";
 
 export const DetailPage = ({match}) => {
-    const {
-        params: { tokenId },
-    } = match;
-
-    const tokenid = tokenId.toString();
-    const product = americanRevolutions[tokenid];
-    const [quantity, setQuantity] = useState('');
-    const [ownedBy,setOwnedBy] = useState('');
-    const [isForSale, setisForSale] = useState(false);
-    const [hasBids, setHasBids] = useState(false);
-    const [minPrice,setMinPrice] = useState()
-    const [disableOwnerButtons, setDisabaleOwnerButtons] = useState()
-    const [isConnected, setConnectedStatus] = useState(false);
-    const [walletAddress, setWallet] = useState("");
-    const [status, setStatus] = useState("");
-    const [disableBidsButtons, setDisableBidsButtons] = useState()
-    const [acceptBidMinPrice,setAcceptBidMinPrice ] = useState();
-    const [enterBidValue, setEnterBidValue] = useState();
-    const [offerMinPrice, setOfferMinPrice] = useState();
-    const [currentBid, setCurrentBid] = useState();
-    const [currentBidder, setCurrentBidder] = useState();
-    const [ownedStatus, setOwnedStatus] = useState(false);
-    const [collectionName, setCollectionName] = useState();
-
-
-
-
-    useEffect(async() => {
-        if(tokenId > 59 ){
-            setCollectionName("Renaissance")
-        }
-        if(tokenId <= 59){
-            setCollectionName("American Revolution")
-        }
-
-        if (window.ethereum) {
-        try {
-          const accounts = await window.ethereum.request({ method: "eth_accounts" })
-          if (accounts.length) {
-            setConnectedStatus(true);
-            setWallet(accounts[0]);
-            await nftContract.methods
-            .momentIDToAddress(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-            .then(res => setOwnedBy(res));
-
-            
-
-
-          } else {
-            setConnectedStatus(false);
-            setStatus("🦊 Connect to Metamask using the top right button.");
-          }
-        } catch {
-          setConnectedStatus(false);
-          setStatus(
-            "🦊 Connect to Metamask using the top right button. " +
-              walletAddress
-          );
-        }
-      
-
-
-        await nftContract.methods
-            .momentBids(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-            .then(res => setHasBids(res.hasBid));
-        await nftContract.methods
-            .momentBids(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-            .then(res => setCurrentBid(res.value));
-        await nftContract.methods
-            .momentBids(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-            .then(res => setCurrentBidder(res.bidder));
-        await nftContract.methods
-            .momentsOfferedForSale(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-            .then(res => setisForSale(res.isForSale));
-        await nftContract.methods
-            .momentsOfferedForSale(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-            .then(res => setMinPrice(res.minValue));        
-        
-        if (ownedBy == 1){
-            setOwnedStatus(true)
-        }
-        }
-
-
-    },[setOwnedStatus,walletAddress,ownedBy,tokenId,setConnectedStatus]);
-
-
-    const classes = useStyles();
-
-    const handleChange = (event) => {
-        setQuantity(event.target.value);
-    };
-
-    const updateOwnedState = ()=>{
-        if (ownedBy === 1){
-            setOwnedStatus(true)
-        }
-        
-    }
-
-    const updateCollectionName = () => {
-        if(tokenId > 59 ){
-            setCollectionName("Renaissance")
-        }
-        if(tokenId <= 59){
-            setCollectionName("American Revolution")
-        }
-    }
-
-    const alignTop = {
-        alignItems: "start",
-        paddingTop: "60px"
-    };
-
-  const onclickAcceptBid = async()=>{
-    await acceptBidForMoment(tokenId, acceptBidMinPrice)
-    await nftContract.methods
-        .momentIDToAddress(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setOwnedBy(res));
-    await updateOwnedState();
-    await nftContract.methods
-        .momentBids(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setHasBids(res.hasBid));
-    await nftContract.methods
-        .momentBids(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setCurrentBid(res.value));
-    await nftContract.methods
-        .momentBids(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setCurrentBidder(res.bidder));
-    await nftContract.methods
-        .momentsOfferedForSale(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setisForSale(res.isForSale));
-    await nftContract.methods
-        .momentsOfferedForSale(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setMinPrice(res.minValue));
-        
-
-  }
-
-  const onclickEnterBid = async()=>{
-    await nftContract.methods
-        .enterBidForMoment(tokenId)
-        .send({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000,
-            value: enterBidValue
-        })
-        .then(res => console.log(res));
-    await nftContract.methods
-        .momentBids(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setCurrentBid(res.value));
-    await nftContract.methods
-        .momentBids(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setCurrentBidder(res.bidder));
-    await nftContract.methods
-            .momentBids(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-            .then(res => setHasBids(res.hasBid));
-
-  } 
-
-  const onclickWithdrawBid = async()=>{
-    await nftContract.methods
-    .withdraw()
-    .send({
-        from: window.ethereum.selectedAddress,
-        gas: 2100000
-    })
-    .then(res => console.log(res));
-
-    await nftContract.methods
-        .momentBids(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setCurrentBid(res.value));
-    await nftContract.methods
-        .momentBids(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-    .then(res => setCurrentBidder(res.bidder));
-    await nftContract.methods
-            .momentBids(tokenId)
-            .call({
-                from: window.ethereum.selectedAddress,
-                gas: 2100000
-            })
-    .then(res => setHasBids(res.hasBid));
-    console.log(hasBids)
-    console.log(currentBid)
-}
-const onclickWithdrawBidForMoment = async()=>{
-    await nftContract.methods
-    .withdrawBidForMoment(tokenId)
-    .send({
-        from: window.ethereum.selectedAddress,
-        gas: 2100000
-    })
-    .then(res => console.log(res));
-}
-  
-  
-const onclickOfferMomentForSale = async()=>{
-    await nftContract.methods
-        .offerMomentForSale(tokenId, offerMinPrice)
-        .send({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => console.log(res));
-    await nftContract.methods
-        .momentsOfferedForSale(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setisForSale(res.isForSale));
-    await nftContract.methods
-        .momentsOfferedForSale(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setMinPrice(res.minValue));
-        
-}
-
-const onClickRemoveFromMarket = async()=>{
-    await nftContract.methods
-        .momentsNoLongerForSale(tokenId)
-        .send({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => console.log(res));
-    await nftContract.methods
-        .momentsOfferedForSale(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setisForSale(res.isForSale));
-    await nftContract.methods
-        .momentsOfferedForSale(tokenId)
-        .call({
-            from: window.ethereum.selectedAddress,
-            gas: 2100000
-        })
-        .then(res => setMinPrice(res.minValue));
-}
-
-  
 
     return (
-        <section className="showcase" style={alignTop}>
-            <SideNav />
-            <div className="main">
-                <NavBar />
-                <div className="row content-row product-detail">
-                    <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12" style={{fontSize: 45}}>
-                        <img src={product.img || ''} alt="card product diagram" className="product-img" />
-                    </div>
-                    <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <div className="row content-row">
-                            <div className="col-md-12">
-                                <span className="badge badge-custom">Owner: {ownedBy}</span>
-                            </div>
-                            <div className="col-md-12">
-                                <span className="badge badge-custom"> Has Bids:{JSON.stringify(hasBids)}</span>
-                            </div>
-                            <div className="col-md-12">
-                                <span className="badge badge-custom"> For Sale:{JSON.stringify(isForSale)}</span>
-                            </div>
-                            <div className="col-md-12">
-                                <span className="badge badge-custom"> Minimum Bid Price:{minPrice}</span>
-                            </div>
-                            <div className="col-md-12">
-                                <span className="badge badge-custom"> Current Bid (Wei):{currentBid}</span>
-                            </div>
-                            <div className="col-md-12">
-                                <span className="badge badge-custom"> Current Bidder :{currentBidder}</span>
-                            </div>
-                            <div className="col-md-12">
-                                <h1 className="product-title">{product.name}</h1>
-                            </div>
-                            <div className="col-md-12">
-                                <h4>{product.description}</h4>
-                            </div>
-                            <div className="col-md-6">
-                                <p>{product.price ||  collectionName}</p>
-                            </div>
-                            <div className="col-md-6">
-                                <Box component="fieldset" mb={3} borderColor="transparent" className="box">
-                                    <Rating name="read-only" value={50} readOnly />
-                                </Box>
-                            </div>
-                            <div className="col-md-12">
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                    <TextField 
-                                        onChange={event => setEnterBidValue(event.target.value)}
-                                        displayEmpty
-                                        placeholder="Enter Bid"
-                                        className={classes.selectEmpty}
-                                        inputProps={{ 'aria-label': 'Without label' }}
-                                    />
-                                </FormControl>
-                            </div>
-                            <div className="col-md-12">
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                <Button onClick={onclickEnterBid} disabled={false}   classeName={{ disabled: classes.disabledButton }}  variant="outlined" size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Make Bid</Button>
-                                <Box component="fieldset" mb={3} borderColor="transparent" className="box">
-                                </Box>
-
-
-                                </FormControl>
-                                <FormControl variant="outlined" className={classes.formControl}>
-
-                                <Button variant="outlined" disabled={false} onClick={onclickWithdrawBidForMoment}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Current Bid</Button>
-                                <Box component="fieldset" mb={3} borderColor="transparent" className="box">
-                                </Box>
-                                <Button variant="outlined" disabled={false} onClick={onclickWithdrawBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Withdraw Losing Bid</Button>
-
-                                </FormControl>
-
-                            </div>
-                            <div className="col-md-12">
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                    <TextField 
-                                        onChange={event => setAcceptBidMinPrice(event.target.value)}
-                                        displayEmpty
-                                        placeholder="Enter Price to accept Bid in Wei "
-                                        className={classes.selectEmpty}
-                                        inputProps={{ 'aria-label': 'Without label' }}
-                                    />
-                                </FormControl>
-                            </div>
-                            <div className="col-md-12">
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" disabled={false} onClick={onclickAcceptBid}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Accept Bid</Button>
-                                <Box component="fieldset" mb={3} borderColor="transparent" className="box">
-                                </Box>
-
-
-                                </FormControl>
-                            </div>
-                            <div className="col-md-12">
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                    <TextField 
-                                        onChange={event => setOfferMinPrice(event.target.value)}
-                                        displayEmpty
-                                        placeholder="Enter Minimum Sale Price in Wei "
-                                        className={classes.selectEmpty}
-                                        inputProps={{ 'aria-label': 'Without label' }}
-                                    />
-                                </FormControl>
-                            </div>
-                            <div className="col-md-12">
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" disabled={false} onClick={onclickOfferMomentForSale}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Offer for Sale</Button>
-                                <Box component="fieldset" mb={3} borderColor="transparent" className="box">
-                                </Box>
-
-                                <Button variant="outlined" disabled={false} onClick={onClickRemoveFromMarket}  size="large" className="btn-orange" startIcon={<PurchaseIcon />}>Remove From Market</Button>
-
-                                </FormControl>
-                            </div>
-
-                            <div className="col-md-12">
-                                <p className="text-center">Delivered via the Ethereum Blockchain</p>
-                            </div>
-                            <div className="col-md-12">
-                                <FormControl variant="outlined" className={classes.formControl}>
-                                <Button variant="outlined" size="large" >Find in explore</Button>
-                                </FormControl>
-                            </div>
-                            <div className="col-md-12">
-                                <p className="text-center">Find NFTs and place bid via explorer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row content-row product-detail">
-                    <div className="col-md-12">
-                        <hr className="custom-divider"></hr>
-                        <h3 className="product-under-text"><a href="/explore">Click here</a> for list of nfts contained in the pack</h3>
-                        <h3 className="product-under-text"><a href={product.metadata}>Click here</a> to view metadata of nft </h3>
-
+        <div className="detail-container w-screen min-h-screen font-medium bg-black text-white tracking-[1.4px] font-Montserrat pt-[]">
+            <div className="py-[33px]">
+                <div className="w-full h-[50px] px-[100px] flex items-center justify-between">
+                    <Link to="/Collections"><img src={logo} alt="" className="w-[122px] h-9"></img></Link>
+                    <div className="flex gap-10">
+                        <Link to="/explore" className="ml-10 text-white flex justify-center items-center">
+                        MARKETPLACE
+                        </Link>
+                        <Link to="#" className="ml-10 text-white flex justify-center items-center">
+                        STATS
+                        </Link>
+                        <Link to="#" className="ml-10 text-white flex justify-center items-center">
+                        RESOURCE
+                        <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
+                        </Link>
+                        <button className="py-[16px] px-[30px] bg-transparent outline-none border-2 border-solid border-white">
+                        Connect Wallet
+                        </button>
                     </div>
                 </div>
             </div>
-        </section>
+            <div className="section-3 flex gap-[136px] md:gap-40 px-[100px] mb-[80px]">
+                <div className="relative mt-3 ml-[29px] bg-[#141414]">
+                    <img src={detailProduct} className="w-full h-full" alt=""></img>
+                </div>
+                <div className="max-w-[47.67%]">
+                    <div className="w-full text-5xl font-bold mt-3 mb-[16px] tracking-[2px] leading-[1.2] font-Montserrat">MORBI TORTOUR TUR FAUCIBUS LOBORTIS</div>
+                    <div className="w-full text-base font-normal opacity-70 mb-12 font-Montserrat">Aenean sollicitudin rutrum justo in molestie. Cras ullamcorper vestibulum erat, sed viverra odio sollicitudin id. Morbi in sapien sed</div>
+                    <div className="text-5xl font-medium w-full text-left mb-[96px] font-Montserrat">$17.000,00</div>
+                    <div className="flex items-center justify-start mb-9">
+                        <button className="py-3 px-[19px] bg-[#fe6c19] hover:bg-[#fc5c00] border-none outline-none flex items-center justify-center h-[50px] mr-10">PLACE A BID</button>
+                        <span className="">Share</span>
+                    </div>
+                    <div className="w-full text-base font-normal opacity-70 mb-3">139 sold in the past 60 days</div>
+                    <div className="w-full text-base font-normal opacity-70 mb-12">139 sold in the past 60 days</div>
+                </div>
+            </div>
+            <div className="w-full flex px-[100px] mb-20">
+                <div className="p-8 bg-[#1A1A20] relative w-[500px] h-[200px] mr-[30px]">
+                    <div className="font-medium text-xl mb-8">Aspen Earned</div>
+                    <div className="font-medium text-[40px]">0</div>
+                    <button className="px-5 py-[17px] bg-[#4A4A4F] absolute right-8 top-[87px]">HARVEST</button>
+                </div>
+                <div className="p-8 bg-[#1A1A20] relative w-[500px] h-[200px]">
+                    <div className="font-medium text-xl mb-8">Star Farming</div>
+                    <button className="py-[17px] bg-[#FE6C19] w-full ">HARVEST</button>
+                </div>
+            </div>
+            <div className="w-full px-[100px] mb-20 font-Montserrat">
+                    <div className="font-bold text-5xl mb-4 font-Montserrat">Collectible Details</div>
+                    <div className="font-normal text-base opacity-70 font-Montserrat">Phasellus bibendum tincidunt varius. Ut volutpat mollis euismod. Suspendisse aliquet dictum venenatis. Vestibulum lectus metus, ultricies at consequat non, fringilla a arcu. Quisque et leo pulvinar erat auctor pretium. Maecenas in est ante. Proin lacus lorem, semper ac sapien vitae, dignissim mollis nunc.</div>
+            </div>
+            <div className="w-full px-[100px] mb-20 flex gap-5 font-Montserrat">
+                <div className="w-full">
+                    <div className="font-bold text-5xl mb-4 font-Montserrat">Current Market Status</div>
+                    <div className="font-normal text-base opacity-70 font-Montserrat">
+                        This America is currently owned by address <span className="text-[#FE6C19]">Ronald.koeman</span> <br />
+                        This America has not been listed for sale by its owner. <br />
+                        There is a bid of 0.40Ξ ($1,175) for this punk from <span className="text-[#FE6C19]">0x1e30b4.</span></div>
+                </div>
+                <div className="w-full grid grid-cols-3 gap-y-[42px] gap-x-[87px]" >
+                    <div className="">
+                        <div className="font-bold text-5xl">618</div>
+                        <div className="font-normal text-base">Edition size</div>
+                    </div>
+                    <div className="">
+                        <div className="font-bold text-5xl">75</div>
+                        <div className="font-normal text-base">Not for sale</div>
+                    </div>
+                    <div className="">
+                        <div className="font-bold text-5xl">0</div>
+                        <div className="font-normal text-base">Burned</div>
+                    </div>
+                    <div className="">
+                        <div className="font-bold text-5xl">12</div>
+                        <div className="font-normal text-base">For sale</div>
+                    </div>
+                    <div className="">
+                        <div className="font-bold text-5xl">9</div>
+                        <div className="font-normal text-base">Hidden in pacaks</div>
+                    </div>
+                    <div className="">
+                        <div className="font-bold text-5xl">0</div>
+                        <div className="font-normal text-base">Unavailable for purchase</div>
+                    </div>
+                </div>
+            </div>
+            <div className="w-full relative">
+                <div className="w-full py-10 bg-[#141414]">
+                    <Link to="/Collections"><img src={logo} className="w-[126px] h-[36px] mx-auto mb-10" alt="logo"></img></Link>
+                    <div className="w-full flex gap-7 justify-center">
+                        <SiMinutemailer className="w-5 h-5" />
+                        <SiTwitter className="w-5 h-5" />
+                        <GrLinkedinOption className="w-5 h-5" />
+                        <SiDiscord className="w-5 h-5" />
+                        <AiOutlineGithub className="w-5 h-5" />
+                    </div>
+                </div>
+                <div className="w-full py-[20px] bg-[#1A1A1A] flex justify-center text-base font-normal opacity-60">
+                    Copyright © 2021 Aspen. All rights reserved
+                </div>
+            </div>
+        </div>
     )
 }
 
