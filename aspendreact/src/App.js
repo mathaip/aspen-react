@@ -9,6 +9,7 @@ import AllMomentsList from './Pages/AllMoments'
 
 import MarketPlace from "./Pages/MarketPlace";
 import ExplorePage from "./Pages/explore";
+import MarketPlaceNewPage from "./Pages/MarketPlace_New";
 import DetailPage from "./Pages/detail";
 import LandingPage from "./Pages/landing";
 import AmericanRevolutionPack from "./Pages/American_Revolution";
@@ -82,6 +83,9 @@ function App() {
         </Route>
         <Route path="/explore">
           <ExplorePage />
+        </Route>
+        <Route path="/marketplace">
+          <MarketPlaceNewPage />
         </Route>
         <Route path="/collectables/tokens/:tokenId" component={DetailPage}>
         </Route>

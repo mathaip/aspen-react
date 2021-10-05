@@ -100,7 +100,7 @@ const LandingPage  = () => {
         <div className="flex px-[20px] lg:pr-[138px] lg:pl-[100px] h-20 justify-between bg-[#1a1a20]">
             <div className="flex items-center">
                 <Link to="/Collections"><img src={logo} className="w-[105px] min-w-[105px] h-[30px] mr-[10px]" alt="logo"></img></Link>
-                <Link to="/explore" className="ml-10 text-white justify-center items-center hidden md:flex">
+                <Link to="/marketplace" className="ml-10 text-white justify-center items-center hidden md:flex">
                     MARKETPLACE
                 </Link>
                 <Link to="#" className="ml-10 text-white justify-center items-center hidden md:flex">
@@ -126,7 +126,7 @@ const LandingPage  = () => {
                 </div>
                 <h1 className="text-xl font-bold pt-5 text-center">Menu</h1>
                 <ul className="list-none text-white flex flex-col items-center">
-                    <Link to="/explore" className="text-white flex mb-[16px]">
+                    <Link to="/marketplace" className="text-white flex mb-[16px]">
                         MARKETPLACE
                     </Link>
                     <Link to="#" className="text-white flex mb-[16px]">
@@ -215,7 +215,7 @@ const LandingPage  = () => {
         </div>
         <div className="section-2 relative px-[20px] md:px-[70px] lg:px-[85px] xl:px-[100px]">
             <div className="text-2xl md:text-[28px] lg:text-4xl xl:text-5xl font-bold mb-10">MORBI TORTOUR TURPIS,<br /> FAUCIBUS LOBORTIS NISLET</div>
-            <button className="w-full mb-10 md:mb-0 sm:w-[123px] py-3 px-[19px] bg-none border border-solid border-white text-base text-white outline-none flex items-center justify-center h-[50px] sm:absolute top-[5px] right-[100px]">Browse All</button>
+            <button className="w-[140px] mb-10 md:mb-0 sm:w-[123px] bg-none border border-solid border-white text-base text-white outline-none flex items-center justify-center h-[50px] sm:absolute top-[5px] right-[100px]">Browse All</button>
             <div className="opacity-70 text-[14px] sm:text-base font-normal mb-10">Aenean sollicitudin rutrum justo in molestie. Cras ullamcorper<br /> vestibulum erat, sed viverra odio sollicitudin id. Morbi in sapien sed</div>
             <div className="flex flex-col xl:flex-row items-center mb-[30px] gap-[30px]">
                 <div className="w-full lg:w-10/12 xl:w-[67.5%] h-full bg-no-repeat bg-right-top bg-cover collection-big flex justify-between items-center pl-[20px] md:pl-[53px] pt-[15px] md:pt-[37px] pr-4 md:pr-6 pb-[20px] md:pb-[29px] flex-col md:flex-row">

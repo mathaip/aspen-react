@@ -20,7 +20,7 @@ export const DetailPage = ({match}) => {
                 <div className="w-full h-[50px] px-[20px] lg:px-[100px] flex items-center justify-between">
                     <Link to="/Collections"><img src={logo} alt="" className="w-[122px] min-w-[122px] h-9"></img></Link>
                     <div className="flex gap-10">
-                        <Link to="/explore" className="ml-10 text-white hidden md:flex justify-center items-center">
+                        <Link to="/marketplace" className="ml-10 text-white hidden md:flex justify-center items-center">
                             MARKETPLACE
                         </Link>
                         <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
@@ -42,7 +42,7 @@ export const DetailPage = ({match}) => {
                     </div>
                     <h1 className="text-xl font-bold pt-5 text-center">Menu</h1>
                     <ul className="list-none text-white flex flex-col items-center">
-                        <Link to="/explore" className="text-white flex mb-[16px]">
+                        <Link to="/marketplace" className="text-white flex mb-[16px]">
                             MARKETPLACE
                         </Link>
                         <Link to="#" className="text-white flex mb-[16px]">
