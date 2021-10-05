@@ -521,3 +521,9 @@
         line-height: 1.65em;
     }
   }
+  .overflow-x-scroll::-webkit-scrollbar{
+    display: none;
+  }
+  html {
+    scroll-behavior: smooth;
+  }

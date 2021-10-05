@@ -1,5 +1,7 @@
 .detail-container{
     background: url(../images/assets/header-banner3.png) no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: top;
+    background-color: black;
+
 }

@@ -108,6 +108,7 @@ function Explore() {
 
     var filteredProducts = [];
 
+    console.log(americanRevolutions);
     var data = americanRevolutions;
 
     if (query != ''){

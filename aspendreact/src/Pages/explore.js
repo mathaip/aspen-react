@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../stylesheet/explore.css";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { FiArrowUpRight } from "react-icons/fi";
-import { AiOutlineGithub } from "react-icons/ai";
+import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
 import { SiMinutemailer, SiTwitter, SiDiscord  } from "react-icons/si";
 import { GrLinkedinOption  } from "react-icons/gr";
 import logo from "../images/assets/Logo.svg";
@@ -21,66 +21,103 @@ import product11 from "../images/assets/product11.png";
 import product12 from "../images/assets/product12.png";
 import product13 from "../images/assets/product13.png";
 import { Link } from "react-router-dom";
+import americanRevolutions from '../american-revolution';
 
 const Explore = () => {
+
+    const [visible, setVisible] = useState(false);
+    const [filteredResult, setFilteredResult] = useState([]);
+    const [filterText, setFilterText] = useState('');
+
+    useEffect(() => {
+        setFilteredResult(americanRevolutions);
+         console.log(americanRevolutions);
+    }, [ filterText ])
+
   return (
-    <div className="w-screen min-h-screen text-sm font-medium bg-black text-white tracking-[1.4px] font-Montserrat">
+    <div className="w-screen min-h-screen text-[14px] font-medium bg-black text-white tracking-[1.4px] font-Montserrat">
         <div className="explore-header h-[470px] relative py-[33px]">
-            <div className="w-full h-[50px] px-[100px] flex items-center justify-between">
-            <Link to="/Collections"><img src={logo} alt="" className="w-[122px] h-9"></img></Link>
-            <div className="flex gap-10">
-                <Link to="/explore" className="ml-10 text-white flex justify-center items-center">
-                MARKETPLACE
-                </Link>
-                <Link to="#" className="ml-10 text-white flex justify-center items-center">
-                STATS
-                </Link>
-                <Link to="#" className="ml-10 text-white flex justify-center items-center">
-                RESOURCE
-                <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
-                </Link>
-                <button className="py-[16px] px-[30px] bg-transparent outline-none border-2 border-solid border-white">
-                Connect Wallet
-                </button>
+            <div className="w-full h-[50px] px-[20px] lg:px-[100px] flex items-center justify-between">
+                <Link to="/Collections"><img src={logo} alt="" className="w-[122px] min-w-[122px] h-9"></img></Link>
+                <div className="flex gap-10">
+                    <Link to="/explore" className="ml-10 text-white hidden md:flex justify-center items-center">
+                        MARKETPLACE
+                    </Link>
+                    <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
+                        STATS
+                    </Link>
+                    <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
+                        RESOURCE
+                        <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
+                    </Link>
+                    <button className="py-[16px] px-[30px] bg-transparent outline-none border-2 border-solid border-white hidden lg:flex">
+                        Connect Wallet
+                    </button>
+                    <button className="text-black text-2xl p-2 font-bold block lg:hidden" onClick={() => setVisible(true)}><AiOutlineMenu className="text-white text-3xl" /></button>
+                </div>
             </div>
+            <div className="mt-[135px] mb-[15px] md:mb-[38px] text-center text-[40px] md:text-[56px] lg:text-[70px] font-Montserrat font-medium">
+                Explore the marketplace
             </div>
-            <div className="mt-[135px] mb-[38px] text-center text-[70px] font-Montserrat font-medium">
-            Explore the marketplace
-            </div>
-            <div className="w-[889px] mx-auto h-[50px] pl-[13px] flex items-center border-2 border-solid border-[#4A4A4A]">
-            <BiSearch className="w-6 h-6 mr-5" />
-            <input
-                className="flex-grow border-none bg-transparent outline-none h-full text-xl text-white"
-                placeholder="Search"
-            ></input>
+            <div className="w-[889px] max-w-[80%] mx-auto h-[40px] md:h-[50px] pl-[13px] flex items-center border-2 border-solid border-[#4A4A4A]">
+                <BiSearch className="w-6 min-w-[24px] min-h-[24px] h-6 mr-[16px] md:mr-5" />
+                <input
+                    className="flex-grow border-none bg-transparent outline-none h-full text-xl text-white"
+                    placeholder="Search"
+                    onChange={(e) => setFilterText(e.target.value)}
+                ></input>
             </div>
         </div>
-        <div className="w-full bg-[#1A1A20] px-[100px] pt-[60px] pb-[75px]">
-            <div className="font-medium text-5xl text-center mb-10">What are you looking for</div>
-            <div className="w-full flex gap-9">
-                <div className="w-full">
+        <div className="w-full">
+            <div hidden={!visible} className={`${visible ? 'bg-gray-300 opacity-25':'opacity-100'} fixed top-0 left-0 h-screen w-screen z-10`} onClick={() => setVisible(false)}></div>
+            <nav className={`${visible ? 'translate-x-0':'translate-x-full'} transform transition-all duration-300 ease-out w-64 fixed right-0 overflow-x-scroll bg-gray-700 top-0 h-screen z-10 pl-[20px] pr-[10px]`}>
+                <div className="flex justify-end">
+                    <button  className="p-2 text-white text-xl font-bold" onClick={() => setVisible(false)}>&#9747;</button>
+                </div>
+                <h1 className="text-xl font-bold pt-5 text-center">Menu</h1>
+                <ul className="list-none text-white flex flex-col items-center">
+                    <Link to="/explore" className="text-white flex mb-[16px]">
+                        MARKETPLACE
+                    </Link>
+                    <Link to="#" className="text-white flex mb-[16px]">
+                        STATS
+                    </Link>
+                    <Link to="#" className="text-white flex mb-[16px] items-center">
+                        RESOURCE
+                        <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
+                    </Link>
+                    <button className="h-10 py3 px-[19px] bg-[#fe6c19] border-0 outline-none flex items-center justify-start">
+                        Connect Wallet
+                    </button>
+                </ul>
+            </nav>
+        </div>
+        <div className="w-full bg-[#1A1A20] px-[20px] md:px-[50px] lg:px-[100px] py-[20px] md:py-[40px] lg:py-[65px]">
+            <div className="font-medium text-3xl md:text-4xl lg:text-5xl text-center mb-10">What are you looking for</div>
+            <div className="w-full flex justify-center flex-wrap">
+                <div className="w-full sm:w-[80%] md:w-1/2 lg:w-1/3 mb-[10px]">
                     <Link to="/collectables/tokens/1"><img src={product1} alt="" className="w-full mb-7"></img></Link>
                     <div className="font-semibold text-2xl text-center">Nam at dui vitae eros fauc</div>
                 </div>
-                <div className="w-full">
+                <div className="w-full sm:w-[80%] md:w-1/2 lg:w-1/3 mb-[10px]">
                     <Link to="/collectables/tokens/1"><img src={product2} alt="" className="w-full mb-7"></img></Link>
                     <div className="font-semibold text-2xl text-center">Nam at dui vitae eros fauc</div>
                 </div>
-                <div className="w-full">
+                <div className="w-full sm:w-[80%] md:w-1/2 lg:w-1/3 mb-[10px]">
                     <Link to="/collectables/tokens/1"><img src={product3} alt="" className="w-full mb-7"></img></Link>
                     <div className="font-semibold text-2xl text-center">Nam at dui vitae eros fauc</div>
                 </div>
             </div>
         </div>
-        <div className="w-full px-[100px] pt-[150px]">
-            <div className="flex justify-between items-end mb-7">
-                <div className="font-medium text-5xl">Hot Moments</div>
-                <div className="font-normal text-xl flex items-center">
+        <div className="w-full px-[20px] md:px-[50px] lg:px-[100px] pt-[40px] md:pt-[100px] lg:pt-[150px]">
+            <div className="flex flex-col md:flex-row md:items-end items-center justify-between mb-7">
+                <div className="font-medium text-3xl md:text-4xl lg:text-5xl mb-[10px] md:mb-0">Hot Moments</div>
+                <div className="font-normal text-md md:text-lg lg:text-xl flex items-center">
                     Eksplore marketplace
                     <FiArrowUpRight className="w-20px h-[9px]" />
                 </div>
             </div>
-            <div className="w-full flex gap-[30px] mb-[200px]">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[30px] mb-[50px] md:mb-[200px]">
                 <div className="w-full bg-[#171717]">
                     <Link to="/collectables/tokens/1"><img src={product4} alt="" className="w-full"></img></Link>
                     <div className="w-full p-[27px] pb-[19px] border-b border-solid border-gray-600">
@@ -88,12 +125,12 @@ const Explore = () => {
                             <div>Price</div>
                             <div>Copies</div>
                         </div>
-                        <div className="w-full flex justify-between text-sm">
+                        <div className="w-full flex justify-between text-[14px]">
                             <div>9.22 €</div>
                             <div>125/499</div>
                         </div>
                     </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-sm">
+                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
                         PLACE A BID
                     </div>
                 </div>
@@ -104,12 +141,12 @@ const Explore = () => {
                             <div>Price</div>
                             <div>Copies</div>
                         </div>
-                        <div className="w-full flex justify-between text-sm">
+                        <div className="w-full flex justify-between text-[14px]">
                             <div>9.22 €</div>
                             <div>125/499</div>
                         </div>
                     </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-sm">
+                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
                         PLACE A BID
                     </div>
                 </div>
@@ -120,12 +157,12 @@ const Explore = () => {
                             <div>Price</div>
                             <div>Copies</div>
                         </div>
-                        <div className="w-full flex justify-between text-sm">
+                        <div className="w-full flex justify-between text-[14px]">
                             <div>9.22 €</div>
                             <div>125/499</div>
                         </div>
                     </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-sm">
+                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
                         PLACE A BID
                     </div>
                 </div>
@@ -136,61 +173,61 @@ const Explore = () => {
                             <div>Price</div>
                             <div>Copies</div>
                         </div>
-                        <div className="w-full flex justify-between text-sm">
+                        <div className="w-full flex justify-between text-[14px]">
                             <div>9.22 €</div>
                             <div>125/499</div>
                         </div>
                     </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-sm">
+                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
                         PLACE A BID
                     </div>
                 </div>
             </div>
         </div>
-        <div className="w-full px-[100px] mb-[125px]">
-            <div className="font-medium text-5xl mb-7">Hot Moments</div>
-            <div className="w-full grid grid-cols-3 gap-[30px]">
+        <div className="w-full px-[20px] md:px-[50px] lg:px-[100px] mb-[50px] md:mb-[125px]">
+            <div className="font-medium text-3xl md:text-4xl lg:text-5xl mb-7 md:mb-0">Vintage Collection</div>
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px]">
                 <div className="bg-[#171717] text-center">
                     <Link to="/collectables/tokens/1"><img src={product8} alt="" className="my-9 mx-auto"></img></Link>
                     <div className="w-[30px] h-[5px] bg-white mb-1 mx-auto"></div>
                     <div className="font-bold text-2xl mb-1">Pennsylvania</div>
-                    <div className="font-normal text-sm mb-6">American Revolution</div>
+                    <div className="font-normal text-[14px] mb-6">American Revolution</div>
                 </div>
                 <div className="bg-[#171717] text-center">
                     <Link to="/collectables/tokens/1"><img src={product9} alt="" className="my-9 mx-auto"></img></Link>
                     <div className="w-[30px] h-[5px] bg-white mb-1 mx-auto"></div>
                     <div className="font-bold text-2xl mb-1">Pennsylvania</div>
-                    <div className="font-normal text-sm mb-6">American Revolution</div>
+                    <div className="font-normal text-[14px] mb-6">American Revolution</div>
                 </div>
                 <div className="bg-[#171717] text-center">
                     <Link to="/collectables/tokens/1"><img src={product10} alt="" className="my-9 mx-auto"></img></Link>
                     <div className="w-[30px] h-[5px] bg-white mb-1 mx-auto"></div>
                     <div className="font-bold text-2xl mb-1">Pennsylvania</div>
-                    <div className="font-normal text-sm mb-6">American Revolution</div>
+                    <div className="font-normal text-[14px] mb-6">American Revolution</div>
                 </div>
                 <div className="bg-[#171717] text-center">
                     <Link to="/collectables/tokens/1"><img src={product11} alt="" className="my-9 mx-auto"></img></Link>
                     <div className="w-[30px] h-[5px] bg-white mb-1 mx-auto"></div>
                     <div className="font-bold text-2xl mb-1">Pennsylvania</div>
-                    <div className="font-normal text-sm mb-6">American Revolution</div>
+                    <div className="font-normal text-[14px] mb-6">American Revolution</div>
                 </div>
                 <div className="bg-[#171717] text-center">
                     <Link to="/collectables/tokens/1"><img src={product12} alt="" className="my-9 mx-auto"></img></Link>
                     <div className="w-[30px] h-[5px] bg-white mb-1 mx-auto"></div>
                     <div className="font-bold text-2xl mb-1">Pennsylvania</div>
-                    <div className="font-normal text-sm mb-6">American Revolution</div>
+                    <div className="font-normal text-[14px] mb-6">American Revolution</div>
                 </div>
                 <div className="bg-[#171717] text-center">
                     <Link to="/collectables/tokens/1"><img src={product13} alt="" className="my-9 mx-auto"></img></Link>
                     <div className="w-[30px] h-[5px] bg-white mb-1 mx-auto"></div>
                     <div className="font-bold text-2xl mb-1">Pennsylvania</div>
-                    <div className="font-normal text-sm mb-6">American Revolution</div>
+                    <div className="font-normal text-[14px] mb-6">American Revolution</div>
                 </div>
             </div>
         </div>
         <div className="w-full relative">
-            <div className="w-full py-10 bg-[#141414]">
-                <Link to="/Collections"><img src={logo} className="w-[126px] h-[36px] mx-auto mb-10" alt="logo"></img></Link>
+            <div className="w-full py-[20px] md:py-10 bg-[#141414]">
+                <Link to="/Collections"><img src={logo} className="w-[126px] h-[36px] mx-auto mb-[20px] md:mb-10" alt="logo"></img></Link>
                 <div className="w-full flex gap-7 justify-center">
                     <SiMinutemailer className="w-5 h-5" />
                     <SiTwitter className="w-5 h-5" />
@@ -199,7 +236,7 @@ const Explore = () => {
                     <AiOutlineGithub className="w-5 h-5" />
                 </div>
             </div>
-            <div className="w-full py-[20px] bg-[#1A1A1A] flex justify-center text-base font-normal opacity-60">
+            <div className="w-full py-[20px] bg-[#1A1A1A] flex justify-center text-xs md:text-base font-normal text-center opacity-60">
                 Copyright © 2021 Aspen. All rights reserved
             </div>
         </div>
