@@ -1,62 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import "../stylesheet/detail.css";
 import { SiMinutemailer, SiTwitter, SiDiscord  } from "react-icons/si";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
+import { AiOutlineGithub } from "react-icons/ai";
 import { GrLinkedinOption  } from "react-icons/gr";
 import detailProduct from "../images/assets/detail-product.png";
+import HeaderNew from "../Components/HeaderNew";
 import logo from "../images/assets/Logo.svg";
+import "../stylesheet/detail.css";
 
 
 export const DetailPage = ({match}) => {
 
-    const [visible, setVisible] = useState(false);
-
     return (
-        <div className="detail-container w-screen min-h-screen text-[14px] font-medium bg-black text-white tracking-[1.4px] font-Montserrat pt-[]">
+        <div className="detail-container w-screen min-h-screen text-[14px] font-medium bg-black text-white tracking-[1.4px] font-Montserrat">
             <div className="py-[33px]">
-                <div className="w-full h-[50px] px-[20px] lg:px-[100px] flex items-center justify-between">
-                    <Link to="/Collections"><img src={logo} alt="" className="w-[122px] min-w-[122px] h-9"></img></Link>
-                    <div className="flex gap-10">
-                        <Link to="/marketplace" className="ml-10 text-white hidden md:flex justify-center items-center">
-                            MARKETPLACE
-                        </Link>
-                        <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
-                            STATS
-                        </Link>
-                        <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
-                            RESOURCE
-                            <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
-                        </Link><button class="py-[16px] px-[30px] bg-transparent outline-none border-2 border-solid border-white hidden lg:flex">Connect Wallet</button>
-                        <button className="text-black text-2xl p-2 font-bold block lg:hidden" onClick={() => setVisible(true)}><AiOutlineMenu className="text-white text-3xl" /></button>
-                    </div>
-                </div>
-            </div>
-            <div className="w-full">
-                <div hidden={!visible} className={`${visible ? 'bg-gray-300 opacity-25':'opacity-100'} fixed top-0 left-0 h-screen w-screen z-10`} onClick={() => setVisible(false)}></div>
-                <nav className={`${visible ? 'translate-x-0':'translate-x-full'} transform transition-all duration-300 ease-out w-64 fixed right-0 overflow-x-scroll bg-gray-700 top-0 h-screen z-10 pl-[20px] pr-[10px]`}>
-                    <div className="flex justify-end">
-                        <button  className="p-2 text-white text-xl font-bold" onClick={() => setVisible(false)}>&#9747;</button>
-                    </div>
-                    <h1 className="text-xl font-bold pt-5 text-center">Menu</h1>
-                    <ul className="list-none text-white flex flex-col items-center">
-                        <Link to="/marketplace" className="text-white flex mb-[16px]">
-                            MARKETPLACE
-                        </Link>
-                        <Link to="#" className="text-white flex mb-[16px]">
-                            STATS
-                        </Link>
-                        <Link to="#" className="text-white flex mb-[16px] items-center">
-                            RESOURCE
-                            <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
-                        </Link>
-                        <button className="h-10 py3 px-[19px] bg-[#fe6c19] border-0 outline-none flex items-center justify-start">
-                            Connect Wallet
-                        </button>
-                    </ul>
-                </nav>
+                <HeaderNew />
             </div>
             <div className="flex flex-col md:flex-row gap-[40px] md:gap-[80px] lg:gap-[136px] xl:gap-40 px-[20px] md:px-[50px] lg:px-[100px] mb-[40px] lg:mb-[60px] xl:mb-[80px]">
                 <div className="mt-0 md:mt-3 ml-0 md:ml-[29px]">

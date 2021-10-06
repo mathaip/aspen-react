@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../stylesheet/explore.css";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { BiSearch } from "react-icons/bi";
 import { FiArrowUpRight } from "react-icons/fi";
-import { AiOutlineGithub, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineGithub } from "react-icons/ai";
 import { SiMinutemailer, SiTwitter, SiDiscord  } from "react-icons/si";
 import { GrLinkedinOption  } from "react-icons/gr";
 import logo from "../images/assets/Logo.svg";
@@ -22,10 +21,10 @@ import product12 from "../images/assets/product12.png";
 import product13 from "../images/assets/product13.png";
 import { Link } from "react-router-dom";
 import americanRevolutions from '../american-revolution';
+import HeaderNew from "../Components/HeaderNew";
 
 const Explore = () => {
 
-    const [visible, setVisible] = useState(false);
     const [filteredResult, setFilteredResult] = useState([]);
     const [filterText, setFilterText] = useState('');
 
@@ -47,29 +46,11 @@ const Explore = () => {
   return (
     <div className="w-screen min-h-screen text-[14px] font-medium bg-black text-white tracking-[1.4px] font-Montserrat">
         <div className="explore-header h-[470px] relative py-[33px]">
-            <div className="w-full h-[50px] px-[20px] lg:px-[100px] flex items-center justify-between">
-                <Link to="/Collections"><img src={logo} alt="" className="w-[122px] min-w-[122px] h-9"></img></Link>
-                <div className="flex gap-10">
-                    <Link to="/marketplace" className="ml-10 text-white hidden md:flex justify-center items-center">
-                        MARKETPLACE
-                    </Link>
-                    <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
-                        STATS
-                    </Link>
-                    <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
-                        RESOURCE
-                        <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
-                    </Link>
-                    <button className="py-[16px] px-[30px] bg-transparent outline-none border-2 border-solid border-white hidden lg:flex">
-                        Connect Wallet
-                    </button>
-                    <button className="text-black text-2xl p-2 font-bold block lg:hidden" onClick={() => setVisible(true)}><AiOutlineMenu className="text-white text-3xl" /></button>
-                </div>
-            </div>
+            <HeaderNew />
             <div className="mt-[135px] mb-[15px] md:mb-[38px] text-center text-[40px] md:text-[56px] lg:text-[70px] font-Montserrat font-medium">
                 Explore the marketplace
             </div>
-            <div className="relative w-[889px] max-w-[80%] mx-auto h-[40px] md:h-[50px] pl-[13px] flex items-center border-2 border-solid border-[#4A4A4A]">
+            <div className="w-[889px] max-w-[80%] mx-auto h-[40px] md:h-[50px] pl-[13px] flex items-center border-2 border-solid border-[#4A4A4A]">
                 <BiSearch className="w-6 min-w-[24px] min-h-[24px] h-6 mr-[16px] md:mr-5" />
                 <input
                     className="flex-grow border-none bg-transparent outline-none h-full text-xl text-white"
@@ -88,30 +69,6 @@ const Explore = () => {
                     </div>
                 }
             </div>
-        </div>
-        <div className="w-full">
-            <div hidden={!visible} className={`${visible ? 'bg-gray-300 opacity-25':'opacity-100'} fixed top-0 left-0 h-screen w-screen z-10`} onClick={() => setVisible(false)}></div>
-            <nav className={`${visible ? 'translate-x-0':'translate-x-full'} transform transition-all duration-300 ease-out w-64 fixed right-0 overflow-x-scroll bg-gray-700 top-0 h-screen z-10 pl-[20px] pr-[10px]`}>
-                <div className="flex justify-end">
-                    <button  className="p-2 text-white text-xl font-bold" onClick={() => setVisible(false)}>&#9747;</button>
-                </div>
-                <h1 className="text-xl font-bold pt-5 text-center">Menu</h1>
-                <ul className="list-none text-white flex flex-col items-center">
-                    <Link to="/marketplace" className="text-white flex mb-[16px]">
-                        MARKETPLACE
-                    </Link>
-                    <Link to="#" className="text-white flex mb-[16px]">
-                        STATS
-                    </Link>
-                    <Link to="#" className="text-white flex mb-[16px] items-center">
-                        RESOURCE
-                        <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
-                    </Link>
-                    <button className="h-10 py3 px-[19px] bg-[#fe6c19] border-0 outline-none flex items-center justify-start">
-                        Connect Wallet
-                    </button>
-                </ul>
-            </nav>
         </div>
         <div className="w-full bg-[#1A1A20] px-[20px] md:px-[50px] lg:px-[100px] py-[20px] md:py-[40px] lg:py-[65px]">
             <div className="font-medium text-3xl md:text-4xl lg:text-5xl text-center mb-10">What are you looking for</div>

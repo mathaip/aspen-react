@@ -3,5 +3,11 @@
     background-size: contain;
     background-position: top;
     background-color: black;
+}
+.resource-container{
+    background: url(../images/assets/header-banner3.png) no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-color: black;
 
 }

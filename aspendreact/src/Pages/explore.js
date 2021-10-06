@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { 
     MenuItem, 
     Select,
@@ -11,91 +10,28 @@ import {
     FormGroup 
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { AiOutlineMenu } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 
-import "../stylesheet/new-style.css";
-import ProductItem from '../Components/Product';
-import PaginationCustom from '../Components/Pagination';
 
-import americanRevolutions from '../american-revolution';
-
-import productImg from '../images/american-pack-white-background.png';
-import frenchrevolution from '../images/frenchrevolution.png';
-import RussianRevolution from '../images/Russian-pack.png';
-import philosophers from '../images/philosophers-pack.png';
-import taiping from '../images/taiping-rebellion.png';
 import logo from "../images/assets/Logo.svg";
 import { Link } from 'react-router-dom';
 import { AiOutlineGithub } from "react-icons/ai";
 import { SiMinutemailer, SiTwitter, SiDiscord  } from "react-icons/si";
 import { GrLinkedinOption  } from "react-icons/gr";
-import "../stylesheet/landing.css";
 import footerIcon from "../images/assets/footer-icon.svg";
 
-const useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-}));
+import americanRevolutions from '../american-revolution';
+import ProductItem from '../Components/Product';
+import PaginationCustom from '../Components/Pagination';
+import HeaderNew from "../Components/HeaderNew";
+import "../stylesheet/landing.css";
+import "../stylesheet/new-style.css";
 
 function Explore() {
-    const nftProducts = [
-        {
-            name: 'American Revolutuion',
-            img: productImg,
-            description: '448 Packs',
-            price: 'USD $149.00',
-            releaseDate: '1 Moment per Pack'
-        },
-        {
-            name: 'French Revolutuion',
-            img: frenchrevolution,
-            description: 'Pack Size TBD',
-            price: 'Price TBD',
-            releaseDate: 'July 2021'
-        },
-        {
-            name: 'Russian Revolutuion',
-            img: RussianRevolution,
-            description: 'Pack Size TBD',
-            price: 'Price TBD',
-            releaseDate: 'August 2021'
-        },
-        {
-            name: 'Philosophers',
-            img: philosophers,
-            description: 'Pack Size TBD',
-            price: 'Price TBD',
-            releaseDate: 'Fall 2021'
-        },
-        {
-            name: 'Taiping Rebellion',
-            img: taiping,
-            description: 'Pack Size TBD',
-            price: 'Price TBD',
-            releaseDate: 'Fall 2021'
-        },
-        {
-            name: 'Demo Product',
-            img: productImg,
-            description: 'Demo Product Description',
-            price: 'USD $4.00',
-            releaseDate: 'Fall 2021'
-        }
-    ];
-
-    const classes = useStyles();
     const countPerPage = 6;
     const [query, setQuery] = React.useState('');
     const [type, setType] = React.useState('1');
     const [page, setPage] = React.useState(1);
-    const [visible, setVisible] = React.useState(false);
 
     const handleTypeChange = (event) => {
         setType(event.target.value);
@@ -114,13 +50,12 @@ function Explore() {
     var filteredProducts = [];
 
     console.log(americanRevolutions);
-    var data = americanRevolutions;
 
-    if (query != ''){
+    if (query !== ''){
         var converted_query = query.toLowerCase();
         for(var i = 0; i < Object.keys(americanRevolutions).length; i++){
             var name = americanRevolutions[ i + 1 ].name.toLowerCase();
-            if (name.search(converted_query) != -1){
+            if (name.search(converted_query) !== -1){
                 filteredProducts.push({
                     ...americanRevolutions[ i + 1 ],
                     id: i + 1});
@@ -149,57 +84,10 @@ function Explore() {
         lastIndex = countPerPage * page
     products = filteredProducts.slice(startIndex, lastIndex);
 
-    console.log(totalCount);
-    console.log(page);
-
-    const alignTop = {
-        alignItems: "start",
-        paddingTop: "60px"
-    };
-
     return (
         <div className="detail-container w-screen min-h-screen text-[14px] font-medium bg-black text-white tracking-[1.4px] font-Montserrat">
             <div className="py-[33px]">
-                <div className="w-full h-[50px] px-[20px] lg:px-[100px] flex items-center justify-between">
-                    <Link to="/Collections"><img src={logo} alt="" className="w-[122px] min-w-[122px] h-9"></img></Link>
-                    <div className="flex gap-10">
-                        <Link to="/marketplace" className="ml-10 text-white hidden md:flex justify-center items-center">
-                            MARKETPLACE
-                        </Link>
-                        <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
-                            STATS
-                        </Link>
-                        <Link to="#" className="ml-10 text-white hidden md:flex justify-center items-center">
-                            RESOURCE
-                            <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
-                        </Link><button class="py-[16px] px-[30px] bg-transparent outline-none border-2 border-solid border-white hidden lg:flex">Connect Wallet</button>
-                        <button className="text-black text-2xl p-2 font-bold block lg:hidden" onClick={() => setVisible(true)}><AiOutlineMenu className="text-white text-3xl" /></button>
-                    </div>
-                </div>
-            </div>
-            <div className="w-full">
-                <div hidden={!visible} className={`${visible ? 'bg-gray-300 opacity-25':'opacity-100'} fixed top-0 left-0 h-screen w-screen z-10`} onClick={() => setVisible(false)}></div>
-                <nav className={`${visible ? 'translate-x-0':'translate-x-full'} transform transition-all duration-300 ease-out w-64 fixed right-0 overflow-x-scroll bg-gray-700 top-0 h-screen z-10 pl-[20px] pr-[10px]`}>
-                    <div className="flex justify-end">
-                        <button  className="p-2 text-white text-xl font-bold" onClick={() => setVisible(false)}>&#9747;</button>
-                    </div>
-                    <h1 className="text-xl font-bold pt-5 text-center">Menu</h1>
-                    <ul className="list-none text-white flex flex-col items-center">
-                        <Link to="/marketplace" className="text-white flex mb-[16px]">
-                            MARKETPLACE
-                        </Link>
-                        <Link to="#" className="text-white flex mb-[16px]">
-                            STATS
-                        </Link>
-                        <Link to="#" className="text-white flex mb-[16px] items-center">
-                            RESOURCE
-                            <MdOutlineKeyboardArrowDown className="text-white text-2xl" />
-                        </Link>
-                        <button className="h-10 py3 px-[19px] bg-[#fe6c19] border-0 outline-none flex items-center justify-start">
-                            Connect Wallet
-                        </button>
-                    </ul>
-                </nav>
+                <HeaderNew />
             </div>
             <div className="row content-row">
                 <div className="col-lg-9 col-md-7 col-sm-12 col-xs-12 flex items-center border-2 border-solid border-[#4A4A4A]" style={{fontSize: 45}}>
