@@ -171,7 +171,7 @@ const LandingPage  = () => {
                     <BsArrowRight className="text-white text-xl lg:text-3xl xl:text-4xl" />
                 </div>
                 <div id="revolutions" ref={revolutionRef} className="w-full flex gap-[35px] overflow-x-scroll">
-                    <div className="p-[8px] 2xl:p-4 min-w-[280px] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
+                    <div className="p-[8px] 2xl:p-4 min-w-[calc(100vw-41px)] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
                         <Link to="/AmericanRevolution"><img src={american_revolution} className="w-full mb-[8px] md:mb-9" alt=""></img></Link>
                         <div className="text-lg font-medium md:font-bold text-center mb-[8px] md:mb-10">American Revolution</div>
                         <div className="flex items-center justify-between px-[30px] mb-[16px] md:mb-[29px]">
@@ -183,7 +183,7 @@ const LandingPage  = () => {
                             <span className="text-xs font-medium tracking-[1px]">BID HISTORY</span>
                         </div>
                     </div>
-                    <div className="p-[8px] 2xl:p-4 min-w-[280px] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
+                    <div className="p-[8px] 2xl:p-4 min-w-[calc(100vw-41px)] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
                         <Link to="/FrenchRevolution"><img src={french_revolution} className="w-full mb-[8px] md:mb-9" alt=""></img></Link>
                         <div className="text-lg font-medium md:font-bold text-center mb-[8px] md:mb-10">French Revolution</div>
                         <div className="flex items-center justify-between px-[30px] mb-[16px] md:mb-[29px]">
@@ -195,7 +195,7 @@ const LandingPage  = () => {
                             <span className="text-xs font-medium tracking-[1px]">BID HISTORY</span>
                         </div>
                     </div>
-                    <div className="p-[8px] 2xl:p-4 min-w-[280px] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
+                    <div className="p-[8px] 2xl:p-4 min-w-[calc(100vw-41px)] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
                         <Link to="/RussianRevolution"><img src={russian_revolution} className="w-full mb-[8px] md:mb-9" alt=""></img></Link>
                         <div className="text-lg font-medium md:font-bold text-center mb-[8px] md:mb-10">Russian Revolution</div>
                         <div className="flex items-center justify-between px-[30px] mb-[16px] md:mb-[29px]">
