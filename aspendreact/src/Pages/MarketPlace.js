@@ -28,6 +28,7 @@ const LandingPage  = () => {
 
     const [visible, setVisible] = useState(false);
     const revolutionRef = React.useRef();
+    const revolutionItemRef = React.useRef();
     const roadmapRef = React.useRef();
     
         function sideScroll(element,direction,speed,distance,step){
@@ -160,13 +161,13 @@ const LandingPage  = () => {
             <div className="w-full relative">
                 <div 
                     className="flex items-center justify-center w-[40px] h-[40px] lg:w-[55px] lg:h-[55px] xl:w-[70px] xl:h-[70px] border-2 border-solid border-white box-border rounded-full cursor-pointer absolute left-[-20px] lg:left-[-22.5px] xl:left-[-35px] top-[calc(50%-20px)] lg:top-[calc(50%-22.5px)] xl:top-[calc(50%-35px)]"
-                    onClick={() => sideScroll(revolutionRef.current,'left',10,300,10)}
+                    onClick={() => sideScroll(revolutionRef.current,'left',0.5,revolutionRef.current.clientWidth + 35,2)}
                 >
                     <BsArrowLeft className="text-white text-xl lg:text-3xl xl:text-4xl" />
                 </div>
                 <div 
                     className="flex items-center justify-center w-[40px] h-[40px] lg:w-[55px] lg:h-[55px] xl:w-[70px] xl:h-[70px] border-2 border-solid border-white box-border rounded-full cursor-pointer absolute right-[-20px] lg:right-[-22.5px] xl:right-[-35px] top-[calc(50%-20px)] lg:top-[calc(50%-22.5px)] xl:top-[calc(50%-35px)]"
-                    onClick={() => sideScroll(revolutionRef.current,'right',10,300,10)}
+                    onClick={() => sideScroll(revolutionRef.current,'right', 0.5, revolutionRef.current.clientWidth + 35, 2)}
                 >
                     <BsArrowRight className="text-white text-xl lg:text-3xl xl:text-4xl" />
                 </div>
