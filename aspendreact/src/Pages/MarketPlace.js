@@ -171,40 +171,40 @@ const LandingPage  = () => {
                     <BsArrowRight className="text-white text-xl lg:text-3xl xl:text-4xl" />
                 </div>
                 <div id="revolutions" ref={revolutionRef} className="w-full flex gap-[35px] overflow-x-scroll">
-                    <div className="p-[8px] 2xl:p-4 min-w-[370px] w-1/3 border-[6px] border-solid border-[#333333]">
+                    <div className="p-[8px] 2xl:p-4 min-w-[280px] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
                         <Link to="/AmericanRevolution"><img src={american_revolution} className="w-full mb-[8px] md:mb-9" alt=""></img></Link>
                         <div className="text-lg font-medium md:font-bold text-center mb-[8px] md:mb-10">American Revolution</div>
                         <div className="flex items-center justify-between px-[30px] mb-[16px] md:mb-[29px]">
-                            <span className="text-[#5c5c5c] text-xs md:text-sm font-medium md:font-bold">Left Bid: 600 ETH</span>
-                            <span className="text-xs md:text-sm font-medium md:font-bold">$19,38,000.00</span>
+                            <span className="text-[#5c5c5c] text-xs md:text-sm font-medium md:font-bold tracking-[0px] sm:tracking-[1.4px]">Left Bid: 600 ETH</span>
+                            <span className="text-xs md:text-sm font-medium md:font-bold">$19,000.00</span>
                         </div>
                         <div className="flex items-center justify-between px-[30px]">
-                            <button className="py-3 px-[19px] bg-[#fe6c19] hover:bg-[#fc5c00] border-none outline-none flex items-center justify-center text-xs 2xl:text-sm h-[35px] 2xl:h-[50px]">PLACE A BID</button>
-                            <span className="text-xs font-medium tracking-[4px]">BID HISTORY</span>
+                            <button className="py-3 px-[10px] sm:px-[19px] bg-[#fe6c19] hover:bg-[#fc5c00] border-none outline-none flex items-center justify-center text-xs 2xl:text-sm h-[35px] 2xl:h-[50px]">PLACE A BID</button>
+                            <span className="text-xs font-medium tracking-[1px]">BID HISTORY</span>
                         </div>
                     </div>
-                    <div className="p-[8px] 2xl:p-4 min-w-[370px] w-1/3 border-[6px] border-solid border-[#333333]">
+                    <div className="p-[8px] 2xl:p-4 min-w-[280px] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
                         <Link to="/FrenchRevolution"><img src={french_revolution} className="w-full mb-[8px] md:mb-9" alt=""></img></Link>
                         <div className="text-lg font-medium md:font-bold text-center mb-[8px] md:mb-10">French Revolution</div>
                         <div className="flex items-center justify-between px-[30px] mb-[16px] md:mb-[29px]">
-                            <span className="text-[#5c5c5c] text-xs md:text-sm font-medium md:font-bold">Left Bid: 600 ETH</span>
-                            <span className="text-xs md:text-sm font-medium md:font-bold">$19,38,000.00</span>
+                            <span className="text-[#5c5c5c] text-xs md:text-sm font-medium md:font-bold tracking-[0px] sm:tracking-[1.4px]">Left Bid: 600 ETH</span>
+                            <span className="text-xs md:text-sm font-medium md:font-bold">$19,000.00</span>
                         </div>
                         <div className="flex items-center justify-between px-[30px]">
-                            <button className="py-3 px-[19px] bg-[#fe6c19] hover:bg-[#fc5c00] border-none outline-none flex items-center justify-center text-xs 2xl:text-sm h-[35px] 2xl:h-[50px]">PLACE A BID</button>
-                            <span className="text-xs font-medium tracking-[4px]">BID HISTORY</span>
+                            <button className="py-3 px-[10px] sm:px-[19px] bg-[#fe6c19] hover:bg-[#fc5c00] border-none outline-none flex items-center justify-center text-xs 2xl:text-sm h-[35px] 2xl:h-[50px]">PLACE A BID</button>
+                            <span className="text-xs font-medium tracking-[1px]">BID HISTORY</span>
                         </div>
                     </div>
-                    <div className="p-[8px] 2xl:p-4 min-w-[370px] w-1/3 border-[6px] border-solid border-[#333333]">
+                    <div className="p-[8px] 2xl:p-4 min-w-[280px] sm:min-w-[320px] w-1/3 border-[6px] border-solid border-[#333333]">
                         <Link to="/RussianRevolution"><img src={russian_revolution} className="w-full mb-[8px] md:mb-9" alt=""></img></Link>
                         <div className="text-lg font-medium md:font-bold text-center mb-[8px] md:mb-10">Russian Revolution</div>
                         <div className="flex items-center justify-between px-[30px] mb-[16px] md:mb-[29px]">
-                            <span className="text-[#5c5c5c] text-xs md:text-sm font-medium md:font-bold">Left Bid: 600 ETH</span>
-                            <span className="text-xs md:text-sm font-medium md:font-bold">$19,38,000.00</span>
+                            <span className="text-[#5c5c5c] text-xs md:text-sm font-medium md:font-bold tracking-[0px] sm:tracking-[1.4px]">Left Bid: 600 ETH</span>
+                            <span className="text-xs md:text-sm font-medium md:font-bold">$19,000.00</span>
                         </div>
                         <div className="flex items-center justify-between px-[30px]">
-                            <button className="py-3 px-[19px] bg-[#fe6c19] hover:bg-[#fc5c00] border-none outline-none flex items-center justify-center text-xs 2xl:text-sm h-[35px] 2xl:h-[50px]">PLACE A BID</button>
-                            <span className="text-xs font-medium tracking-[4px]">BID HISTORY</span>
+                            <button className="py-3 px-[10px] sm:px-[19px] bg-[#fe6c19] hover:bg-[#fc5c00] border-none outline-none flex items-center justify-center text-xs 2xl:text-sm h-[35px] 2xl:h-[50px]">PLACE A BID</button>
+                            <span className="text-xs font-medium tracking-[1px]">BID HISTORY</span>
                         </div>
                     </div>
                 </div>
