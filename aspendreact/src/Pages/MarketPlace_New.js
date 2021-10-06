@@ -22,11 +22,27 @@ import product13 from "../images/assets/product13.png";
 import { Link } from "react-router-dom";
 import americanRevolutions from '../american-revolution';
 import HeaderNew from "../Components/HeaderNew";
+import metadata from "../metadata-individual.json";
 
 const Explore = () => {
 
     const [filteredResult, setFilteredResult] = useState([]);
     const [filterText, setFilterText] = useState('');
+    const [moments, setMoments] = useState([]);
+
+    useEffect(() => {
+        let tmpMoments = [];
+        const data = metadata.ids;
+        for (let index = 0; index < 4; index++) {
+            let key = getRandomInt(0, data.length);
+            if(tmpMoments.find((e) => e.id === key)) {
+                index--;
+            } else {
+                tmpMoments.push(metadata.ids[`${key}`]);
+            }
+        }
+        setMoments(tmpMoments);
+    }, [])
 
     useEffect(() => {
         if(filterText === '') {
@@ -42,6 +58,10 @@ const Explore = () => {
             setFilteredResult(filtered);
         }
     }, [ filterText ])
+
+    const getRandomInt = (min, max) => {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
 
   return (
     <div className="w-screen min-h-screen text-[14px] font-medium bg-black text-white tracking-[1.4px] font-Montserrat">
@@ -96,70 +116,24 @@ const Explore = () => {
                 </Link>
             </div>
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[30px] mb-[50px] md:mb-[200px]">
-                <div className="w-full bg-[#171717]">
-                    <Link to="/collectables/tokens/1"><img src={product4} alt="" className="w-full"></img></Link>
-                    <div className="w-full p-[27px] pb-[19px] border-b border-solid border-gray-600">
-                        <div className="w-full mb-[2px] flex justify-between text-[#868686] text-xs">
-                            <div>Price</div>
-                            <div>Copies</div>
+                {moments.map((moment, key) => (
+                    <div className="w-full bg-[#171717]" key={key}>
+                        <Link to={`/collectables/tokens/${moment.id}`}><img src={moment.img} alt="" className="h-[333px] max-w-full w-auto mx-auto"></img></Link>
+                        <div className="w-full p-[27px] pb-[19px] border-b border-solid border-gray-600">
+                            <div className="w-full mb-[2px] flex justify-between text-[#868686] text-xs">
+                                <div>Price</div>
+                                <div>Copies</div>
+                            </div>
+                            <div className="w-full flex justify-between text-[14px]">
+                                <div>9.22 €</div>
+                                <div>125/499</div>
+                            </div>
                         </div>
-                        <div className="w-full flex justify-between text-[14px]">
-                            <div>9.22 €</div>
-                            <div>125/499</div>
-                        </div>
-                    </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
-                        PLACE A BID
-                    </div>
-                </div>
-                <div className="w-full bg-[#171717]">
-                    <Link to="/collectables/tokens/1"><img src={product5} alt="" className="w-full"></img></Link>
-                    <div className="w-full p-[27px] pb-[19px] border-b border-solid border-gray-600">
-                        <div className="w-full mb-[2px] flex justify-between text-[#868686] text-xs">
-                            <div>Price</div>
-                            <div>Copies</div>
-                        </div>
-                        <div className="w-full flex justify-between text-[14px]">
-                            <div>9.22 €</div>
-                            <div>125/499</div>
+                        <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
+                            PLACE A BID
                         </div>
                     </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
-                        PLACE A BID
-                    </div>
-                </div>
-                <div className="w-full bg-[#171717]">
-                    <Link to="/collectables/tokens/1"><img src={product6} alt="" className="w-full"></img></Link>
-                    <div className="w-full p-[27px] pb-[19px] border-b border-solid border-gray-600">
-                        <div className="w-full mb-[2px] flex justify-between text-[#868686] text-xs">
-                            <div>Price</div>
-                            <div>Copies</div>
-                        </div>
-                        <div className="w-full flex justify-between text-[14px]">
-                            <div>9.22 €</div>
-                            <div>125/499</div>
-                        </div>
-                    </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
-                        PLACE A BID
-                    </div>
-                </div>
-                <div className="w-full bg-[#171717]">
-                    <Link to="/collectables/tokens/1"><img src={product7} alt="" className="w-full"></img></Link>
-                    <div className="w-full p-[27px] pb-[19px] border-b border-solid border-gray-600">
-                        <div className="w-full mb-[2px] flex justify-between text-[#868686] text-xs">
-                            <div>Price</div>
-                            <div>Copies</div>
-                        </div>
-                        <div className="w-full flex justify-between text-[14px]">
-                            <div>9.22 €</div>
-                            <div>125/499</div>
-                        </div>
-                    </div>
-                    <div className="w-full flex justify-center py-4 text-[#FE6C19] font-bold text-[14px]">
-                        PLACE A BID
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
         <div className="w-full px-[20px] md:px-[50px] lg:px-[100px] mb-[50px] md:mb-[125px]">

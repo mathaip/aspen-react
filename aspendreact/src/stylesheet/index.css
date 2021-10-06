@@ -699,6 +699,10 @@ video {
 	margin-top: 2.25rem;
 	margin-bottom: 2.25rem;
 }
+.my-2 {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
 .ml-auto {
 	margin-left: auto;
 }
@@ -951,6 +955,9 @@ video {
 .h-\[5px\] {
 	height: 5px;
 }
+.h-\[333px\] {
+	height: 333px;
+}
 .max-h-\[200px\] {
 	max-height: 200px;
 }
@@ -1053,23 +1060,11 @@ video {
 .min-w-\[105px\] {
 	min-width: 105px;
 }
-.min-w-\[370px\] {
-	min-width: 370px;
+.min-w-\[calc\(100vw-41px\)\] {
+	min-width: calc(100vw - 41px);
 }
 .min-w-\[300px\] {
 	min-width: 300px;
-}
-.min-w-\[320px\] {
-	min-width: 320px;
-}
-.min-w-\[280px\] {
-	min-width: 280px;
-}
-.min-w-\[100vw\] {
-	min-width: 100vw;
-}
-.min-w-\[calc\(100vw-41px\)\] {
-	min-width: calc(100vw - 41px);
 }
 .max-w-full {
 	max-width: 100%;
@@ -1427,6 +1422,10 @@ video {
 	padding-top: 50px;
 	padding-bottom: 50px;
 }
+.px-\[10px\] {
+	padding-left: 10px;
+	padding-right: 10px;
+}
 .py-6 {
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem;
@@ -1459,9 +1458,9 @@ video {
 	padding-left: 0.75rem;
 	padding-right: 0.75rem;
 }
-.px-\[10px\] {
-	padding-left: 10px;
-	padding-right: 10px;
+.px-14 {
+	padding-left: 3.5rem;
+	padding-right: 3.5rem;
 }
 .pl-\[20px\] {
 	padding-left: 20px;
@@ -1608,14 +1607,11 @@ video {
 .tracking-\[2px\] {
 	letter-spacing: 2px;
 }
-.tracking-\[4px\] {
-	letter-spacing: 4px;
+.tracking-\[0px\] {
+	letter-spacing: 0px;
 }
 .tracking-\[1px\] {
 	letter-spacing: 1px;
-}
-.tracking-\[0px\] {
-	letter-spacing: 0px;
 }
 .text-white {
 	--tw-text-opacity: 1;
@@ -1737,6 +1733,10 @@ video {
 }
 .hover\:text-current:hover {
 	color: currentColor;
+}
+.hover\:text-white:hover {
+	--tw-text-opacity: 1;
+	color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
 .hover\:no-underline:hover {
 	text-decoration: none;
@@ -1898,10 +1898,6 @@ video {
 
 	.md\:w-1\/2 {
 		width: 50%;
-	}
-
-	.md\:min-w-\[320px\] {
-		min-width: 320px;
 	}
 
 	.md\:max-w-\[47\.67\%\] {
@@ -2362,6 +2358,10 @@ video {
 
 	.xl\:w-auto {
 		width: auto;
+	}
+
+	.xl\:grid-cols-4 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
 	}
 
 	.xl\:flex-row {

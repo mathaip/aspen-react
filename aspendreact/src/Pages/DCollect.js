@@ -51,7 +51,7 @@ const DCollect = () => {
 
         <div className="text-base font-normal opacity-90 mb-6">
           Aspen Labs will also host a marketplace and tracker that will show
-          historical price trends and availability.{" "}
+          historical price trends and availability.
           <b>We do not take any fee for selling or bidding on our platform.</b>
         </div>
         <div className="text-base font-normal opacity-90 mb-6">
