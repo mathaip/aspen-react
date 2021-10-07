@@ -322,6 +322,8 @@ body.dark{
     padding:25px 0;
     border-top:1px solid #bababa;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 .has-scroll-init section .about p.small .arrow svg{
