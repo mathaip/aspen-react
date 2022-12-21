@@ -5,6 +5,8 @@ import {Button as MuiButton}  from '@material-ui/core'
 import { connectWallet} from "../utils/interact.js";
 import MobileMenuButton from "./Drawer";
 import currentproviderweb3 from '../currentproviderweb3'
+import React from "react";
+
 
 
 

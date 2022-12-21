@@ -1,4 +1,6 @@
 import HeaderNew from "../Components/HeaderNew";
+import React from "react";
+
 
 const BusinessInquires = () => {
   return (

@@ -9,6 +9,8 @@ import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../nft-contract";
 import currentproviderweb3 from "../currentproviderweb3";
 import { useHistory } from "react-router-dom";
 import HeaderNew from "../Components/HeaderNew";
+import React from "react";
+
 
 const NFT_Contract = new currentproviderweb3.eth.Contract(
   CONTRACT_ABI,
