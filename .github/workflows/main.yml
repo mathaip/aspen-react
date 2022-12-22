@@ -32,13 +32,17 @@ jobs:
           key: nodeModules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             nodeModules-
+      - name: change dir
+        run: cd aspendreact 
+        env:
+          CI: true
       - name: Install dependencies
-        run: cd aspendreact npm install
+        run: npm install
         env:
           CI: true
 
       - name: Build Development
-        run: cd aspendreact npm run build
+        run: npm run build
 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
