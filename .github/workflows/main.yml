@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  PROJECT_ID: ${{ secrets.GCR_PROJECT }}
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   RUN_REGION: us-central1
   SERVICE_NAME: medium-react-app
 
@@ -29,16 +29,16 @@ jobs:
         uses: actions/cache@master
         with:
           path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          key: nodeModules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             nodeModules-
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm install
         env:
           CI: true
 
       - name: Build Development
-        run: yarn build
+        run: npm run build
 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
