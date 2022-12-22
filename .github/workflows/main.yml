@@ -33,12 +33,12 @@ jobs:
           restore-keys: |
             nodeModules-
       - name: Install dependencies
-        run: npm install
+        run: cd aspendreact npm install
         env:
           CI: true
 
       - name: Build Development
-        run: npm run build
+        run: cd aspendreact npm run build
 
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
